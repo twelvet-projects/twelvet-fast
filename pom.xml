@@ -1,0 +1,375 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+
+    <groupId>com.twelvet</groupId>
+    <artifactId>twelvet-fast</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0.0</version>
+
+    <name>twelvet</name>
+    <url>https://www.twelvet.cn</url>
+    <description>TwelveT 急速开发后台管理系统</description>
+
+    <organization>
+        <name>twelvet</name>
+        <url>https://www.twelvet.cn</url>
+    </organization>
+
+    <licenses>
+        <license>
+            <name>The Apache Software License, Version 2.0</name>
+            <url>https://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <developers>
+        <developer>
+            <id>L</id>
+            <name>twelvet</name>
+            <email>2471835953@qq.com</email>
+        </developer>
+    </developers>
+
+    <properties>
+        <twelvet.version>1.0.0</twelvet.version>
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+        <java.version>17</java.version>
+        <maven.compiler.source>17</maven.compiler.source>
+        <maven.compiler.target>17</maven.compiler.target>
+
+        <spring-boot-dependencies.version>2.7.4</spring-boot-dependencies.version>
+        <spring.authorization.version>0.3.1</spring.authorization.version>
+
+        <redisson.version>3.17.5</redisson.version>
+        <spring-boot.mybatis>2.2.2</spring-boot.mybatis>
+        <druid.version>1.2.12</druid.version>
+        <pagehelper.boot.version>1.4.3</pagehelper.boot.version>
+        <dynamic-datasource.version>3.5.1</dynamic-datasource.version>
+        <knife4j.version>3.0.3</knife4j.version>
+        <poi.version>5.2.2</poi.version>
+        <commons.io.version>2.11.0</commons.io.version>
+        <hutool.version>5.8.4</hutool.version>
+    </properties>
+
+    <!--依赖版本声明-->
+    <dependencyManagement>
+        <dependencies>
+
+            <!-- SpringBoot 依赖配置 -->
+            <dependency>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-dependencies</artifactId>
+                <version>${spring-boot-dependencies.version}</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
+            <!-- Spring Authorization Server -->
+            <dependency>
+                <groupId>org.springframework.security</groupId>
+                <artifactId>spring-security-oauth2-authorization-server</artifactId>
+                <version>${spring.authorization.version}</version>
+            </dependency>
+
+            <!--redisson-->
+            <dependency>
+                <groupId>org.redisson</groupId>
+                <artifactId>redisson-spring-boot-starter</artifactId>
+                <version>${redisson.version}</version>
+            </dependency>
+
+            <!--druid-->
+            <dependency>
+                <groupId>com.alibaba</groupId>
+                <artifactId>druid-spring-boot-starter</artifactId>
+                <version>${druid.version}</version>
+            </dependency>
+
+            <!-- Mybatis 依赖配置 -->
+            <dependency>
+                <groupId>org.mybatis.spring.boot</groupId>
+                <artifactId>mybatis-spring-boot-starter</artifactId>
+                <version>${spring-boot.mybatis}</version>
+            </dependency>
+
+            <!-- pageHelper 分页插件 -->
+            <dependency>
+                <groupId>com.github.pagehelper</groupId>
+                <artifactId>pagehelper-spring-boot-starter</artifactId>
+                <version>${pagehelper.boot.version}</version>
+            </dependency>
+
+            <!-- Dynamic DataSource -->
+            <dependency>
+                <groupId>com.baomidou</groupId>
+                <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
+                <version>${dynamic-datasource.version}</version>
+            </dependency>
+
+            <!-- Swagger -->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
+                <version>${knife4j.version}</version>
+            </dependency>
+
+            <!-- io常用工具类 -->
+            <dependency>
+                <groupId>commons-io</groupId>
+                <artifactId>commons-io</artifactId>
+                <version>${commons.io.version}</version>
+            </dependency>
+
+            <!-- excel工具 -->
+            <dependency>
+                <groupId>org.apache.poi</groupId>
+                <artifactId>poi-ooxml</artifactId>
+                <version>${poi.version}</version>
+            </dependency>
+
+            <!--hutool-->
+            <dependency>
+                <groupId>cn.hutool</groupId>
+                <artifactId>hutool-all</artifactId>
+                <version>${hutool.version}</version>
+            </dependency>
+
+            <!-- Fast framework core-->
+            <dependency>
+                <groupId>com.twelvet</groupId>
+                <artifactId>twelvet-framework-core</artifactId>
+                <version>${twelvet.version}</version>
+            </dependency>
+
+            <!-- Fast framework datascope-->
+            <dependency>
+                <groupId>com.twelvet</groupId>
+                <artifactId>twelvet-framework-datascope</artifactId>
+                <version>${twelvet.version}</version>
+            </dependency>
+
+            <!-- Fast framework datasource-->
+            <dependency>
+                <groupId>com.twelvet</groupId>
+                <artifactId>twelvet-framework-datasource</artifactId>
+                <version>${twelvet.version}</version>
+            </dependency>
+
+            <!-- Fast framework jdbc-->
+            <dependency>
+                <groupId>com.twelvet</groupId>
+                <artifactId>twelvet-framework-jdbc</artifactId>
+                <version>${twelvet.version}</version>
+            </dependency>
+
+            <!-- Fast framework log-->
+            <dependency>
+                <groupId>com.twelvet</groupId>
+                <artifactId>twelvet-framework-log</artifactId>
+                <version>${twelvet.version}</version>
+            </dependency>
+
+            <!-- Fast framework redis-->
+            <dependency>
+                <groupId>com.twelvet</groupId>
+                <artifactId>twelvet-framework-redis</artifactId>
+                <version>${twelvet.version}</version>
+            </dependency>
+
+            <!-- Fast framework swagger-->
+            <dependency>
+                <groupId>com.twelvet</groupId>
+                <artifactId>twelvet-framework-swagger</artifactId>
+                <version>${twelvet.version}</version>
+            </dependency>
+
+            <!-- Fast framework utils-->
+            <dependency>
+                <groupId>com.twelvet</groupId>
+                <artifactId>twelvet-framework-utils</artifactId>
+                <version>${twelvet.version}</version>
+            </dependency>
+
+            <!--twelvet security-->
+            <dependency>
+                <groupId>com.twelvet</groupId>
+                <artifactId>twelvet-framework-security</artifactId>
+                <version>${twelvet.version}</version>
+            </dependency>
+
+            <!-- Fast System API-->
+            <dependency>
+                <groupId>com.twelvet</groupId>
+                <artifactId>twelvet-system-api</artifactId>
+                <version>${twelvet.version}</version>
+            </dependency>
+
+            <!-- Fast gen API-->
+            <dependency>
+                <groupId>com.twelvet</groupId>
+                <artifactId>twelvet-gen-api</artifactId>
+                <version>${twelvet.version}</version>
+            </dependency>
+
+            <!-- Fast quartz API-->
+            <dependency>
+                <groupId>com.twelvet</groupId>
+                <artifactId>twelvet-quartz-api</artifactId>
+                <version>${twelvet.version}</version>
+            </dependency>
+
+            <!-- Fast System-->
+            <dependency>
+                <groupId>com.twelvet</groupId>
+                <artifactId>twelvet-system-server</artifactId>
+                <version>${twelvet.version}</version>
+            </dependency>
+
+            <!-- Fast gen-->
+            <dependency>
+                <groupId>com.twelvet</groupId>
+                <artifactId>twelvet-gen-server</artifactId>
+                <version>${twelvet.version}</version>
+            </dependency>
+
+            <!-- Fast quartz-->
+            <dependency>
+                <groupId>com.twelvet</groupId>
+                <artifactId>twelvet-quartz-server</artifactId>
+                <version>${twelvet.version}</version>
+            </dependency>
+
+        </dependencies>
+    </dependencyManagement>
+
+    <dependencies>
+
+        <!--Spring Test-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-test</artifactId>
+            <scope>test</scope>
+        </dependency>
+
+    </dependencies>
+
+    <modules>
+        <module>twelvet-framework</module>
+        <module>twelvet-admin</module>
+        <module>twelvet-system</module>
+        <module>twelvet-gen</module>
+        <module>twelvet-quartz</module>
+    </modules>
+
+    <build>
+
+        <finalName>${project.name}</finalName>
+        <resources>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>true</filtering>
+                <excludes>
+                    <exclude>**/*.ico</exclude>
+                </excludes>
+            </resource>
+            <resource>
+                <directory>src/main/resources</directory>
+                <filtering>false</filtering>
+                <includes>
+                    <include>**/*.ico</include>
+                </includes>
+            </resource>
+        </resources>
+
+        <plugins>
+            <plugin>
+                <groupId>org.springframework.boot</groupId>
+                <artifactId>spring-boot-maven-plugin</artifactId>
+                <version>${spring-boot-dependencies.version}</version>
+            </plugin>
+        </plugins>
+
+    </build>
+
+
+    <repositories>
+        <repository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </repository>
+        <repository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>https://repo.spring.io/snapshot</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </repository>
+    </repositories>
+    <pluginRepositories>
+        <pluginRepository>
+            <id>spring-milestones</id>
+            <name>Spring Milestones</name>
+            <url>https://repo.spring.io/milestone</url>
+            <snapshots>
+                <enabled>false</enabled>
+            </snapshots>
+        </pluginRepository>
+        <pluginRepository>
+            <id>spring-snapshots</id>
+            <name>Spring Snapshots</name>
+            <url>https://repo.spring.io/snapshot</url>
+            <releases>
+                <enabled>false</enabled>
+            </releases>
+        </pluginRepository>
+    </pluginRepositories>
+
+    <profiles>
+        <!-- 开发环境 -->
+        <profile>
+            <id>dev</id>
+            <properties>
+                <active>dev</active>
+            </properties>
+            <activation>
+                <!-- 默认环境 -->
+                <activeByDefault>true</activeByDefault>
+            </activation>
+        </profile>
+
+        <!-- 测试环境 -->
+        <profile>
+            <id>test</id>
+            <properties>
+                <active>test</active>
+            </properties>
+        </profile>
+
+        <!-- 预发布环境 -->
+        <profile>
+            <id>staging</id>
+            <properties>
+                <active>staging</active>
+
+            </properties>
+        </profile>
+
+        <!-- 生产环境 -->
+        <profile>
+            <id>product</id>
+            <properties>
+                <active>pro</active>
+            </properties>
+        </profile>
+    </profiles>
+
+</project>
