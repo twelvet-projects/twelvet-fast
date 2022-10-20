@@ -1,7 +1,7 @@
 package com.twelvet.system.server.service.impl;
 
 import com.twelvet.system.api.domain.SysOperationLog;
-import com.twelvet.server.system.mapper.SysOperationLogMapper;
+import com.twelvet.system.server.mapper.SysOperationLogMapper;
 import com.twelvet.system.server.service.ISysOperationLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

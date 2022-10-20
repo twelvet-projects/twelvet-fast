@@ -1,8 +1,5 @@
 package com.twelvet.system.server.service.impl;
 
-import com.twelvet.system.api.domain.SysDept;
-import com.twelvet.system.api.domain.SysUser;
-import com.twelvet.system.api.domain.vo.TreeSelect;
 import com.twelvet.framework.core.constants.UserConstants;
 import com.twelvet.framework.core.exception.TWTException;
 import com.twelvet.framework.datascope.annotation.SysDataScope;
@@ -10,7 +7,10 @@ import com.twelvet.framework.security.utils.SecurityUtils;
 import com.twelvet.framework.utils.SpringContextHolder;
 import com.twelvet.framework.utils.StringUtils;
 import com.twelvet.framework.utils.TUtils;
-import com.twelvet.server.system.mapper.SysDeptMapper;
+import com.twelvet.system.api.domain.SysDept;
+import com.twelvet.system.api.domain.SysUser;
+import com.twelvet.system.api.domain.vo.TreeSelect;
+import com.twelvet.system.server.mapper.SysDeptMapper;
 import com.twelvet.system.server.service.ISysDeptService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;

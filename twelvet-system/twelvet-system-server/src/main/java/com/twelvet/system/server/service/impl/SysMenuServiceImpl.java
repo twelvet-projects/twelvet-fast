@@ -1,16 +1,16 @@
 package com.twelvet.system.server.service.impl;
 
+import com.twelvet.framework.core.constants.UserConstants;
+import com.twelvet.framework.security.utils.SecurityUtils;
+import com.twelvet.framework.utils.StringUtils;
+import com.twelvet.framework.utils.TUtils;
 import com.twelvet.system.api.domain.SysMenu;
 import com.twelvet.system.api.domain.SysUser;
 import com.twelvet.system.api.domain.vo.MetaVo;
 import com.twelvet.system.api.domain.vo.RouterVo;
 import com.twelvet.system.api.domain.vo.TreeSelect;
-import com.twelvet.framework.core.constants.UserConstants;
-import com.twelvet.framework.security.utils.SecurityUtils;
-import com.twelvet.framework.utils.StringUtils;
-import com.twelvet.framework.utils.TUtils;
-import com.twelvet.server.system.mapper.SysMenuMapper;
-import com.twelvet.server.system.mapper.SysRoleMenuMapper;
+import com.twelvet.system.server.mapper.SysMenuMapper;
+import com.twelvet.system.server.mapper.SysRoleMenuMapper;
 import com.twelvet.system.server.service.ISysMenuService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
