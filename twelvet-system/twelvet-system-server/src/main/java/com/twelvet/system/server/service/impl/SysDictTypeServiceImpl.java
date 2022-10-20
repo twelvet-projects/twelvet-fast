@@ -1,15 +1,15 @@
 package com.twelvet.system.server.service.impl;
 
+import com.twelvet.framework.constants.CacheConstants;
 import com.twelvet.framework.core.constants.UserConstants;
 import com.twelvet.framework.core.exception.TWTException;
-import com.twelvet.framework.redis.service.constants.CacheConstants;
 import com.twelvet.framework.utils.StringUtils;
-import com.twelvet.server.system.utils.DictUtils;
 import com.twelvet.system.api.domain.SysDictData;
 import com.twelvet.system.api.domain.SysDictType;
 import com.twelvet.system.server.mapper.SysDictDataMapper;
 import com.twelvet.system.server.mapper.SysDictTypeMapper;
 import com.twelvet.system.server.service.ISysDictTypeService;
+import com.twelvet.system.server.utils.DictUtils;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.cache.annotation.Cacheable;
 import org.springframework.stereotype.Service;

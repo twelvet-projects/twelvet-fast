@@ -44,12 +44,15 @@
         <spring-boot-dependencies.version>2.7.4</spring-boot-dependencies.version>
         <spring.authorization.version>0.3.1</spring.authorization.version>
 
+        <swagger.core.version>2.2.2</swagger.core.version>
+        <springdoc.version>1.6.11</springdoc.version>
+        <knife4j.version>3.0.3</knife4j.version>
+
         <redisson.version>3.17.5</redisson.version>
         <spring-boot.mybatis>2.2.2</spring-boot.mybatis>
         <druid.version>1.2.12</druid.version>
         <pagehelper.boot.version>1.4.3</pagehelper.boot.version>
         <dynamic-datasource.version>3.5.1</dynamic-datasource.version>
-        <knife4j.version>3.0.3</knife4j.version>
         <poi.version>5.2.2</poi.version>
         <commons.io.version>2.11.0</commons.io.version>
         <hutool.version>5.8.4</hutool.version>
@@ -110,11 +113,39 @@
                 <version>${dynamic-datasource.version}</version>
             </dependency>
 
-            <!-- Swagger -->
+            <!--Swagger-->
             <dependency>
                 <groupId>com.github.xiaoymin</groupId>
                 <artifactId>knife4j-spring-boot-starter</artifactId>
                 <version>${knife4j.version}</version>
+            </dependency>
+
+            <!--Swagger -->
+            <dependency>
+                <groupId>io.swagger.core.v3</groupId>
+                <artifactId>swagger-annotations</artifactId>
+                <version>${swagger.core.version}</version>
+            </dependency>
+
+            <!--springdoc -->
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-webmvc-core</artifactId>
+                <version>${springdoc.version}</version>
+            </dependency>
+
+            <!--springdoc -->
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-webflux-ui</artifactId>
+                <version>${springdoc.version}</version>
+            </dependency>
+
+            <!--springdoc -->
+            <dependency>
+                <groupId>org.springdoc</groupId>
+                <artifactId>springdoc-openapi-security</artifactId>
+                <version>${springdoc.version}</version>
             </dependency>
 
             <!-- io常用工具类 -->
