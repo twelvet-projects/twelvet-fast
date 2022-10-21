@@ -11,6 +11,8 @@ import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.security.web.authentication.logout.LogoutFilter;
+import org.springframework.web.filter.CorsFilter;
 
 /**
  * @author twelvet
@@ -20,11 +22,13 @@ import org.springframework.security.web.authentication.UsernamePasswordAuthentic
 @Configuration
 public class AuthorizationServerConfiguration {
 
+    /**
+     * token认证过滤器
+     */
     @Autowired
     private JwtAuthenticationTokenFilter jwtAuthenticationTokenFilter;
 
     @Bean
-    @Order(Ordered.HIGHEST_PRECEDENCE)
     public SecurityFilterChain authorizationServerSecurityFilterChain(HttpSecurity httpSecurity) throws Exception {
         httpSecurity
                 // CSRF禁用，因为不使用session
@@ -33,7 +37,7 @@ public class AuthorizationServerConfiguration {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS).and()
                 // 过滤请求
                 .authorizeRequests()
-                // 对于登录login 注册register 验证码captchaImage 允许匿名访问
+                // 对于登录login 允许匿名访问
                 .antMatchers("/login").anonymous()
                 // 静态资源，可匿名访问
                 .antMatchers(HttpMethod.GET, "/", "/favicon.ico").permitAll()
@@ -42,7 +46,10 @@ public class AuthorizationServerConfiguration {
                 .anyRequest().authenticated()
                 .and()
                 .headers().frameOptions().disable();
+
+        // 认证拦截使用密码模式
         httpSecurity.addFilterBefore(jwtAuthenticationTokenFilter, UsernamePasswordAuthenticationFilter.class);
+
         return httpSecurity.build();
     }
 

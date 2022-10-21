@@ -8,13 +8,8 @@ package com.twelvet.framework.constants;
 public interface CacheConstants {
 
 	/**
-	 * 用户信息缓存
+	 * 登录用户 redis key
 	 */
-	String USER_DETAILS = "user_details";
-
-	/**
-	 * 字典管理（默认缓存十分钟） cache key
-	 */
-	String SYS_DICT_KEY = "sys_dict";
+	public static final String LOGIN_TOKEN_KEY = "login_tokens:";
 
 }

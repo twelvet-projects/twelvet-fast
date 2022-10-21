@@ -44,6 +44,7 @@
                 <excludes>
                     <exclude>**/*.xlsx</exclude>
                     <exclude>**/*.xls</exclude>
+                    <exclude>**/*.ico</exclude>
                 </excludes>
             </resource>
             <resource>
@@ -52,6 +53,7 @@
                 <includes>
                     <include>**/*.xlsx</include>
                     <include>**/*.xls</include>
+                    <include>**/*.ico</include>
                 </includes>
             </resource>
         </resources>

@@ -48,6 +48,7 @@
         <springdoc.version>1.6.11</springdoc.version>
         <knife4j.version>3.0.3</knife4j.version>
 
+        <jwt.version>0.9.1</jwt.version>
         <redisson.version>3.17.5</redisson.version>
         <spring-boot.mybatis>2.2.2</spring-boot.mybatis>
         <druid.version>1.2.12</druid.version>
@@ -137,15 +138,15 @@
             <!--springdoc -->
             <dependency>
                 <groupId>org.springdoc</groupId>
-                <artifactId>springdoc-openapi-webflux-ui</artifactId>
+                <artifactId>springdoc-openapi-security</artifactId>
                 <version>${springdoc.version}</version>
             </dependency>
 
-            <!--springdoc -->
+            <!-- Token生成与解析-->
             <dependency>
-                <groupId>org.springdoc</groupId>
-                <artifactId>springdoc-openapi-security</artifactId>
-                <version>${springdoc.version}</version>
+                <groupId>io.jsonwebtoken</groupId>
+                <artifactId>jjwt</artifactId>
+                <version>${jwt.version}</version>
             </dependency>
 
             <!-- io常用工具类 -->

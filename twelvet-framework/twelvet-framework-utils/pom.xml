@@ -44,6 +44,12 @@
             <artifactId>spring-context</artifactId>
         </dependency>
 
+        <!-- Token生成与解析-->
+        <dependency>
+            <groupId>io.jsonwebtoken</groupId>
+            <artifactId>jjwt</artifactId>
+        </dependency>
+
         <!-- Quartz -->
         <dependency>
             <groupId>org.quartz-scheduler</groupId>

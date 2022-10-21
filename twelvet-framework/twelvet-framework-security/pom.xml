@@ -22,7 +22,7 @@
             <artifactId>spring-boot-starter-security</artifactId>
         </dependency>
 
-        <!--twelvet Redis-->
+        <!--twelvet Core-->
         <dependency>
             <groupId>com.twelvet</groupId>
             <artifactId>twelvet-framework-core</artifactId>
@@ -34,7 +34,7 @@
             <artifactId>twelvet-framework-redis</artifactId>
         </dependency>
 
-        <!--twelvet Redis-->
+        <!--twelvet System Api-->
         <dependency>
             <groupId>com.twelvet</groupId>
             <artifactId>twelvet-system-api</artifactId>
