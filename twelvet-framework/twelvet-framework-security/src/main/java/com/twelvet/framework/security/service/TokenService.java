@@ -1,6 +1,5 @@
 package com.twelvet.framework.security.service;
 
-import cn.hutool.http.useragent.UserAgent;
 import com.twelvet.framework.RedisService;
 import com.twelvet.framework.constants.CacheConstants;
 import com.twelvet.framework.core.constants.Constants;
@@ -9,6 +8,7 @@ import com.twelvet.framework.utils.IdUtils;
 import com.twelvet.framework.utils.StringUtils;
 import com.twelvet.framework.utils.http.IpUtils;
 import com.twelvet.framework.utils.http.ServletUtils;
+import eu.bitwalker.useragentutils.UserAgent;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.SignatureAlgorithm;
@@ -133,7 +133,7 @@ public class TokenService {
      * @param loginUser 登录信息
      */
     public void setUserAgent(LoginUser loginUser) {
-        UserAgent userAgent = UserAgent.parseUserAgentString(ServletUtils.getRequest().getHeader("User-Agent"));
+        UserAgent userAgent = UserAgent.parseUserAgentString(ServletUtils.getRequest().get().getHeader("User-Agent"));
         String ip = IpUtils.getIpAddr(ServletUtils.getRequest().get());
         loginUser.setIpaddr(ip);
         loginUser.setLoginLocation(AddressUtils.getRealAddressByIP(ip));

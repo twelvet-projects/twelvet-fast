@@ -50,6 +50,12 @@
             <artifactId>jjwt</artifactId>
         </dependency>
 
+        <!-- 解析客户端操作系统、浏览器等 -->
+        <dependency>
+            <groupId>eu.bitwalker</groupId>
+            <artifactId>UserAgentUtils</artifactId>
+        </dependency>
+
         <!-- Quartz -->
         <dependency>
             <groupId>org.quartz-scheduler</groupId>

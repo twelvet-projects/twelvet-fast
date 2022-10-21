@@ -48,6 +48,7 @@
         <springdoc.version>1.6.11</springdoc.version>
         <knife4j.version>3.0.3</knife4j.version>
 
+        <bitwalker.version>1.21</bitwalker.version>
         <jwt.version>0.9.1</jwt.version>
         <redisson.version>3.17.5</redisson.version>
         <spring-boot.mybatis>2.2.2</spring-boot.mybatis>
@@ -147,6 +148,13 @@
                 <groupId>io.jsonwebtoken</groupId>
                 <artifactId>jjwt</artifactId>
                 <version>${jwt.version}</version>
+            </dependency>
+
+            <!-- 解析客户端操作系统、浏览器等 -->
+            <dependency>
+                <groupId>eu.bitwalker</groupId>
+                <artifactId>UserAgentUtils</artifactId>
+                <version>${bitwalker.version}</version>
             </dependency>
 
             <!-- io常用工具类 -->
