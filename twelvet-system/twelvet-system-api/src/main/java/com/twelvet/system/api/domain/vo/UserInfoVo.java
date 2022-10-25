@@ -2,6 +2,7 @@ package com.twelvet.system.api.domain.vo;
 
 import com.twelvet.system.api.domain.SysUser;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -11,6 +12,7 @@ import java.io.Serializable;
  */
 public class UserInfoVo implements Serializable {
 
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	/**

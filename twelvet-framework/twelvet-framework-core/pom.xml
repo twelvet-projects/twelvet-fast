@@ -57,6 +57,12 @@
             <artifactId>twelvet-framework-utils</artifactId>
         </dependency>
 
+        <!-- Fast Framework security -->
+        <dependency>
+            <groupId>com.twelvet</groupId>
+            <artifactId>twelvet-framework-security</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>

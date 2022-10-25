@@ -1,0 +1,2 @@
+com.twelvet.framework.security.config.AuthIgnoreConfig
+com.twelvet.framework.security.config.SaTokenConfigure

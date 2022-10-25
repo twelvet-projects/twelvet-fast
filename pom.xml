@@ -41,8 +41,9 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
 
-        <spring-boot-dependencies.version>2.7.4</spring-boot-dependencies.version>
-        <spring.authorization.version>0.3.1</spring.authorization.version>
+        <spring-boot-dependencies.version>2.7.5</spring-boot-dependencies.version>
+
+        <sa-token.version>1.31.0</sa-token.version>
 
         <swagger.core.version>2.2.2</swagger.core.version>
         <springdoc.version>1.6.11</springdoc.version>
@@ -71,13 +72,6 @@
                 <version>${spring-boot-dependencies.version}</version>
                 <type>pom</type>
                 <scope>import</scope>
-            </dependency>
-
-            <!-- Spring Authorization Server -->
-            <dependency>
-                <groupId>org.springframework.security</groupId>
-                <artifactId>spring-security-oauth2-authorization-server</artifactId>
-                <version>${spring.authorization.version}</version>
             </dependency>
 
             <!--redisson-->
@@ -148,6 +142,20 @@
                 <groupId>io.jsonwebtoken</groupId>
                 <artifactId>jjwt</artifactId>
                 <version>${jwt.version}</version>
+            </dependency>
+
+            <!-- Sa-Token安全框架 -->
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-spring-boot-starter</artifactId>
+                <version>${sa-token.version}</version>
+            </dependency>
+
+            <!-- Sa-Token 集成Redis -->
+            <dependency>
+                <groupId>cn.dev33</groupId>
+                <artifactId>sa-token-dao-redis-jackson</artifactId>
+                <version>${sa-token.version}</version>
             </dependency>
 
             <!-- 解析客户端操作系统、浏览器等 -->
