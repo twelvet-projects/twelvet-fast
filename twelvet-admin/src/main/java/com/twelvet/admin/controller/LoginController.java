@@ -25,6 +25,7 @@ public class LoginController {
     /**
      * 用户登录
      *
+     * @param loginDTO 用户登录信息
      * @return JsonResult<String>
      */
     @SaIgnore
