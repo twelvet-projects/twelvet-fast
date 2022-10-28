@@ -5,7 +5,7 @@ import cn.dev33.satoken.stp.StpUtil;
 import com.twelvet.framework.core.application.domain.JsonResult;
 import com.twelvet.system.api.domain.dto.LoginDTO;
 import com.twelvet.system.api.domain.vo.LoginVO;
-import com.twelvet.system.server.service.impl.LoginService;
+import com.twelvet.system.server.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;

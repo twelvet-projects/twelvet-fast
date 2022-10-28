@@ -1,4 +1,4 @@
-package com.twelvet.system.server.service.impl;
+package com.twelvet.system.server.service;
 
 import com.twelvet.system.api.domain.dto.LoginDTO;
 import com.twelvet.system.api.domain.vo.LoginVO;
