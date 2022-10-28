@@ -60,7 +60,7 @@ public class RedisConfig extends CachingConfigurerSupport {
 
 		RedisCacheConfiguration redisCacheConfiguration = RedisCacheConfiguration.defaultCacheConfig()
 				// 缓存前缀
-				.prefixCacheNameWith("twelvet_fast:")
+				.prefixCacheNameWith("fast:")
 				// 修改为一个 :
 				// .computePrefixWith(name -> name + ":")
 				// 过期时间
