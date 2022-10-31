@@ -92,8 +92,8 @@ public class LoginServiceImpl implements LoginService {
         // 权限集合
         Set<String> permissions = iSysPermissionService.getMenuPermission(sysUser.getUserId());
 
-        loginUser.setPermissions(roles);
-        loginUser.setRoles(permissions);
+        loginUser.setPermissions(permissions);
+        loginUser.setRoles(roles);
         return loginUser;
     }
 
