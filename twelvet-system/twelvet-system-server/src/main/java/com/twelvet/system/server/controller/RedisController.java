@@ -23,7 +23,7 @@ import java.util.*;
  */
 @Tag(description = "RedisController", name = "缓存监控")
 @RestController
-@RequestMapping("/monitor/redis")
+@RequestMapping("/system/monitor/redis")
 public class RedisController {
 
 	@Autowired

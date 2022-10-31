@@ -28,7 +28,7 @@ import java.util.List;
  */
 @Tag(description = "SysRoleController", name = "角色信息")
 @RestController
-@RequestMapping("/role")
+@RequestMapping("/system/role")
 public class SysRoleController extends TWTController {
 
 	@Autowired

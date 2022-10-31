@@ -28,7 +28,7 @@ import java.util.List;
  */
 @Tag(description = "SysDictDataController", name = "数据字典信息")
 @RestController
-@RequestMapping("/dictionaries/data")
+@RequestMapping("/system/dictionaries/data")
 public class SysDictDataController extends TWTController {
 
 	@Autowired

@@ -22,7 +22,7 @@ import org.springframework.web.bind.annotation.*;
  */
 @Tag(description = "SysProfileController", name = "DFS控制器")
 @RestController
-@RequestMapping("/user/profile")
+@RequestMapping("/system/user/profile")
 public class SysProfileController extends TWTController {
 
 	@Autowired

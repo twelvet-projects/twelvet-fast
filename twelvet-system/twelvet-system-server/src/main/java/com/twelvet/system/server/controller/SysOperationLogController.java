@@ -25,7 +25,7 @@ import java.util.List;
  */
 @Tag(description = "SysOperationLogController", name = "操作日志记录")
 @RestController
-@RequestMapping("/operationLog")
+@RequestMapping("/system/operationLog")
 public class SysOperationLogController extends TWTController {
 
 	@Autowired
