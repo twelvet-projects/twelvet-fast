@@ -7,7 +7,6 @@ import com.twelvet.system.api.domain.SysUser;
 import com.twelvet.system.api.domain.dto.LoginDTO;
 import com.twelvet.system.api.domain.vo.LoginVO;
 import com.twelvet.system.server.mapper.SysUserMapper;
-import com.twelvet.system.server.service.ISysUserService;
 import com.twelvet.system.server.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
@@ -23,8 +22,6 @@ import java.util.Optional;
 @Service
 public class LoginServiceImpl implements LoginService {
 
-    @Autowired
-    private LoginService loginService;
     @Autowired
     private SysUserMapper userMapper;
 
@@ -46,24 +43,21 @@ public class LoginServiceImpl implements LoginService {
     }
 
 
-
-
     private SysUser loadUserByUsername(String username) {
         SysUser user = selectUserByUserName(username);
-        if(ObjectUtil.isNull(username)){
-            System.out.println("登录用户："+username+" 不存在.");
+        if (ObjectUtil.isNull(username)) {
+            System.out.println("登录用户：" + username + " 不存在.");
         } else {
-            System.out.println("登录用户："+username+" 已被删除.");
+            System.out.println("登录用户：" + username + " 已被删除.");
 
         }
         return user;
     }
 
 
-
-
     /**
      * 通过用户名查询用户
+     *
      * @param username
      * @return
      */

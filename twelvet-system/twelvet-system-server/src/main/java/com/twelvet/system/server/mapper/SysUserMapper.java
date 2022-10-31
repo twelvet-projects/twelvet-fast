@@ -11,7 +11,6 @@ import java.util.List;
  * @WebSite www.twelvet.cn
  * @Description: 用户信息Mapper
  */
-@Mapper
 public interface SysUserMapper  {
 
 	/**
