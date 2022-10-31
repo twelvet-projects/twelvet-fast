@@ -57,10 +57,10 @@
             <artifactId>twelvet-framework-utils</artifactId>
         </dependency>
 
-        <!-- Fast Framework security -->
+        <!-- Sa-Token安全框架 -->
         <dependency>
-            <groupId>com.twelvet</groupId>
-            <artifactId>twelvet-framework-security</artifactId>
+            <groupId>cn.dev33</groupId>
+            <artifactId>sa-token-spring-boot-starter</artifactId>
         </dependency>
 
     </dependencies>

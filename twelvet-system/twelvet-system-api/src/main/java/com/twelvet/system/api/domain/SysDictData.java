@@ -4,72 +4,85 @@ import com.twelvet.framework.core.application.domain.BaseEntity;
 import com.twelvet.framework.core.constants.UserConstants;
 import com.twelvet.framework.utils.annotation.excel.Excel;
 import com.twelvet.framework.utils.annotation.excel.Excel.ColumnType;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.io.Serial;
 
 /**
  * @author twelvet
  * @WebSite www.twelvet.cn
  * @Description: 字典数据表 sys_dict_data
  */
+@Schema(description = "字典数据表")
 public class SysDictData extends BaseEntity {
 
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * 字典编码
 	 */
+	@Schema(description = "字典编码")
 	@Excel(name = "字典编码", cellType = ColumnType.NUMERIC)
 	private Long dictCode;
 
 	/**
 	 * 字典排序
 	 */
+	@Schema(description = "字典排序")
 	@Excel(name = "字典排序", cellType = ColumnType.NUMERIC)
 	private Long dictSort;
 
 	/**
 	 * 字典标签
 	 */
+	@Schema(description = "字典标签")
 	@Excel(name = "字典标签")
 	private String dictLabel;
 
 	/**
 	 * 字典键值
 	 */
+	@Schema(description = "字典键值")
 	@Excel(name = "字典键值")
 	private String dictValue;
 
 	/**
 	 * 字典类型
 	 */
+	@Schema(description = "字典类型")
 	@Excel(name = "字典类型")
 	private String dictType;
 
 	/**
 	 * 样式属性（其他样式扩展）
 	 */
+	@Schema(description = "样式属性")
 	private String cssClass;
 
 	/**
 	 * 表格字典样式
 	 */
+	@Schema(description = "表格字典样式")
 	private String listClass;
 
 	/**
 	 * 是否默认（Y是 N否）
 	 */
+	@Schema(description = "是否默认")
 	@Excel(name = "是否默认", readConverterExp = "Y=是,N=否")
 	private String isDefault;
 
 	/**
 	 * 状态（0正常 1停用）
 	 */
-	@Excel(name = "状态", readConverterExp = "1=正常,0=停用")
-	private Integer status;
+	@Schema(description = "状态")
+	@Excel(name = "状态", readConverterExp = "0=正常,1=停用")
+	private String status;
 
 	public Long getDictCode() {
 		return dictCode;
@@ -146,11 +159,11 @@ public class SysDictData extends BaseEntity {
 		this.isDefault = isDefault;
 	}
 
-	public Integer getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(Integer status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 

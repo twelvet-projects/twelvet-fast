@@ -1,17 +1,18 @@
 package com.twelvet.system.api.domain;
 
-import com.fasterxml.jackson.annotation.JsonProperty;
 import com.twelvet.framework.core.application.domain.BaseEntity;
 import com.twelvet.framework.utils.annotation.excel.Excel;
 import com.twelvet.framework.utils.annotation.excel.Excel.ColumnType;
 import com.twelvet.framework.utils.annotation.excel.Excel.Type;
 import com.twelvet.framework.utils.annotation.excel.Excels;
+import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;
 import org.apache.commons.lang3.builder.ToStringStyle;
 
 import javax.validation.constraints.Email;
 import javax.validation.constraints.NotBlank;
 import javax.validation.constraints.Size;
+import java.io.Serial;
 import java.util.Date;
 import java.util.List;
 
@@ -20,93 +21,104 @@ import java.util.List;
  * @WebSite www.twelvet.cn
  * @Description: sys_user实体
  */
+@Schema(description = "sys_user实体")
 public class SysUser extends BaseEntity {
 
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	/**
 	 * 用户ID
 	 */
+	@Schema(description = "用户ID")
 	@Excel(name = "用户序号", cellType = ColumnType.NUMERIC, prompt = "用户编号")
 	private Long userId;
 
 	/**
 	 * 部门ID
 	 */
+	@Schema(description = "部门ID")
 	@Excel(name = "部门编号", type = Type.IMPORT)
 	private Long deptId;
 
 	/**
 	 * 用户账号
 	 */
+	@Schema(description = "用户账号")
 	@Excel(name = "登录名称")
 	private String username;
 
 	/**
 	 * 用户昵称
 	 */
+	@Schema(description = "用户昵称")
 	@Excel(name = "用户名称")
 	private String nickName;
 
 	/**
 	 * 用户邮箱
 	 */
+	@Schema(description = "用户邮箱")
 	@Excel(name = "用户邮箱")
 	private String email;
 
 	/**
 	 * 手机号码
 	 */
+	@Schema(description = "手机号码")
 	@Excel(name = "手机号码")
 	private String phonenumber;
 
 	/**
 	 * 用户性别
 	 */
+	@Schema(description = "用户性别")
 	@Excel(name = "用户性别", readConverterExp = "0=男,1=女,2=未知")
-	private Integer sex;
+	private String sex;
 
 	/**
 	 * 用户头像
 	 */
+	@Schema(description = "用户头像")
 	private String avatar;
 
 	/**
 	 * 密码
 	 */
+	@Schema(description = "密码")
 	private String password;
 
 	/**
-	 * 盐加密
+	 * 帐号状态（0正常 1停用）
 	 */
-	private String salt;
+	@Schema(description = "帐号状态")
+	@Excel(name = "帐号状态", readConverterExp = "0=正常,1=停用")
+	private String status;
 
 	/**
-	 * 帐号状态（1正常 0停用）
+	 * 删除标志（0代表存在 2代表删除）
 	 */
-	@Excel(name = "帐号状态", readConverterExp = "1=正常,0=停用")
-	private Integer status;
-
-	/**
-	 * 删除标志（1代表存在 2代表删除）
-	 */
+	@Schema(description = "删除标志")
 	private String delFlag;
 
 	/**
-	 * 最后登陆IP
+	 * 最后登录IP
 	 */
-	@Excel(name = "最后登陆IP", type = Type.EXPORT)
+	@Schema(description = "最后登录IP")
+	@Excel(name = "最后登录IP", type = Type.EXPORT)
 	private String loginIp;
 
 	/**
-	 * 最后登陆时间
+	 * 最后登录时间
 	 */
-	@Excel(name = "最后登陆时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss", type = Type.EXPORT)
+	@Schema(description = "最后登录时间")
+	@Excel(name = "最后登录时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss", type = Type.EXPORT)
 	private Date loginDate;
 
 	/**
 	 * 部门对象
 	 */
+	@Schema(description = "部门对象")
 	@Excels({ @Excel(name = "部门名称", targetAttr = "deptName", type = Type.EXPORT),
 			@Excel(name = "部门负责人", targetAttr = "leader", type = Type.EXPORT) })
 	private SysDept dept;
@@ -114,17 +126,26 @@ public class SysUser extends BaseEntity {
 	/**
 	 * 角色对象
 	 */
+	@Schema(description = "角色对象")
 	private List<SysRole> roles;
 
 	/**
 	 * 角色组
 	 */
+	@Schema(description = "角色组")
 	private Long[] roleIds;
 
 	/**
 	 * 岗位组
 	 */
+	@Schema(description = "岗位组")
 	private Long[] postIds;
+
+	/**
+	 * 角色ID
+	 */
+	@Schema(description = "用户ID")
+	private Long roleId;
 
 	public SysUser() {
 
@@ -173,8 +194,8 @@ public class SysUser extends BaseEntity {
 		return username;
 	}
 
-	public void setUsername(String username) {
-		this.username = username;
+	public void setUsername(String userName) {
+		this.username = userName;
 	}
 
 	@Email(message = "邮箱格式不正确")
@@ -196,11 +217,11 @@ public class SysUser extends BaseEntity {
 		this.phonenumber = phonenumber;
 	}
 
-	public Integer getSex() {
+	public String getSex() {
 		return sex;
 	}
 
-	public void setSex(Integer sex) {
+	public void setSex(String sex) {
 		this.sex = sex;
 	}
 
@@ -212,7 +233,6 @@ public class SysUser extends BaseEntity {
 		this.avatar = avatar;
 	}
 
-	@JsonProperty
 	public String getPassword() {
 		return password;
 	}
@@ -221,19 +241,11 @@ public class SysUser extends BaseEntity {
 		this.password = password;
 	}
 
-	public String getSalt() {
-		return salt;
-	}
-
-	public void setSalt(String salt) {
-		this.salt = salt;
-	}
-
-	public Integer getStatus() {
+	public String getStatus() {
 		return status;
 	}
 
-	public void setStatus(Integer status) {
+	public void setStatus(String status) {
 		this.status = status;
 	}
 
@@ -293,17 +305,24 @@ public class SysUser extends BaseEntity {
 		this.postIds = postIds;
 	}
 
+	public Long getRoleId() {
+		return roleId;
+	}
+
+	public void setRoleId(Long roleId) {
+		this.roleId = roleId;
+	}
+
 	@Override
 	public String toString() {
 		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("userId", getUserId())
 				.append("deptId", getDeptId()).append("username", getUsername()).append("nickName", getNickName())
 				.append("email", getEmail()).append("phonenumber", getPhonenumber()).append("sex", getSex())
-				.append("avatar", getAvatar()).append("password", getPassword()).append("salt", getSalt())
-				.append("status", getStatus()).append("delFlag", getDelFlag()).append("loginIp", getLoginIp())
-				.append("loginDate", getLoginDate()).append("createBy", getCreateBy())
-				.append("createTime", getCreateTime()).append("updateBy", getUpdateBy())
-				.append("updateTime", getUpdateTime()).append("remark", getRemark()).append("dept", getDept())
-				.toString();
+				.append("avatar", getAvatar()).append("password", getPassword()).append("status", getStatus())
+				.append("delFlag", getDelFlag()).append("loginIp", getLoginIp()).append("loginDate", getLoginDate())
+				.append("createBy", getCreateBy()).append("createTime", getCreateTime())
+				.append("updateBy", getUpdateBy()).append("updateTime", getUpdateTime()).append("remark", getRemark())
+				.append("dept", getDept()).toString();
 	}
 
 }

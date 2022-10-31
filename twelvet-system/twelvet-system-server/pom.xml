@@ -13,12 +13,6 @@
 
     <dependencies>
 
-        <!-- Fast System Api -->
-        <dependency>
-            <groupId>com.twelvet</groupId>
-            <artifactId>twelvet-system-api</artifactId>
-        </dependency>
-
         <!-- Fast 数据库 -->
         <dependency>
             <groupId>com.twelvet</groupId>

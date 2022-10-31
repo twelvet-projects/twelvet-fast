@@ -1,18 +1,22 @@
 package com.twelvet.system.server.service.impl;
 
+import cn.dev33.satoken.secure.BCrypt;
 import cn.dev33.satoken.stp.StpUtil;
-import cn.hutool.core.util.ObjectUtil;
-import com.twelvet.framework.utils.http.ServletUtils;
+import com.twelvet.framework.core.exception.TWTException;
+import com.twelvet.framework.security.domain.LoginUser;
+import com.twelvet.framework.security.enums.DeviceType;
+import com.twelvet.framework.security.utils.SecurityUtils;
+import com.twelvet.framework.utils.TUtils;
 import com.twelvet.system.api.domain.SysUser;
 import com.twelvet.system.api.domain.dto.LoginDTO;
 import com.twelvet.system.api.domain.vo.LoginVO;
 import com.twelvet.system.server.mapper.SysUserMapper;
+import com.twelvet.system.server.service.ISysPermissionService;
 import com.twelvet.system.server.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
-import javax.servlet.http.HttpServletRequest;
-import java.util.Optional;
+import java.util.Set;
 
 /**
  * @author twelvet
@@ -25,6 +29,9 @@ public class LoginServiceImpl implements LoginService {
     @Autowired
     private SysUserMapper userMapper;
 
+    @Autowired
+    private ISysPermissionService iSysPermissionService;
+
     /**
      * 登录
      *
@@ -32,8 +39,18 @@ public class LoginServiceImpl implements LoginService {
      */
     @Override
     public LoginVO login(LoginDTO loginDTO) {
-        Optional<HttpServletRequest> request = ServletUtils.getRequest();
-        SysUser user = loadUserByUsername(loginDTO.getUsername());
+        SysUser sysUser = loadUserByUsername(loginDTO.getUsername());
+
+        if (!BCrypt.checkpw(loginDTO.getPassword(), sysUser.getPassword())) {
+            throw new TWTException("账号密码不正确");
+        }
+
+        // 构建用户信息
+        LoginUser loginUser = buildLoginUser(sysUser);
+
+        // 生成token
+        SecurityUtils.loginByDevice(loginUser, DeviceType.PC);
+
         StpUtil.login(1);
         LoginVO loginVO = new LoginVO();
 
@@ -42,27 +59,43 @@ public class LoginServiceImpl implements LoginService {
         return loginVO;
     }
 
-
+    /**
+     * 通过账号名称登录
+     *
+     * @param username 账号名称
+     * @return 用户
+     */
     private SysUser loadUserByUsername(String username) {
-        SysUser user = selectUserByUserName(username);
-        if (ObjectUtil.isNull(username)) {
-            System.out.println("登录用户：" + username + " 不存在.");
-        } else {
-            System.out.println("登录用户：" + username + " 已被删除.");
-
+        SysUser sysUser = userMapper.selectUserByUserName(username);
+        if (TUtils.isEmpty(username)) {
+            throw new TWTException("登录用户：" + username + " 不存在.");
         }
-        return user;
+        if (sysUser.getStatus().equals("1")) {
+            throw new TWTException("账号已被冻结");
+        }
+        return sysUser;
     }
 
-
     /**
-     * 通过用户名查询用户
+     * 构建用户信息
      *
-     * @param username
-     * @return
+     * @param sysUser SysUser
+     * @return LoginUser
      */
-    public SysUser selectUserByUserName(String username) {
-        return userMapper.selectUserByUserName(username);
+    private LoginUser buildLoginUser(SysUser sysUser) {
+        LoginUser loginUser = new LoginUser();
+
+        loginUser.setUserId(sysUser.getUserId());
+        loginUser.setUsername(sysUser.getUsername());
+
+        // 角色集合
+        Set<String> roles = iSysPermissionService.getRolePermission(sysUser.getUserId());
+        // 权限集合
+        Set<String> permissions = iSysPermissionService.getMenuPermission(sysUser.getUserId());
+
+        loginUser.setPermissions(roles);
+        loginUser.setRoles(permissions);
+        return loginUser;
     }
 
 }

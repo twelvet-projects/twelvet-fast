@@ -3,6 +3,7 @@ package com.twelvet.admin.controller;
 import cn.dev33.satoken.annotation.SaIgnore;
 import cn.dev33.satoken.stp.StpUtil;
 import com.twelvet.framework.core.application.domain.JsonResult;
+import com.twelvet.framework.security.utils.SecurityUtils;
 import com.twelvet.system.api.domain.dto.LoginDTO;
 import com.twelvet.system.api.domain.vo.LoginVO;
 import com.twelvet.system.server.service.LoginService;
@@ -34,14 +35,11 @@ public class LoginController {
     @SaIgnore
     @PostMapping("/login")
     public JsonResult<LoginVO> login(@Validated @RequestBody LoginDTO loginDTO) {
-        Map<String,Object> ajax = new HashMap<>();
-        LoginVO token = loginService.login(loginDTO);
-
-        return JsonResult.success("11");
+        return JsonResult.success(loginService.login(loginDTO));
     }
 
     /**
-     * 退出登录
+     * 退出登录(根据传输token退出登录，没有传输token依旧返回成功)
      *
      * @return JsonResult<String>
      */
@@ -59,7 +57,7 @@ public class LoginController {
      */
     @GetMapping("/demo")
     public JsonResult<String> demo() {
-        return JsonResult.success();
+        return JsonResult.success(SecurityUtils.getUsername());
     }
 
 }

@@ -1,3 +1,11 @@
+# 开发环境配置
+server:
+  # 服务器的HTTP端口，默认为8080
+  port: 8080
+  servlet:
+    # 应用的访问路径
+    context-path: /
+
 twelvet:
   name: TwelveT Fast
   version: 1.0.0
@@ -43,14 +51,6 @@ security:
   ignore:
     urls:
       - /favicon.ico
-
-# 开发环境配置
-server:
-  # 服务器的HTTP端口，默认为8080
-  port: 8088
-  servlet:
-    # 应用的访问路径
-    context-path: /
 
 # Mybatis配置
 mybatis:

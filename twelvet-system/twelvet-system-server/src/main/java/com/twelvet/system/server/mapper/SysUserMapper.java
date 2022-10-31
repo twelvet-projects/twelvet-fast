@@ -1,7 +1,6 @@
 package com.twelvet.system.server.mapper;
 
 import com.twelvet.system.api.domain.SysUser;
-import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
