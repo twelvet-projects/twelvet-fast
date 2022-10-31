@@ -1,5 +1,6 @@
 package com.twelvet.system.server.service;
 
+import com.twelvet.system.api.domain.SysUser;
 import com.twelvet.system.api.domain.dto.LoginDTO;
 import com.twelvet.system.api.domain.vo.LoginVO;
 
@@ -16,5 +17,6 @@ public interface LoginService {
      * @param loginDTO LoginDTO
      */
     LoginVO login(LoginDTO loginDTO);
+
 
 }

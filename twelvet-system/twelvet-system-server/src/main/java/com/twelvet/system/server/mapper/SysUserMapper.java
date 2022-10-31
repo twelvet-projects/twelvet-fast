@@ -1,6 +1,7 @@
 package com.twelvet.system.server.mapper;
 
 import com.twelvet.system.api.domain.SysUser;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
 import java.util.List;
@@ -10,7 +11,8 @@ import java.util.List;
  * @WebSite www.twelvet.cn
  * @Description: 用户信息Mapper
  */
-public interface SysUserMapper {
+@Mapper
+public interface SysUserMapper  {
 
 	/**
 	 * 根据条件分页查询用户列表

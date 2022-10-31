@@ -10,6 +10,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.HashMap;
+import java.util.Map;
+
 /**
  * @author twelvet
  * @WebSite www.twelvet.cn
@@ -31,7 +34,10 @@ public class LoginController {
     @SaIgnore
     @PostMapping("/login")
     public JsonResult<LoginVO> login(@Validated @RequestBody LoginDTO loginDTO) {
-        return JsonResult.success(loginService.login(loginDTO));
+        Map<String,Object> ajax = new HashMap<>();
+        LoginVO token = loginService.login(loginDTO);
+
+        return JsonResult.success("11");
     }
 
     /**
