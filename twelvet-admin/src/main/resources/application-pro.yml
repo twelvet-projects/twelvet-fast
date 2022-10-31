@@ -4,24 +4,30 @@ spring:
       # 设置默认的数据源或者数据源组,默认值即为master
       primary: master
       druid:
-        initial-size: 5
-        min-idle: 5
+        # 初始连接数
+        initialSize: 5
+        # 最小连接池数量
+        minIdle: 10
+        # 最大连接池数量
         maxActive: 20
+        # 配置获取连接等待超时的时间
         maxWait: 60000
+        # 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒
         timeBetweenEvictionRunsMillis: 60000
+        # 配置一个连接在池中最小生存的时间，单位是毫秒
         minEvictableIdleTimeMillis: 300000
+        # 配置一个连接在池中最大生存的时间，单位是毫秒
+        maxEvictableIdleTimeMillis: 900000
+        # 配置检测连接是否有效
         validationQuery: SELECT 1 FROM DUAL
         testWhileIdle: true
         testOnBorrow: false
         testOnReturn: false
-        poolPreparedStatements: true
-        maxPoolPreparedStatementPerConnectionSize: 20
-        filters: stat,wall,slf4j
       datasource:
         # 主库数据源
         master:
           driver-class-name: com.mysql.cj.jdbc.Driver
-          url: jdbc:mysql://43.142.134.177:3306/twelvet_fast?allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8
+          url: jdbc:mysql://${twelvet-mysql:127.0.0.1}:3306/twelvet_fast?allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8
           username: root
           password: 123456
         # 从库数据源
@@ -31,7 +37,7 @@ spring:
         # url:
         # driver-class-name:
   redis:
-    host: 127.0.0.1
+    host: ${twelvet-redis:127.0.0.1}
     port: 6379
     # 连接超时时间
     timeout: 30s
@@ -49,4 +55,10 @@ spring:
 # 日志配置
 logging:
   level:
-    org.springframework: info
+    org.springframework: warn
+
+# Mybatis配置
+mybatis:
+  # Mybatis开启日志打印
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
