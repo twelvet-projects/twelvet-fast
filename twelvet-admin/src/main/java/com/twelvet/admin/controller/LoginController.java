@@ -39,25 +39,14 @@ public class LoginController {
     }
 
     /**
-     * 退出登录(根据传输token退出登录，没有传输token依旧返回成功)
+     * 退出登录
      *
      * @return JsonResult<String>
      */
-    @SaIgnore
     @PostMapping("/logout")
     public JsonResult<String> logout() {
         StpUtil.logout();
         return JsonResult.success();
-    }
-
-    /**
-     * demo
-     *
-     * @return JsonResult<String>
-     */
-    @GetMapping("/demo")
-    public JsonResult<String> demo() {
-        return JsonResult.success(SecurityUtils.getUsername());
     }
 
 }
