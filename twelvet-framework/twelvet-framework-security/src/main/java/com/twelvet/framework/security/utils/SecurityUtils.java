@@ -41,13 +41,13 @@ public class SecurityUtils {
      * @return LoginUser
      */
     public static LoginUser getLoginUser() {
-        LoginUser userInfo = (LoginUser) SaHolder.getStorage().get(LOGIN_USER_KEY);
-        if (userInfo != null) {
-            return userInfo;
+        LoginUser loginUser = (LoginUser) SaHolder.getStorage().get(LOGIN_USER_KEY);
+        if (loginUser != null) {
+            return loginUser;
         }
-        userInfo = (LoginUser) StpUtil.getTokenSession().get(LOGIN_USER_KEY);
-        SaHolder.getStorage().set(LOGIN_USER_KEY, userInfo);
-        return userInfo;
+        loginUser = (LoginUser) StpUtil.getTokenSession().get(LOGIN_USER_KEY);
+        SaHolder.getStorage().set(LOGIN_USER_KEY, loginUser);
+        return loginUser;
     }
 
     /**

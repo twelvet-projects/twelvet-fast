@@ -51,7 +51,6 @@ public class LoginServiceImpl implements LoginService {
         // 生成token
         SecurityUtils.loginByDevice(loginUser, DeviceType.PC);
 
-        StpUtil.login(1);
         LoginVO loginVO = new LoginVO();
 
         loginVO.setAccessToken(StpUtil.getTokenValue());
