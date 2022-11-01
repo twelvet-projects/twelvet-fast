@@ -21,6 +21,12 @@
             <artifactId>twelvet-system-server</artifactId>
         </dependency>
 
+        <!-- Fast gen -->
+        <dependency>
+            <groupId>com.twelvet</groupId>
+            <artifactId>twelvet-gen-server</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>
