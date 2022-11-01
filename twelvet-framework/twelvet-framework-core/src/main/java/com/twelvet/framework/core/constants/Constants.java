@@ -5,6 +5,10 @@ import io.jsonwebtoken.Claims;
 public class Constants {
 
     /**
+     * UTF-8 字符集
+     */
+    public static final String UTF8 = "UTF-8";
+    /**
      * 授权头部
      */
     public static final String AUTHORIZATION = "AUTHORIZATION";

@@ -1,4 +1,4 @@
-package com.twelvet.gen.server.mapper;
+package com.twelvet.server.gen.service;
 
 import com.twelvet.gen.api.domain.GenTableColumn;
 
@@ -7,16 +7,9 @@ import java.util.List;
 /**
  * @author twelvet
  * @WebSite www.twelvet.cn
- * @Description: 业务字段 数据层
+ * @Description: 业务字段 服务层
  */
-public interface GenTableColumnMapper {
-
-	/**
-	 * 根据表名称查询列信息
-	 * @param tableName 表名称
-	 * @return 列信息
-	 */
-	List<GenTableColumn> selectDbTableColumnsByName(String tableName);
+public interface IGenTableColumnService {
 
 	/**
 	 * 查询业务字段列表
@@ -40,17 +33,10 @@ public interface GenTableColumnMapper {
 	int updateGenTableColumn(GenTableColumn genTableColumn);
 
 	/**
-	 * 删除业务字段
-	 * @param genTableColumns 列数据
-	 * @return 结果
-	 */
-	int deleteGenTableColumns(List<GenTableColumn> genTableColumns);
-
-	/**
-	 * 批量删除业务字段
+	 * 删除业务字段信息
 	 * @param ids 需要删除的数据ID
 	 * @return 结果
 	 */
-	int deleteGenTableColumnByIds(Long[] ids);
+	int deleteGenTableColumnByIds(String ids);
 
 }
