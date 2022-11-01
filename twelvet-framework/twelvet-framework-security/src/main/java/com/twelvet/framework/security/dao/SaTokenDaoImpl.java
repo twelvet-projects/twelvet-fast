@@ -1,4 +1,4 @@
-package com.twelvet.framework.security.service;
+package com.twelvet.framework.security.dao;
 
 import cn.dev33.satoken.dao.SaTokenDao;
 import cn.dev33.satoken.util.SaFoxUtil;
