@@ -39,7 +39,7 @@ import java.util.stream.Collectors;
  */
 @Tag(description = "SysUserController", name = "用户信息")
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/system/user")
 public class SysUserController extends TWTController {
 
 	@Autowired

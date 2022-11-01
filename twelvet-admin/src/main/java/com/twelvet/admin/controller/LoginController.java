@@ -20,7 +20,7 @@ import java.util.Map;
  * @Description: 登录控制器
  */
 @RestController
-@RequestMapping("/user")
+@RequestMapping("/system/user")
 public class LoginController {
 
     @Autowired

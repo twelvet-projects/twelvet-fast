@@ -25,7 +25,7 @@ import java.util.List;
  */
 @Tag(description = "SysLoginInfoController", name = "系统登录日志")
 @RestController
-@RequestMapping("/loginInfo")
+@RequestMapping("/system/loginInfo")
 public class SysLoginInfoController extends TWTController {
 
 	@Autowired

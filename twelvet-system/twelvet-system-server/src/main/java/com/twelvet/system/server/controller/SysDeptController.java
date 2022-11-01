@@ -30,7 +30,7 @@ import java.util.Map;
  */
 @Tag(description = "SysDeptController", name = "部门管理")
 @RestController
-@RequestMapping("/dept")
+@RequestMapping("/system/dept")
 public class SysDeptController extends TWTController {
 
 	@Autowired

@@ -30,7 +30,7 @@ import java.util.Map;
  */
 @Tag(description = "SysMenuController", name = "系统菜单控制器")
 @RestController
-@RequestMapping("/menu")
+@RequestMapping("/system/menu")
 public class SysMenuController extends TWTController {
 
 	@Autowired

@@ -28,7 +28,7 @@ import java.util.List;
  */
 @Tag(description = "SysPostController", name = "岗位信息操作处理")
 @RestController
-@RequestMapping("/post")
+@RequestMapping("/system/post")
 public class SysPostController extends TWTController {
 
 	@Autowired
