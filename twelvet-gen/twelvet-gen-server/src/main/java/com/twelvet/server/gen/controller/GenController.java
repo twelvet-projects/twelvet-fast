@@ -30,7 +30,7 @@ import java.util.Map;
  */
 @Tag(description = "GenController", name = "代码生成")
 @RequestMapping
-@RestController
+@RestController("/gen")
 public class GenController extends TWTController {
 
 	@Autowired
