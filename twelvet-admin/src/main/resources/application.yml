@@ -6,7 +6,9 @@ server:
     # 应用的访问路径
     context-path: /
 
+# 项目设置
 twelvet:
+  #项目名称
   name: TwelveT Fast
   version: 1.0.0
   copyrightYear: 2022
