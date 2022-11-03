@@ -29,8 +29,8 @@ import java.util.Map;
  * @Description: 代码生成 操作处理
  */
 @Tag(description = "GenController", name = "代码生成")
-@RequestMapping
-@RestController("/gen")
+@RestController
+@RequestMapping("/gen")
 public class GenController extends TWTController {
 
 	@Autowired
