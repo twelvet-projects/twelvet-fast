@@ -50,22 +50,16 @@
             <artifactId>commons-lang3</artifactId>
         </dependency>
 
+        <!-- Commons Io -->
+        <dependency>
+            <groupId>commons-io</groupId>
+            <artifactId>commons-io</artifactId>
+        </dependency>
+
         <!--Spring Context-->
         <dependency>
             <groupId>org.springframework</groupId>
             <artifactId>spring-context</artifactId>
-        </dependency>
-
-        <!-- Token生成与解析-->
-        <dependency>
-            <groupId>io.jsonwebtoken</groupId>
-            <artifactId>jjwt</artifactId>
-        </dependency>
-
-        <!-- 解析客户端操作系统、浏览器等 -->
-        <dependency>
-            <groupId>eu.bitwalker</groupId>
-            <artifactId>UserAgentUtils</artifactId>
         </dependency>
 
         <!-- Quartz -->
@@ -78,12 +72,6 @@
                     <artifactId>c3p0</artifactId>
                 </exclusion>
             </exclusions>
-        </dependency>
-
-        <!-- Commons Io -->
-        <dependency>
-            <groupId>commons-io</groupId>
-            <artifactId>commons-io</artifactId>
         </dependency>
 
         <!--json模块-->

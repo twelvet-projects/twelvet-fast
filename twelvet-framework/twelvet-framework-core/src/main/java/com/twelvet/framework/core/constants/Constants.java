@@ -1,7 +1,5 @@
 package com.twelvet.framework.core.constants;
 
-import io.jsonwebtoken.Claims;
-
 public class Constants {
 
     /**

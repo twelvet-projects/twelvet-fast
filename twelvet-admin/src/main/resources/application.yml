@@ -60,3 +60,24 @@ mybatis:
   typeAliasesPackage: com.twelvet.**.domain
   # 配置mapper的扫描，找到所有的mapper.xml映射文件
   mapperLocations: classpath*:mapper/**/*Mapper.xml
+
+# 代码生成
+gen:
+  # 作者
+  author: TwelveT
+  # 默认生成包路径 system 需改成自己的模块名称 如 system monitor tool
+  packageName: com.twelvet.server.system
+  # 自动去除表前缀，默认是false
+  autoRemovePre: false
+  # 表前缀（生成类名不会包含表前缀，多个用逗号分隔）
+  tablePrefix: sys_
+
+##qiniu账户信息配置##
+oss:
+  qiniu:
+    ## key
+    accessKey: accessKey
+    # 秘钥
+    secretKey: secretKey
+    # 储存桶
+    bucketName: twelvet

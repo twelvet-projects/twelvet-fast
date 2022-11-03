@@ -27,6 +27,18 @@
             <artifactId>twelvet-gen-server</artifactId>
         </dependency>
 
+        <!-- Fast dfs -->
+        <dependency>
+            <groupId>com.twelvet</groupId>
+            <artifactId>twelvet-dfs-server</artifactId>
+        </dependency>
+
+        <!-- Fast quartz -->
+        <dependency>
+            <groupId>com.twelvet</groupId>
+            <artifactId>twelvet-quartz-server</artifactId>
+        </dependency>
+
     </dependencies>
 
     <build>

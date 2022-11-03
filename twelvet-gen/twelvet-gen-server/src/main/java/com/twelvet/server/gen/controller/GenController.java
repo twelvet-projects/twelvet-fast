@@ -1,10 +1,13 @@
 package com.twelvet.server.gen.controller;
 
+import cn.dev33.satoken.annotation.SaCheckPermission;
 import com.twelvet.framework.core.application.controller.TWTController;
 import com.twelvet.framework.core.application.domain.AjaxResult;
 import com.twelvet.framework.core.application.domain.JsonResult;
 import com.twelvet.framework.jdbc.web.page.TableDataInfo;
 import com.twelvet.framework.jdbc.web.utils.PageUtils;
+import com.twelvet.framework.log.annotation.Log;
+import com.twelvet.framework.log.enums.BusinessType;
 import com.twelvet.framework.utils.Convert;
 import com.twelvet.gen.api.domain.GenTable;
 import com.twelvet.gen.api.domain.GenTableColumn;
@@ -29,8 +32,8 @@ import java.util.Map;
  * @Description: 代码生成 操作处理
  */
 @Tag(description = "GenController", name = "代码生成")
+@RequestMapping
 @RestController
-@RequestMapping("/gen")
 public class GenController extends TWTController {
 
 	@Autowired
@@ -46,6 +49,7 @@ public class GenController extends TWTController {
 	 */
 	@Operation(summary = "查询代码生成列表")
 	@GetMapping("/pageQuery")
+	@SaCheckPermission("tool:gen:list")
 	public JsonResult<TableDataInfo> pageQuery(GenTable genTable) {
 		PageUtils.startPage();
 		List<GenTable> list = genTableService.selectGenTableList(genTable);
@@ -59,6 +63,7 @@ public class GenController extends TWTController {
 	 */
 	@Operation(summary = "获取代码生成信息")
 	@GetMapping(value = "/{tableId}")
+	@SaCheckPermission("tool:gen:query")
 	public AjaxResult getInfo(@PathVariable Long tableId) {
 		GenTable table = genTableService.selectGenTableById(tableId);
 		List<GenTable> tables = genTableService.selectGenTableAll();
@@ -75,6 +80,7 @@ public class GenController extends TWTController {
 	 * @return JsonResult<TableDataInfo>
 	 */
 	@Operation(summary = "查询数据库列表")
+	@SaCheckPermission("tool:gen:list")
 	@GetMapping("/db/list")
 	public JsonResult<TableDataInfo> dataList(GenTable genTable) {
 		PageUtils.startPage();
@@ -103,6 +109,8 @@ public class GenController extends TWTController {
 	 * @return JsonResult<String>
 	 */
 	@Operation(summary = "导入表结构")
+	@SaCheckPermission("tool:gen:list")
+	@Log(service = "代码生成", businessType = BusinessType.IMPORT)
 	@PostMapping("/importTable")
 	public JsonResult<String> importTableSave(String tables) {
 		String[] tableNames = Convert.toStrArray(tables);
@@ -118,6 +126,8 @@ public class GenController extends TWTController {
 	 * @return JsonResult<String>
 	 */
 	@Operation(summary = "修改保存代码生成业务")
+	@SaCheckPermission("tool:gen:edit")
+	@Log(service = "代码生成", businessType = BusinessType.UPDATE)
 	@PutMapping
 	public JsonResult<String> editSave(@Validated @RequestBody GenTable genTable) {
 		genTableService.validateEdit(genTable);
@@ -131,6 +141,8 @@ public class GenController extends TWTController {
 	 * @return JsonResult<String>
 	 */
 	@Operation(summary = "删除代码生成")
+	@SaCheckPermission("tool:gen:remove")
+	@Log(service = "代码生成", businessType = BusinessType.DELETE)
 	@DeleteMapping("/{tableIds}")
 	public JsonResult<String> remove(@PathVariable Long[] tableIds) {
 		genTableService.deleteGenTableByIds(tableIds);
@@ -143,6 +155,7 @@ public class GenController extends TWTController {
 	 * @return AjaxResult
 	 */
 	@Operation(summary = "预览代码")
+	@SaCheckPermission("tool:gen:preview")
 	@GetMapping("/preview/{tableId}")
 	public AjaxResult preview(@PathVariable("tableId") Long tableId) {
 		Map<String, String> dataMap = genTableService.previewCode(tableId);
@@ -156,6 +169,8 @@ public class GenController extends TWTController {
 	 * @throws IOException IOException
 	 */
 	@Operation(summary = "生成代码")
+	@SaCheckPermission("tool:gen:code")
+	@Log(service = "代码生成", businessType = BusinessType.GENCODE)
 	@GetMapping("/download/{tableName}")
 	public void download(HttpServletResponse response, @PathVariable("tableName") String tableName) throws IOException {
 		byte[] data = genTableService.downloadCode(tableName);
@@ -168,6 +183,8 @@ public class GenController extends TWTController {
 	 * @return JsonResult<String>
 	 */
 	@Operation(summary = "生成代码")
+	@SaCheckPermission("tool:gen:code")
+	@Log(service = "代码生成", businessType = BusinessType.GENCODE)
 	@GetMapping("/genCode/{tableName}")
 	public JsonResult<String> genCode(@PathVariable("tableName") String tableName) {
 		genTableService.generatorCode(tableName);
@@ -180,6 +197,8 @@ public class GenController extends TWTController {
 	 * @return JsonResult<String>
 	 */
 	@Operation(summary = "同步数据库")
+	@SaCheckPermission("tool:gen:edit")
+	@Log(service = "代码生成", businessType = BusinessType.UPDATE)
 	@GetMapping("/synchDb/{tableName}")
 	public JsonResult<String> synchDb(@PathVariable("tableName") String tableName) {
 		genTableService.synchDb(tableName);
@@ -193,6 +212,8 @@ public class GenController extends TWTController {
 	 * @throws IOException IOException
 	 */
 	@Operation(summary = "批量生成代码")
+	@SaCheckPermission("tool:gen:code")
+	@Log(service = "代码生成", businessType = BusinessType.GENCODE)
 	@PostMapping("/batchGenCode")
 	public void batchGenCode(HttpServletResponse response, String tables) throws IOException {
 		String[] tableNames = Convert.toStrArray(tables);
