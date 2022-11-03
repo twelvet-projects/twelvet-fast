@@ -1,6 +1,6 @@
 package com.twelvet.quartz.server.util;
 
-import com.twelvet.api.job.domain.SysJob;
+import com.twelvet.quartz.api.domain.SysJob;
 import org.quartz.JobExecutionContext;
 
 /**

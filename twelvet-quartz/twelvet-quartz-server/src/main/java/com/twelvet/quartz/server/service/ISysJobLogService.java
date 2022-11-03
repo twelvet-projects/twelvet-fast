@@ -1,6 +1,6 @@
 package com.twelvet.quartz.server.service;
 
-import com.twelvet.api.job.domain.SysJobLog;
+import com.twelvet.quartz.api.domain.SysJobLog;
 
 import java.util.List;
 

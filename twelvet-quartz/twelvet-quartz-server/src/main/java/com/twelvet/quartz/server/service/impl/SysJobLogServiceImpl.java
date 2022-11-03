@@ -1,8 +1,8 @@
 package com.twelvet.quartz.server.service.impl;
 
-import com.twelvet.api.job.domain.SysJobLog;
-import com.twelvet.server.job.mapper.SysJobLogMapper;
-import com.twelvet.server.job.service.ISysJobLogService;
+import com.twelvet.quartz.api.domain.SysJobLog;
+import com.twelvet.quartz.server.mapper.SysJobLogMapper;
+import com.twelvet.quartz.server.service.ISysJobLogService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

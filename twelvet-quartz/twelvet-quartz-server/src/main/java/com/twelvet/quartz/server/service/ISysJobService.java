@@ -1,7 +1,7 @@
 package com.twelvet.quartz.server.service;
 
-import com.twelvet.api.job.domain.SysJob;
-import com.twelvet.server.job.exception.TaskException;
+import com.twelvet.quartz.api.domain.SysJob;
+import com.twelvet.quartz.server.exception.TaskException;
 import org.quartz.SchedulerException;
 
 import java.util.List;

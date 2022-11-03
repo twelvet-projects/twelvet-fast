@@ -1,6 +1,6 @@
 package com.twelvet.quartz.server.controller;
 
-import com.twelvet.api.job.domain.SysJobLog;
+import cn.dev33.satoken.annotation.SaCheckPermission;
 import com.twelvet.framework.core.application.controller.TWTController;
 import com.twelvet.framework.core.application.domain.JsonResult;
 import com.twelvet.framework.jdbc.web.page.TableDataInfo;
@@ -8,11 +8,11 @@ import com.twelvet.framework.jdbc.web.utils.PageUtils;
 import com.twelvet.framework.log.annotation.Log;
 import com.twelvet.framework.log.enums.BusinessType;
 import com.twelvet.framework.utils.poi.ExcelUtils;
-import com.twelvet.server.job.service.ISysJobLogService;
+import com.twelvet.quartz.api.domain.SysJobLog;
+import com.twelvet.quartz.server.service.ISysJobLogService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -38,7 +38,7 @@ public class SysJobLogController extends TWTController {
 	 */
 	@Operation(summary = "查询定时任务调度日志列表")
 	@GetMapping("/pageQuery")
-	@PreAuthorize("@role.hasPermi('system:job:list')")
+	@SaCheckPermission("system:job:list")
 	public JsonResult<TableDataInfo> pageQuery(SysJobLog sysJobLog) {
 		PageUtils.startPage();
 		List<SysJobLog> list = jobLogService.selectJobLogList(sysJobLog);
@@ -53,7 +53,7 @@ public class SysJobLogController extends TWTController {
 	@Operation(summary = "导出定时任务调度日志列表")
 	@Log(service = "任务调度日志", businessType = BusinessType.EXPORT)
 	@PostMapping("/export")
-	@PreAuthorize("@role.hasPermi('system:job:export')")
+	@SaCheckPermission("system:job:export")
 	public void export(HttpServletResponse response, @RequestBody SysJobLog sysJobLog) {
 		List<SysJobLog> list = jobLogService.selectJobLogList(sysJobLog);
 		ExcelUtils<SysJobLog> excelUtils = new ExcelUtils<>(SysJobLog.class);
@@ -66,8 +66,8 @@ public class SysJobLogController extends TWTController {
 	 * @return JsonResult
 	 */
 	@Operation(summary = "根据调度编号获取详细信息")
-	@GetMapping("/{configId}")
-	@PreAuthorize("@role.hasPermi('system:job:query')")
+	@GetMapping("/{jobLogId}")
+	@SaCheckPermission("system:job:query")
 	public JsonResult<SysJobLog> getInfo(@PathVariable Long jobLogId) {
 		return JsonResult.success(jobLogService.selectJobLogById(jobLogId));
 	}
@@ -80,7 +80,7 @@ public class SysJobLogController extends TWTController {
 	@Operation(summary = "删除定时任务调度日志")
 	@Log(service = "定时任务调度日志", businessType = BusinessType.DELETE)
 	@DeleteMapping("/{jobLogIds}")
-	@PreAuthorize("@role.hasPermi('system:job:remove')")
+	@SaCheckPermission("system:job:remove")
 	public JsonResult<String> remove(@PathVariable Long[] jobLogIds) {
 		return json(jobLogService.deleteJobLogByIds(jobLogIds));
 	}
@@ -92,7 +92,7 @@ public class SysJobLogController extends TWTController {
 	@Operation(summary = "清空定时任务调度日志")
 	@Log(service = "调度日志", businessType = BusinessType.CLEAN)
 	@DeleteMapping("/clean")
-	@PreAuthorize("@role.hasPermi('system:job:remove')")
+	@SaCheckPermission("system:job:remove")
 	public JsonResult<String> clean() {
 		jobLogService.cleanJobLog();
 		return JsonResult.success();

@@ -1,6 +1,6 @@
 package com.twelvet.quartz.server.controller;
 
-import com.twelvet.api.job.domain.SysJob;
+import cn.dev33.satoken.annotation.SaCheckPermission;
 import com.twelvet.framework.core.application.controller.TWTController;
 import com.twelvet.framework.core.application.domain.JsonResult;
 import com.twelvet.framework.core.constants.Constants;
@@ -11,15 +11,15 @@ import com.twelvet.framework.log.enums.BusinessType;
 import com.twelvet.framework.security.utils.SecurityUtils;
 import com.twelvet.framework.utils.StringUtils;
 import com.twelvet.framework.utils.poi.ExcelUtils;
-import com.twelvet.server.job.exception.TaskException;
-import com.twelvet.server.job.service.ISysJobService;
-import com.twelvet.server.job.util.CronUtils;
-import com.twelvet.server.job.util.ScheduleUtils;
+import com.twelvet.quartz.api.domain.SysJob;
+import com.twelvet.quartz.server.exception.TaskException;
+import com.twelvet.quartz.server.service.ISysJobService;
+import com.twelvet.quartz.server.util.CronUtils;
+import com.twelvet.quartz.server.util.ScheduleUtils;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.quartz.SchedulerException;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import javax.servlet.http.HttpServletResponse;
@@ -45,7 +45,7 @@ public class SysJobController extends TWTController {
 	 */
 	@Operation(summary = "查询定时任务列表")
 	@GetMapping("/pageQuery")
-	@PreAuthorize("@role.hasPermi('monitor:job:list')")
+	@SaCheckPermission("monitor:job:list")
 	public JsonResult<TableDataInfo> pageQuery(SysJob sysJob) {
 		PageUtils.startPage();
 		List<SysJob> list = jobService.selectJobList(sysJob);
@@ -60,7 +60,7 @@ public class SysJobController extends TWTController {
 	@Operation(summary = "导出定时任务列表")
 	@Log(service = "定时任务", businessType = BusinessType.EXPORT)
 	@PostMapping("/export")
-	@PreAuthorize("@role.hasPermi('monitor:job:export')")
+	@SaCheckPermission("monitor:job:export")
 	public void export(HttpServletResponse response, @RequestBody SysJob sysJob) {
 		List<SysJob> list = jobService.selectJobList(sysJob);
 		ExcelUtils<SysJob> excelUtils = new ExcelUtils<>(SysJob.class);
@@ -74,7 +74,7 @@ public class SysJobController extends TWTController {
 	 */
 	@Operation(summary = "获取定时任务详细信息")
 	@GetMapping(value = "/{jobId}")
-	@PreAuthorize("@role.hasPermi('monitor:job:query')")
+	@SaCheckPermission("monitor:job:query")
 	public JsonResult<SysJob> getByJobId(@PathVariable("jobId") Long jobId) {
 		return JsonResult.success(jobService.selectJobById(jobId));
 	}
@@ -89,7 +89,7 @@ public class SysJobController extends TWTController {
 	@Operation(summary = "新增定时任务")
 	@Log(service = "定时任务", businessType = BusinessType.INSERT)
 	@PostMapping
-	@PreAuthorize("@role.hasPermi('monitor:job:insert')")
+	@SaCheckPermission("monitor:job:insert")
 	public JsonResult<String> insert(@RequestBody SysJob sysJob) throws SchedulerException, TaskException {
 		if (!CronUtils.isValid(sysJob.getCronExpression())) {
 			return error("新增任务'" + sysJob.getJobName() + "'失败，Cron表达式不正确");
@@ -126,7 +126,7 @@ public class SysJobController extends TWTController {
 	@Operation(summary = "修改定时任务")
 	@Log(service = "定时任务", businessType = BusinessType.UPDATE)
 	@PutMapping
-	@PreAuthorize("@role.hasPermi('monitor:job:update')")
+	@SaCheckPermission("monitor:job:update")
 	public JsonResult<String> update(@RequestBody SysJob sysJob) throws SchedulerException, TaskException {
 		if (!CronUtils.isValid(sysJob.getCronExpression())) {
 			return error("修改任务'" + sysJob.getJobName() + "'失败，Cron表达式不正确");
@@ -161,7 +161,7 @@ public class SysJobController extends TWTController {
 	@Operation(summary = "定时任务状态修改")
 	@Log(service = "定时任务", businessType = BusinessType.UPDATE)
 	@PutMapping("/changeStatus")
-	@PreAuthorize("@role.hasPermi('monitor:job:update')")
+	@SaCheckPermission("monitor:job:update")
 	public JsonResult<String> changeStatus(@RequestBody SysJob job) throws SchedulerException {
 		SysJob newJob = jobService.selectJobById(job.getJobId());
 		newJob.setStatus(job.getStatus());
@@ -191,7 +191,7 @@ public class SysJobController extends TWTController {
 	@Operation(summary = "删除定时任务")
 	@Log(service = "定时任务", businessType = BusinessType.DELETE)
 	@DeleteMapping("/{jobIds}")
-	@PreAuthorize("@role.hasPermi('monitor:job:remove')")
+	@SaCheckPermission("monitor:job:remove")
 	public JsonResult<String> remove(@PathVariable Long[] jobIds) throws SchedulerException {
 		jobService.deleteJobByIds(jobIds);
 		return JsonResult.success();

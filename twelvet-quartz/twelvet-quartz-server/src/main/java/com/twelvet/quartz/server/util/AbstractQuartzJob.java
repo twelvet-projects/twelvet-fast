@@ -1,13 +1,13 @@
 package com.twelvet.quartz.server.util;
 
-import com.twelvet.api.job.domain.SysJob;
-import com.twelvet.api.job.domain.SysJobLog;
-import com.twelvet.framework.core.constants.ScheduleConstants;
 import com.twelvet.framework.utils.SpringContextHolder;
 import com.twelvet.framework.utils.StringUtils;
 import com.twelvet.framework.utils.bean.BeanUtils;
 import com.twelvet.framework.utils.exception.TWTUtilsException;
-import com.twelvet.server.job.service.ISysJobLogService;
+import com.twelvet.quartz.api.constant.ScheduleConstants;
+import com.twelvet.quartz.api.domain.SysJob;
+import com.twelvet.quartz.api.domain.SysJobLog;
+import com.twelvet.quartz.server.service.ISysJobLogService;
 import org.quartz.Job;
 import org.quartz.JobExecutionContext;
 import org.quartz.JobExecutionException;

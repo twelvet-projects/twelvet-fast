@@ -1,12 +1,11 @@
 package com.twelvet.quartz.server.util;
 
-import com.twelvet.api.job.domain.SysJob;
 import com.twelvet.framework.core.constants.Constants;
-import com.twelvet.framework.core.constants.ScheduleConstants;
 import com.twelvet.framework.utils.SpringContextHolder;
 import com.twelvet.framework.utils.StringUtils;
-import com.twelvet.server.job.exception.TaskException;
-import com.twelvet.server.job.exception.TaskException.Code;
+import com.twelvet.quartz.api.constant.ScheduleConstants;
+import com.twelvet.quartz.api.domain.SysJob;
+import com.twelvet.quartz.server.exception.TaskException;
 import org.quartz.*;
 
 /**
@@ -80,20 +79,15 @@ public class ScheduleUtils {
 	 */
 	public static CronScheduleBuilder handleCronScheduleMisfirePolicy(SysJob job, CronScheduleBuilder cb)
 			throws TaskException {
-		switch (job.getMisfirePolicy()) {
-		case ScheduleConstants.MISFIRE_DEFAULT:
-			return cb;
-		case ScheduleConstants.MISFIRE_IGNORE_MISFIRES:
-			return cb.withMisfireHandlingInstructionIgnoreMisfires();
-		case ScheduleConstants.MISFIRE_FIRE_AND_PROCEED:
-			return cb.withMisfireHandlingInstructionFireAndProceed();
-		case ScheduleConstants.MISFIRE_DO_NOTHING:
-			return cb.withMisfireHandlingInstructionDoNothing();
-		default:
-			throw new TaskException(
+		return switch (job.getMisfirePolicy()) {
+			case ScheduleConstants.MISFIRE_DEFAULT -> cb;
+			case ScheduleConstants.MISFIRE_IGNORE_MISFIRES -> cb.withMisfireHandlingInstructionIgnoreMisfires();
+			case ScheduleConstants.MISFIRE_FIRE_AND_PROCEED -> cb.withMisfireHandlingInstructionFireAndProceed();
+			case ScheduleConstants.MISFIRE_DO_NOTHING -> cb.withMisfireHandlingInstructionDoNothing();
+			default -> throw new TaskException(
 					"The task misfire policy '" + job.getMisfirePolicy() + "' cannot be used in cron schedule tasks",
-					Code.CONFIG_ERROR);
-		}
+					TaskException.Code.CONFIG_ERROR);
+		};
 	}
 
 	/**

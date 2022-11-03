@@ -45,8 +45,8 @@
 
         <sa-token.version>1.31.0</sa-token.version>
 
-        <swagger.core.version>2.2.2</swagger.core.version>
-        <springdoc.version>1.6.11</springdoc.version>
+        <swagger.core.version>2.2.4</swagger.core.version>
+        <springdoc.version>1.6.12</springdoc.version>
         <knife4j.version>3.0.3</knife4j.version>
 
         <bitwalker.version>1.21</bitwalker.version>
@@ -325,6 +325,13 @@
     </dependencyManagement>
 
     <dependencies>
+
+        <!--配置文件处理器元数据提示-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-configuration-processor</artifactId>
+            <optional>true</optional>
+        </dependency>
 
         <!--Spring Test-->
         <dependency>

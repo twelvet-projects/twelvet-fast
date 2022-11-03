@@ -1,9 +1,9 @@
 package com.twelvet.quartz.server.util;
 
-import com.twelvet.api.job.domain.SysJob;
 import com.twelvet.framework.utils.SpringContextHolder;
 import com.twelvet.framework.utils.StringUtils;
 import com.twelvet.framework.utils.TUtils;
+import com.twelvet.quartz.api.domain.SysJob;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;

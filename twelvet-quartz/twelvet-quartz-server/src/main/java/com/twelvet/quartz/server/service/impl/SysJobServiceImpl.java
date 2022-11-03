@@ -1,12 +1,12 @@
 package com.twelvet.quartz.server.service.impl;
 
-import com.twelvet.api.job.domain.SysJob;
-import com.twelvet.framework.core.constants.ScheduleConstants;
-import com.twelvet.server.job.exception.TaskException;
-import com.twelvet.server.job.mapper.SysJobMapper;
-import com.twelvet.server.job.service.ISysJobService;
-import com.twelvet.server.job.util.CronUtils;
-import com.twelvet.server.job.util.ScheduleUtils;
+import com.twelvet.quartz.api.constant.ScheduleConstants;
+import com.twelvet.quartz.api.domain.SysJob;
+import com.twelvet.quartz.server.exception.TaskException;
+import com.twelvet.quartz.server.mapper.SysJobMapper;
+import com.twelvet.quartz.server.service.ISysJobService;
+import com.twelvet.quartz.server.util.CronUtils;
+import com.twelvet.quartz.server.util.ScheduleUtils;
 import org.quartz.JobDataMap;
 import org.quartz.JobKey;
 import org.quartz.Scheduler;
