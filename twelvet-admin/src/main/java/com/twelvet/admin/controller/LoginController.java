@@ -20,7 +20,7 @@ import java.util.Map;
  * @Description: 登录控制器
  */
 @RestController
-@RequestMapping("/system/user")
+@RequestMapping("/auth/oauth2")
 public class LoginController {
 
     @Autowired
@@ -33,7 +33,7 @@ public class LoginController {
      * @return JsonResult<String>
      */
     @SaIgnore
-    @PostMapping("/login")
+    @PostMapping("/token")
     public JsonResult<LoginVO> login(@Validated @RequestBody LoginDTO loginDTO) {
         return JsonResult.success(loginService.login(loginDTO));
     }
