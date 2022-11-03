@@ -25,7 +25,7 @@ import java.util.List;
  */
 @Tag(description = "SysJobLogController", name = "调度日志操作处理")
 @RestController
-@RequestMapping("/log")
+@RequestMapping("/job/log")
 public class SysJobLogController extends TWTController {
 
 	@Autowired

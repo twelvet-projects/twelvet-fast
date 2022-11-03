@@ -32,7 +32,7 @@ import java.util.List;
  */
 @Tag(description = "SysJobController", name = "调度任务信息操作处理")
 @RestController
-@RequestMapping("/cron")
+@RequestMapping("/job/cron")
 public class SysJobController extends TWTController {
 
 	@Autowired
