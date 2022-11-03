@@ -37,6 +37,12 @@
             <artifactId>twelvet-framework-datasource</artifactId>
         </dependency>
 
+        <!-- Fast hdbc -->
+        <dependency>
+            <groupId>com.twelvet</groupId>
+            <artifactId>twelvet-framework-jdbc</artifactId>
+        </dependency>
+
         <!-- Fast 核心 -->
         <dependency>
             <groupId>com.twelvet</groupId>
