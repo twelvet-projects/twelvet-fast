@@ -1,4 +1,4 @@
-package com.twelvet.server.dfs.mapper;
+package com.twelvet.dfs.server.mapper;
 
 import com.twelvet.dfs.api.domain.SysDfs;
 

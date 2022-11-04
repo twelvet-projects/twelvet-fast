@@ -1,4 +1,4 @@
-package com.twelvet.server.dfs.service;
+package com.twelvet.dfs.server.service;
 
 import com.twelvet.dfs.api.domain.SysDfs;
 import org.springframework.web.multipart.MultipartFile;

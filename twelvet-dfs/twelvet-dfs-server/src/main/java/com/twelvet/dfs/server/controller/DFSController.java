@@ -1,4 +1,4 @@
-package com.twelvet.server.dfs.controller;
+package com.twelvet.dfs.server.controller;
 
 import cn.dev33.satoken.annotation.SaCheckPermission;
 import com.twelvet.dfs.api.domain.SysDfs;
@@ -8,7 +8,7 @@ import com.twelvet.framework.jdbc.web.page.TableDataInfo;
 import com.twelvet.framework.jdbc.web.utils.PageUtils;
 import com.twelvet.framework.log.annotation.Log;
 import com.twelvet.framework.log.enums.BusinessType;
-import com.twelvet.server.dfs.service.IDFSService;
+import com.twelvet.dfs.server.service.IDFSService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;

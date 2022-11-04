@@ -1,4 +1,4 @@
-package com.twelvet.server.dfs.service.impl;
+package com.twelvet.dfs.server.service.impl;
 
 import com.qiniu.common.QiniuException;
 import com.qiniu.storage.BucketManager;
@@ -9,9 +9,9 @@ import com.qiniu.util.Auth;
 import com.twelvet.dfs.api.domain.SysDfs;
 import com.twelvet.framework.core.exception.TWTException;
 import com.twelvet.framework.utils.file.FileUtils;
-import com.twelvet.server.dfs.config.QiNiuConfig;
-import com.twelvet.server.dfs.mapper.DFSMapper;
-import com.twelvet.server.dfs.service.IDFSService;
+import com.twelvet.dfs.server.config.QiNiuConfig;
+import com.twelvet.dfs.server.mapper.DFSMapper;
+import com.twelvet.dfs.server.service.IDFSService;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;

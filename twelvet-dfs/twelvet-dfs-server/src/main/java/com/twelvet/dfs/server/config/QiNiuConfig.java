@@ -1,4 +1,4 @@
-package com.twelvet.server.dfs.config;
+package com.twelvet.dfs.server.config;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
