@@ -1,4 +1,4 @@
-package com.twelvet.server.gen.service;
+package com.twelvet.gen.server.service;
 
 import com.twelvet.gen.api.domain.GenTableColumn;
 

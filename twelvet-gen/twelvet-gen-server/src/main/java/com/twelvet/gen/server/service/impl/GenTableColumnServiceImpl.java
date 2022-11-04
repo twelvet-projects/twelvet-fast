@@ -1,11 +1,11 @@
-package com.twelvet.server.gen.service.impl;
+package com.twelvet.gen.server.service.impl;
 
 import java.util.List;
 
 import com.twelvet.framework.utils.Convert;
 import com.twelvet.gen.api.domain.GenTableColumn;
-import com.twelvet.server.gen.mapper.GenTableColumnMapper;
-import com.twelvet.server.gen.service.IGenTableColumnService;
+import com.twelvet.gen.server.mapper.GenTableColumnMapper;
+import com.twelvet.gen.server.service.IGenTableColumnService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 

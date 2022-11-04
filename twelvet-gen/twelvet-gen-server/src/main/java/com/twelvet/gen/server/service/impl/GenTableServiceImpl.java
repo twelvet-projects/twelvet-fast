@@ -1,4 +1,4 @@
-package com.twelvet.server.gen.service.impl;
+package com.twelvet.gen.server.service.impl;
 
 import com.twelvet.framework.core.constants.Constants;
 import com.twelvet.framework.core.exception.TWTException;
@@ -11,12 +11,12 @@ import com.twelvet.framework.utils.file.FileUtils;
 import com.twelvet.gen.api.constant.GenConstants;
 import com.twelvet.gen.api.domain.GenTable;
 import com.twelvet.gen.api.domain.GenTableColumn;
-import com.twelvet.server.gen.mapper.GenTableColumnMapper;
-import com.twelvet.server.gen.mapper.GenTableMapper;
-import com.twelvet.server.gen.service.IGenTableService;
-import com.twelvet.server.gen.utils.GenUtils;
-import com.twelvet.server.gen.utils.VelocityInitializer;
-import com.twelvet.server.gen.utils.VelocityUtils;
+import com.twelvet.gen.server.mapper.GenTableColumnMapper;
+import com.twelvet.gen.server.mapper.GenTableMapper;
+import com.twelvet.gen.server.service.IGenTableService;
+import com.twelvet.gen.server.utils.GenUtils;
+import com.twelvet.gen.server.utils.VelocityInitializer;
+import com.twelvet.gen.server.utils.VelocityUtils;
 import org.apache.commons.io.IOUtils;
 import org.apache.velocity.Template;
 import org.apache.velocity.VelocityContext;

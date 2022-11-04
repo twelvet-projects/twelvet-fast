@@ -104,6 +104,8 @@ springdoc:
       packages-to-scan: com.twelvet.quartz
     - group: 3.代码生成模块
       packages-to-scan: com.twelvet.gen
+    - group: 3.文件系统模块
+      packages-to-scan: com.twelvet.dfs
 
 # 代码生成
 gen:

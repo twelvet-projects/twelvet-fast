@@ -2,7 +2,7 @@
   "groups": [
     {
       "name": "gen",
-      "type": "com.twelvet.server.gen.config.GenConfig"
+      "type": "com.twelvet.gen.server.config.GenConfig"
     },
     {
       "name": "qiniu",
@@ -14,26 +14,26 @@
     {
       "name": "gen.author",
       "type": "java.lang.String",
-      "sourceType": "com.twelvet.server.gen.config.GenConfig",
+      "sourceType": "com.twelvet.gen.server.config.GenConfig",
       "description": "作者."
     },
     {
       "name": "gen.package-name",
       "type": "java.lang.String",
-      "sourceType": "com.twelvet.server.gen.config.GenConfig",
+      "sourceType": "com.twelvet.gen.server.config.GenConfig",
       "description": "默认生成包路径 system 需改成自己的模块名称 如 system monitor tool."
     },
     {
       "name": "gen.auto-remov-pre",
       "type": "java.lang.Boolean",
-      "sourceType": "com.twelvet.server.gen.config.GenConfig",
+      "sourceType": "com.twelvet.gen.server.config.GenConfig",
       "description": "自动去除表前缀，默认是false.",
       "defaultValue": false
     },
     {
       "name": "gen.table-prefix",
       "type": "java.lang.String",
-      "sourceType": "com.twelvet.server.gen.config.GenConfig",
+      "sourceType": "com.twelvet.gen.server.config.GenConfig",
       "description": "表前缀（生成类名不会包含表前缀，多个用逗号分隔）."
     },
 

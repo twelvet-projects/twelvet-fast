@@ -1,4 +1,4 @@
-package com.twelvet.server.gen.mapper;
+package com.twelvet.gen.server.mapper;
 
 import com.twelvet.gen.api.domain.GenTable;
 

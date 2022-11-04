@@ -1,4 +1,4 @@
-package com.twelvet.server.gen.utils;
+package com.twelvet.gen.server.utils;
 
 import java.util.Arrays;
 
@@ -6,7 +6,7 @@ import com.twelvet.framework.utils.StringUtils;
 import com.twelvet.gen.api.constant.GenConstants;
 import com.twelvet.gen.api.domain.GenTable;
 import com.twelvet.gen.api.domain.GenTableColumn;
-import com.twelvet.server.gen.config.GenConfig;
+import com.twelvet.gen.server.config.GenConfig;
 import org.apache.commons.lang3.RegExUtils;
 
 /**

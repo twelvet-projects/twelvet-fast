@@ -1,4 +1,4 @@
-package com.twelvet.server.gen.utils;
+package com.twelvet.gen.server.utils;
 
 import com.twelvet.framework.utils.DateUtils;
 import com.twelvet.framework.utils.JacksonUtils;

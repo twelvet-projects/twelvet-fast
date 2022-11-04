@@ -1,4 +1,4 @@
-package com.twelvet.server.gen.utils;
+package com.twelvet.gen.server.utils;
 
 import com.twelvet.framework.core.constants.Constants;
 import org.apache.velocity.app.Velocity;

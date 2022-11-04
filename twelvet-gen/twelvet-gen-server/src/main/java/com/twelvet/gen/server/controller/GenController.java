@@ -1,4 +1,4 @@
-package com.twelvet.server.gen.controller;
+package com.twelvet.gen.server.controller;
 
 import cn.dev33.satoken.annotation.SaCheckPermission;
 import com.twelvet.framework.core.application.controller.TWTController;
@@ -11,8 +11,8 @@ import com.twelvet.framework.log.enums.BusinessType;
 import com.twelvet.framework.utils.Convert;
 import com.twelvet.gen.api.domain.GenTable;
 import com.twelvet.gen.api.domain.GenTableColumn;
-import com.twelvet.server.gen.service.IGenTableColumnService;
-import com.twelvet.server.gen.service.IGenTableService;
+import com.twelvet.gen.server.service.IGenTableColumnService;
+import com.twelvet.gen.server.service.IGenTableService;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import io.swagger.v3.oas.annotations.Operation;
 import org.apache.commons.io.IOUtils;
