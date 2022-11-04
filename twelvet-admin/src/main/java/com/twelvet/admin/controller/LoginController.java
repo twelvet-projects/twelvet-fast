@@ -3,10 +3,12 @@ package com.twelvet.admin.controller;
 import cn.dev33.satoken.annotation.SaIgnore;
 import cn.dev33.satoken.stp.StpUtil;
 import com.twelvet.framework.core.application.domain.JsonResult;
+import com.twelvet.framework.security.utils.SecurityUtils;
 import com.twelvet.system.api.domain.dto.LoginDTO;
 import com.twelvet.system.api.domain.vo.LoginVO;
 import com.twelvet.system.server.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -19,7 +21,7 @@ import java.util.Map;
  * @Description: 登录控制器
  */
 @RestController
-@RequestMapping("/auth/oauth2")
+@RequestMapping("/auth")
 public class LoginController {
 
     @Autowired
@@ -32,10 +34,11 @@ public class LoginController {
      * @return JsonResult<String>
      */
     @SaIgnore
-    @PostMapping("/token")
+    @PostMapping("/oauth2/token")
     public Map<String, Object> login(@Validated @RequestBody LoginDTO loginDTO) {
         LoginVO login = loginService.login(loginDTO);
         Map<String, Object> res = new HashMap<>();
+        res.put("code", HttpStatus.OK.value());
         res.put("access_token", login.getAccessToken());
         return res;
     }
@@ -45,7 +48,7 @@ public class LoginController {
      *
      * @return JsonResult<String>
      */
-    @PostMapping("/logout")
+    @DeleteMapping("/token/logout")
     public JsonResult<String> logout() {
         StpUtil.logout();
         return JsonResult.success();

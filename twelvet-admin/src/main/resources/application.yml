@@ -52,7 +52,17 @@ security:
   # 忽略路径
   ignore:
     urls:
+      # 静态资源
       - /favicon.ico
+      - /*.html
+      - /**/*.html
+      - /**/*.css
+      - /**/*.js
+      # swagger 文档配置
+      - /*/api-docs
+      - /*/api-docs/**
+      # druid 监控配置
+      - /druid/**
 
 # Mybatis配置
 mybatis:
@@ -61,12 +71,46 @@ mybatis:
   # 配置mapper的扫描，找到所有的mapper.xml映射文件
   mapperLocations: classpath*:mapper/**/*Mapper.xml
 
+# Swagger配置
+swagger:
+  # 是否开启swagger
+  enabled: true
+  info:
+    # 标题
+    title: '标题：${twelvet.name}后台管理系统_接口文档'
+    # 描述
+    description: 'TwelveT 急速开发后台管理系统'
+    # 版本
+    version: '版本号: ${twelvet.version}'
+    # 作者信息
+    contact:
+      name: twelvet
+      email: 2471835953@qq.com
+      url: https://gitee.com/twelvet/twelvet-fast
+  components:
+    # 鉴权方式配置
+    security-schemes:
+      apiKey:
+        type: APIKEY
+        in: HEADER
+        name: ${sa-token.token-name}
+
+springdoc:
+  #这里定义了两个分组，可定义多个，也可以不定义
+  group-configs:
+    - group: 1.系统模块
+      packages-to-scan: com.twelvet.system
+    - group: 2.定时任务模块
+      packages-to-scan: com.twelvet.job
+    - group: 3.代码生成模块
+      packages-to-scan: com.twelvet.gen
+
 # 代码生成
 gen:
   # 作者
   author: TwelveT
   # 默认生成包路径 system 需改成自己的模块名称 如 system monitor tool
-  packageName: com.twelvet.system.server
+  packageName: com.twelvet.server.system
   # 自动去除表前缀，默认是false
   autoRemovePre: false
   # 表前缀（生成类名不会包含表前缀，多个用逗号分隔）

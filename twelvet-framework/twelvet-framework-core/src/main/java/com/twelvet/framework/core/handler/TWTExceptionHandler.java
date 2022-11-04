@@ -1,6 +1,7 @@
 package com.twelvet.framework.core.handler;
 
 import cn.dev33.satoken.exception.NotLoginException;
+import cn.dev33.satoken.exception.NotRoleException;
 import com.twelvet.framework.core.application.domain.AjaxResult;
 import com.twelvet.framework.core.application.domain.JsonResult;
 import com.twelvet.framework.core.exception.TWTException;
@@ -9,11 +10,13 @@ import org.slf4j.LoggerFactory;
 import org.springframework.http.HttpStatus;
 import org.springframework.validation.BindException;
 import org.springframework.validation.FieldError;
+import org.springframework.web.HttpRequestMethodNotSupportedException;
 import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.ExceptionHandler;
 import org.springframework.web.bind.annotation.ResponseStatus;
 import org.springframework.web.bind.annotation.RestControllerAdvice;
 
+import javax.servlet.http.HttpServletRequest;
 import java.util.List;
 
 /**
@@ -35,6 +38,17 @@ public class TWTExceptionHandler {
      */
     @ExceptionHandler(NotLoginException.class)
     public JsonResult<String> handlerException(NotLoginException e) {
+        return JsonResult.error(HttpStatus.UNAUTHORIZED.value(), e.getMessage());
+    }
+
+    /**
+     * 权限不足拦截
+     *
+     * @param e Exception
+     * @return JsonResult<String>
+     */
+    @ExceptionHandler(NotRoleException.class)
+    public JsonResult<String> handleNotRoleException(NotRoleException e) {
         return JsonResult.error(e.getMessage());
     }
 
@@ -42,7 +56,7 @@ public class TWTExceptionHandler {
      * 全局异常
      *
      * @param e Exception
-     * @return AjaxResult
+     * @return JsonResult
      */
     @ExceptionHandler(Exception.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -55,7 +69,7 @@ public class TWTExceptionHandler {
      * 基础异常
      *
      * @param e TWTException
-     * @return AjaxResult
+     * @return JsonResult
      */
     @ExceptionHandler(TWTException.class)
     @ResponseStatus(HttpStatus.INTERNAL_SERVER_ERROR)
@@ -79,7 +93,7 @@ public class TWTExceptionHandler {
     /**
      * validation Exception 参数绑定异常
      *
-     * @return AjaxResult
+     * @return JsonResult
      */
     @ExceptionHandler({MethodArgumentNotValidException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -92,7 +106,7 @@ public class TWTExceptionHandler {
     /**
      * validation Exception (以form-data形式传参) 参数绑定异常
      *
-     * @return AjaxResult
+     * @return JsonResult
      */
     @ExceptionHandler({BindException.class})
     @ResponseStatus(HttpStatus.BAD_REQUEST)
@@ -100,6 +114,17 @@ public class TWTExceptionHandler {
         List<FieldError> fieldErrors = exception.getBindingResult().getFieldErrors();
         log.error("参数绑定异常,ex = {}", fieldErrors.get(0).getDefaultMessage());
         return JsonResult.error(fieldErrors.get(0).getDefaultMessage());
+    }
+
+    /**
+     * 请求方式不支持
+     *
+     * @param e HttpRequestMethodNotSupportedException
+     * @return JsonResult
+     */
+    @ExceptionHandler(HttpRequestMethodNotSupportedException.class)
+    public JsonResult<Void> handleHttpRequestMethodNotSupported(HttpRequestMethodNotSupportedException e) {
+        return JsonResult.error(e.getMessage());
     }
 
 }
