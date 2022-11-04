@@ -100,12 +100,12 @@ springdoc:
   group-configs:
     - group: 1.系统模块
       packages-to-scan: com.twelvet.system
-    - group: 2.定时任务模块
-      packages-to-scan: com.twelvet.quartz
-    - group: 3.代码生成模块
-      packages-to-scan: com.twelvet.gen
-    - group: 3.文件系统模块
+    - group: 2.文件系统模块
       packages-to-scan: com.twelvet.dfs
+    - group: 3.定时任务模块
+      packages-to-scan: com.twelvet.quartz
+    - group: 4.代码生成模块
+      packages-to-scan: com.twelvet.gen
 
 # 代码生成
 gen:
