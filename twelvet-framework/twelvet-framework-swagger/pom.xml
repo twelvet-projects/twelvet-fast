@@ -14,14 +14,14 @@
 
     <dependencies>
 
-        <!--&lt;!&ndash;Springdoc Swagger&ndash;&gt;
+        <!--Springdoc Swagger-->
         <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-webmvc-core</artifactId>
         </dependency>
 
-        &lt;!&ndash;Springdoc Swagger&ndash;&gt;
-        <dependency>
+        <!--Springdoc Swagger-->
+        <!--<dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-security</artifactId>
         </dependency>-->

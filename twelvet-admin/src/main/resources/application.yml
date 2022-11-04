@@ -79,7 +79,7 @@ swagger:
     # 标题
     title: '标题：${twelvet.name}后台管理系统_接口文档'
     # 描述
-    description: 'TwelveT 急速开发后台管理系统'
+    description: 'TwelveT 极速开发后台管理系统'
     # 版本
     version: '版本号: ${twelvet.version}'
     # 作者信息
@@ -101,7 +101,7 @@ springdoc:
     - group: 1.系统模块
       packages-to-scan: com.twelvet.system
     - group: 2.定时任务模块
-      packages-to-scan: com.twelvet.job
+      packages-to-scan: com.twelvet.quartz
     - group: 3.代码生成模块
       packages-to-scan: com.twelvet.gen
 
