@@ -13,7 +13,9 @@ import org.springframework.stereotype.Component;
 import java.util.List;
 
 /**
- * swagger 配置属性
+ * @author twelvet
+ * @WebSite www.twelvet.cn
+ * @Description: swagger 配置属性
  */
 @Component
 @ConfigurationProperties(prefix = "swagger")

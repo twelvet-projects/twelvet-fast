@@ -136,13 +136,6 @@
                 <version>${springdoc.version}</version>
             </dependency>
 
-            <!--springdoc -->
-            <dependency>
-                <groupId>org.springdoc</groupId>
-                <artifactId>springdoc-openapi-security</artifactId>
-                <version>${springdoc.version}</version>
-            </dependency>
-
             <!--七牛云oss-->
             <dependency>
                 <groupId>com.qiniu</groupId>

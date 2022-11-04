@@ -21,12 +21,6 @@
         </dependency>
 
         <!--Springdoc Swagger-->
-        <!--<dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-security</artifactId>
-        </dependency>-->
-
-        <!--Springdoc Swagger-->
         <dependency>
             <groupId>io.swagger.core.v3</groupId>
             <artifactId>swagger-annotations</artifactId>
