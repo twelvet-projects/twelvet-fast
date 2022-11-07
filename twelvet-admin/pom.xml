@@ -39,17 +39,17 @@
             <artifactId>twelvet-quartz-server</artifactId>
         </dependency>
 
-        <!--<dependency>
+        <dependency>
             <groupId>org.springdoc</groupId>
             <artifactId>springdoc-openapi-ui</artifactId>
             <version>1.6.12</version>
-        </dependency>-->
+        </dependency>
 
         <!--Swagger-->
-        <dependency>
+        <!--<dependency>
             <groupId>com.github.xiaoymin</groupId>
             <artifactId>knife4j-spring-boot-starter</artifactId>
-        </dependency>
+        </dependency>-->
 
     </dependencies>
 
