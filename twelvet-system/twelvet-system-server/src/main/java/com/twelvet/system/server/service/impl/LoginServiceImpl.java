@@ -3,10 +3,16 @@ package com.twelvet.system.server.service.impl;
 import cn.dev33.satoken.secure.BCrypt;
 import cn.dev33.satoken.stp.StpUtil;
 import com.twelvet.framework.core.exception.TWTException;
+import com.twelvet.framework.log.event.SysLoginLogEvent;
+import com.twelvet.framework.log.vo.SysLogVO;
 import com.twelvet.framework.security.domain.LoginUser;
 import com.twelvet.framework.security.enums.DeviceType;
 import com.twelvet.framework.security.utils.SecurityUtils;
+import com.twelvet.framework.utils.DateUtils;
+import com.twelvet.framework.utils.SpringContextHolder;
 import com.twelvet.framework.utils.TUtils;
+import com.twelvet.framework.utils.http.IpUtils;
+import com.twelvet.system.api.domain.SysLoginInfo;
 import com.twelvet.system.api.domain.SysUser;
 import com.twelvet.system.api.domain.dto.LoginDTO;
 import com.twelvet.system.api.domain.vo.LoginVO;
@@ -86,6 +92,7 @@ public class LoginServiceImpl implements LoginService {
 
         loginUser.setUserId(sysUser.getUserId());
         loginUser.setUsername(sysUser.getUsername());
+        loginUser.setDeptId(sysUser.getDeptId());
 
         // 角色集合
         Set<String> roles = iSysPermissionService.getRolePermission(sysUser.getUserId());
@@ -95,6 +102,30 @@ public class LoginServiceImpl implements LoginService {
         loginUser.setPermissions(permissions);
         loginUser.setRoles(roles);
         return loginUser;
+    }
+
+    /**
+     * 发送登录成功/失败日志
+     */
+    private void sendLog() {
+
+        // 发送异步日志事件
+        /*LoginUser userInfo = (LoginUser) map.get(SecurityConstants.DETAILS_USER);
+        String username = userInfo.getName();
+        Long deptId = userInfo.getDeptId();
+        SysLoginInfo sysLoginInfo = new SysLoginInfo();
+        SysLogVO sysLog = SysLogUtils.getSysLog();
+        sysLoginInfo.setStatus(SecurityConstants.LOGIN_SUCCESS);
+        sysLoginInfo.setUserName(username);
+        sysLoginInfo.setDeptId(deptId);
+        sysLoginInfo.setIpaddr(IpUtils.getIpAddr());
+        sysLoginInfo.setMsg("登录成功");
+        // 发送异步日志事件
+        sysLoginInfo.setCreateTime(DateUtils.getNowDate());
+        sysLoginInfo.setCreateBy(username);
+        sysLoginInfo.setUpdateBy(username);
+        SpringContextHolder.publishEvent(new SysLoginLogEvent(sysLoginInfo));*/
+
     }
 
 }
