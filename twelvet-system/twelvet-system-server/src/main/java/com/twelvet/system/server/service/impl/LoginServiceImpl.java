@@ -2,9 +2,9 @@ package com.twelvet.system.server.service.impl;
 
 import cn.dev33.satoken.secure.BCrypt;
 import cn.dev33.satoken.stp.StpUtil;
+import com.twelvet.framework.core.constants.SecurityConstants;
 import com.twelvet.framework.core.exception.TWTException;
 import com.twelvet.framework.log.event.SysLoginLogEvent;
-import com.twelvet.framework.log.vo.SysLogVO;
 import com.twelvet.framework.security.domain.LoginUser;
 import com.twelvet.framework.security.enums.DeviceType;
 import com.twelvet.framework.security.utils.SecurityUtils;
@@ -56,7 +56,7 @@ public class LoginServiceImpl implements LoginService {
 
         // 生成token
         SecurityUtils.loginByDevice(loginUser, DeviceType.PC);
-
+        sendLog(loginUser);
         LoginVO loginVO = new LoginVO();
 
         loginVO.setAccessToken(StpUtil.getTokenValue());
@@ -107,14 +107,11 @@ public class LoginServiceImpl implements LoginService {
     /**
      * 发送登录成功/失败日志
      */
-    private void sendLog() {
-
+    private void sendLog(LoginUser userInfo) {
         // 发送异步日志事件
-        /*LoginUser userInfo = (LoginUser) map.get(SecurityConstants.DETAILS_USER);
-        String username = userInfo.getName();
+        String username = userInfo.getUsername();
         Long deptId = userInfo.getDeptId();
         SysLoginInfo sysLoginInfo = new SysLoginInfo();
-        SysLogVO sysLog = SysLogUtils.getSysLog();
         sysLoginInfo.setStatus(SecurityConstants.LOGIN_SUCCESS);
         sysLoginInfo.setUserName(username);
         sysLoginInfo.setDeptId(deptId);
@@ -124,8 +121,7 @@ public class LoginServiceImpl implements LoginService {
         sysLoginInfo.setCreateTime(DateUtils.getNowDate());
         sysLoginInfo.setCreateBy(username);
         sysLoginInfo.setUpdateBy(username);
-        SpringContextHolder.publishEvent(new SysLoginLogEvent(sysLoginInfo));*/
-
+        SpringContextHolder.publishEvent(new SysLoginLogEvent(sysLoginInfo));
     }
 
 }
