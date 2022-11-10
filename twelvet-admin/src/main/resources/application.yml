@@ -96,7 +96,7 @@ swagger:
         name: ${sa-token.token-name}
 
 springdoc:
-  #这里定义了两个分组，可定义多个，也可以不定义
+  #这里定义了分组，可定义多个，也可以不定义
   group-configs:
     - group: 1.系统模块
       packages-to-scan: com.twelvet.system

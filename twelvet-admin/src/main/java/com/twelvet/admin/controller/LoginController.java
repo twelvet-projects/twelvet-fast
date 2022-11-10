@@ -43,9 +43,10 @@ public class LoginController {
      *
      * @return JsonResult<String>
      */
+    @SaIgnore
     @DeleteMapping("/token/logout")
     public JsonResult<String> logout() {
-        StpUtil.logout();
+        loginService.logout();
         return JsonResult.success();
     }
 
