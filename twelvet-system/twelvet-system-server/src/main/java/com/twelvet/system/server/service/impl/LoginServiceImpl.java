@@ -2,7 +2,7 @@ package com.twelvet.system.server.service.impl;
 
 import cn.dev33.satoken.secure.BCrypt;
 import cn.dev33.satoken.stp.StpUtil;
-import com.twelvet.framework.core.constants.SecurityConstants;
+import com.twelvet.framework.security.constants.SecurityConstants;
 import com.twelvet.framework.core.exception.TWTException;
 import com.twelvet.framework.log.event.SysLoginLogEvent;
 import com.twelvet.framework.security.domain.LoginUser;

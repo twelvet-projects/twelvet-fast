@@ -1,4 +1,4 @@
-package com.twelvet.framework.core.constants;
+package com.twelvet.framework.security.constants;
 
 /**
  * @author twelvet
