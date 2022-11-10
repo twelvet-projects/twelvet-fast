@@ -120,6 +120,7 @@ gen:
 
 ##qiniu账户信息配置##
 oss:
+  qi
   qiniu:
     ## key
     accessKey: accessKey
