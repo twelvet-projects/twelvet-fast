@@ -56,12 +56,52 @@ public class LoginServiceImpl implements LoginService {
 
         // 生成token
         SecurityUtils.loginByDevice(loginUser, DeviceType.PC);
-        sendLog(loginUser);
+
         LoginVO loginVO = new LoginVO();
 
         loginVO.setAccessToken(StpUtil.getTokenValue());
 
+
+        // 发送异步日志事件
+        String username = loginUser.getUsername();
+        Long deptId = loginUser.getDeptId();
+        SysLoginInfo sysLoginInfo = new SysLoginInfo();
+        sysLoginInfo.setStatus(SecurityConstants.LOGIN_SUCCESS);
+        sysLoginInfo.setUserName(username);
+        sysLoginInfo.setDeptId(deptId);
+        sysLoginInfo.setIpaddr(IpUtils.getIpAddr());
+        sysLoginInfo.setMsg("登录成功");
+        // 发送异步日志事件
+        sysLoginInfo.setCreateTime(DateUtils.getNowDate());
+        sysLoginInfo.setCreateBy(username);
+        sysLoginInfo.setUpdateBy(username);
+        SpringContextHolder.publishEvent(new SysLoginLogEvent(sysLoginInfo));
+
         return loginVO;
+    }
+
+    /**
+     * 退出登录
+     */
+    @Override
+    public void logout() {
+        Long deptId = SecurityUtils.getDeptId();
+        String username = SecurityUtils.getUsername();
+
+        // 发送异步日志事件
+        SysLoginInfo sysLoginInfo = new SysLoginInfo();
+        sysLoginInfo.setStatus(SecurityConstants.LOGIN_SUCCESS);
+        sysLoginInfo.setUserName(username);
+        sysLoginInfo.setDeptId(deptId);
+        sysLoginInfo.setIpaddr(IpUtils.getIpAddr());
+        sysLoginInfo.setMsg("退出登录");
+        // 发送异步日志事件
+        sysLoginInfo.setCreateTime(DateUtils.getNowDate());
+        sysLoginInfo.setCreateBy(username);
+        sysLoginInfo.setUpdateBy(username);
+        SpringContextHolder.publishEvent(new SysLoginLogEvent(sysLoginInfo));
+
+        StpUtil.logout();
     }
 
     /**
@@ -75,9 +115,26 @@ public class LoginServiceImpl implements LoginService {
         if (TUtils.isEmpty(username)) {
             throw new TWTException("登录用户：" + username + " 不存在.");
         }
+
+        // 发送异步日志事件
+        Long deptId = sysUser.getDeptId();
+        SysLoginInfo sysLoginInfo = new SysLoginInfo();
+        sysLoginInfo.setStatus(SecurityConstants.LOGIN_FAIL);
+        sysLoginInfo.setUserName(username);
+        sysLoginInfo.setDeptId(deptId);
+        sysLoginInfo.setIpaddr(IpUtils.getIpAddr());
+
         if (sysUser.getStatus().equals("1")) {
-            throw new TWTException("账号已被冻结");
+            String error = "账号已被冻结";
+            sysLoginInfo.setMsg(error);
+            throw new TWTException(error);
         }
+
+        // 发送异步日志事件
+        sysLoginInfo.setCreateTime(DateUtils.getNowDate());
+        sysLoginInfo.setCreateBy(username);
+        sysLoginInfo.setUpdateBy(username);
+        SpringContextHolder.publishEvent(new SysLoginLogEvent(sysLoginInfo));
         return sysUser;
     }
 
@@ -102,26 +159,6 @@ public class LoginServiceImpl implements LoginService {
         loginUser.setPermissions(permissions);
         loginUser.setRoles(roles);
         return loginUser;
-    }
-
-    /**
-     * 发送登录成功/失败日志
-     */
-    private void sendLog(LoginUser userInfo) {
-        // 发送异步日志事件
-        String username = userInfo.getUsername();
-        Long deptId = userInfo.getDeptId();
-        SysLoginInfo sysLoginInfo = new SysLoginInfo();
-        sysLoginInfo.setStatus(SecurityConstants.LOGIN_SUCCESS);
-        sysLoginInfo.setUserName(username);
-        sysLoginInfo.setDeptId(deptId);
-        sysLoginInfo.setIpaddr(IpUtils.getIpAddr());
-        sysLoginInfo.setMsg("登录成功");
-        // 发送异步日志事件
-        sysLoginInfo.setCreateTime(DateUtils.getNowDate());
-        sysLoginInfo.setCreateBy(username);
-        sysLoginInfo.setUpdateBy(username);
-        SpringContextHolder.publishEvent(new SysLoginLogEvent(sysLoginInfo));
     }
 
 }

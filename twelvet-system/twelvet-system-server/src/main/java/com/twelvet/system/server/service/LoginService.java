@@ -17,5 +17,9 @@ public interface LoginService {
      */
     LoginVO login(LoginDTO loginDTO);
 
+    /**
+     * 退出登录
+     */
+    void logout();
 
 }
