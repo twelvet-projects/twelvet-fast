@@ -43,7 +43,7 @@
 
         <spring-boot-dependencies.version>2.7.5</spring-boot-dependencies.version>
 
-        <sa-token.version>1.31.0</sa-token.version>
+        <sa-token.version>1.33.0</sa-token.version>
 
         <swagger.core.version>2.2.4</swagger.core.version>
         <springdoc.version>1.6.12</springdoc.version>
