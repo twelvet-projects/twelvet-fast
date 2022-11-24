@@ -49,9 +49,7 @@
         <springdoc.version>1.6.12</springdoc.version>
         <knife4j.version>3.0.3</knife4j.version>
 
-        <bitwalker.version>1.21</bitwalker.version>
         <qiniu.version>7.10.3</qiniu.version>
-        <jwt.version>0.9.1</jwt.version>
         <velocity.version>2.3</velocity.version>
         <redisson.version>3.17.7</redisson.version>
         <spring-boot.mybatis>2.2.2</spring-boot.mybatis>
@@ -143,13 +141,6 @@
                 <version>${qiniu.version}</version>
             </dependency>
 
-            <!-- Token生成与解析-->
-            <dependency>
-                <groupId>io.jsonwebtoken</groupId>
-                <artifactId>jjwt</artifactId>
-                <version>${jwt.version}</version>
-            </dependency>
-
             <!-- Sa-Token安全框架 -->
             <dependency>
                 <groupId>cn.dev33</groupId>
@@ -162,13 +153,6 @@
                 <groupId>cn.dev33</groupId>
                 <artifactId>sa-token-dao-redis-jackson</artifactId>
                 <version>${sa-token.version}</version>
-            </dependency>
-
-            <!-- 解析客户端操作系统、浏览器等 -->
-            <dependency>
-                <groupId>eu.bitwalker</groupId>
-                <artifactId>UserAgentUtils</artifactId>
-                <version>${bitwalker.version}</version>
             </dependency>
 
             <!--swagger-->
