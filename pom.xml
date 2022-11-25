@@ -49,7 +49,7 @@
         <springdoc.version>1.6.12</springdoc.version>
         <knife4j.version>3.0.3</knife4j.version>
 
-        <qiniu.version>7.10.3</qiniu.version>
+        <qiniu.version>7.12.0</qiniu.version>
         <velocity.version>2.3</velocity.version>
         <redisson.version>3.17.7</redisson.version>
         <spring-boot.mybatis>2.2.2</spring-boot.mybatis>
