@@ -2,7 +2,7 @@ package com.twelvet.gen.api.domain;
 
 import com.twelvet.framework.core.application.domain.BaseEntity;
 import com.twelvet.framework.utils.StringUtils;
-import javax.validation.constraints.NotBlank;
+import jakarta.validation.constraints.NotBlank;
 
 /**
  * @author twelvet

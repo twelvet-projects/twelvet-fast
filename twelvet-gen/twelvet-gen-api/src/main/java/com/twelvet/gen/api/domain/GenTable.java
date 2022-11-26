@@ -3,8 +3,8 @@ package com.twelvet.gen.api.domain;
 import com.twelvet.framework.core.application.domain.BaseEntity;
 import com.twelvet.framework.utils.StringUtils;
 import com.twelvet.gen.api.constant.GenConstants;
-import javax.validation.Valid;
-import javax.validation.constraints.NotBlank;
+import jakarta.validation.Valid;
+import jakarta.validation.constraints.NotBlank;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.util.List;
