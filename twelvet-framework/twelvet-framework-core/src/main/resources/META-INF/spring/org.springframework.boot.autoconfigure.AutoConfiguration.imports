@@ -1,2 +1,3 @@
 com.twelvet.framework.core.handler.TWTExceptionHandler
 com.twelvet.framework.core.config.properties.TWProperties
+com.baomidou.dynamic.datasource.spring.boot.autoconfigure.DynamicDataSourceAutoConfiguration
