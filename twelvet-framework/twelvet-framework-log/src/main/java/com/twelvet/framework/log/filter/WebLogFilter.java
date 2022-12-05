@@ -87,9 +87,19 @@ public class WebLogFilter implements Filter {
 		}
 
 		log.info(
-				"\n===================Request================>\n时间：{}\n地址：{}\ntoken：{}\n参数：{}\n方式：{}"
-						+ "\n<===================Response================\n状态：{}\n内容：{}\n时长：{}毫秒"
-						+ "\n============================================",
+				"""
+
+						===================Request================>
+						时间：{}
+						地址：{}
+						token：{}
+						参数：{}
+						方式：{}
+						<===================Response================
+						状态：{}
+						内容：{}
+						时长：{}毫秒
+						============================================""",
 				DateUtils.getTime(), requestWrapper.getRequestURL(),
 				// 认证Token
 				ServletUtils.getRequest().get().getHeader(Constants.AUTHORIZATION), reqJson, requestWrapper.getMethod(),
