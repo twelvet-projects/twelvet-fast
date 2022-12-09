@@ -4,13 +4,8 @@ import com.twelvet.framework.swagger.config.properties.SwaggerProperties;
 import io.swagger.v3.oas.models.OpenAPI;
 import io.swagger.v3.oas.models.Paths;
 import io.swagger.v3.oas.models.info.Info;
-import io.swagger.v3.oas.models.security.*;
-import org.apache.commons.lang3.StringUtils;
-import org.springdoc.core.*;
-import org.springdoc.core.customizers.OpenApiBuilderCustomizer;
-import org.springdoc.core.customizers.OpenApiCustomiser;
-import org.springdoc.core.customizers.ServerBaseUrlCustomizer;
-import org.springdoc.core.providers.JavadocProvider;
+import io.swagger.v3.oas.models.security.SecurityRequirement;
+import org.springdoc.core.configuration.SpringDocConfiguration;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.AutoConfigureBefore;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnMissingBean;
@@ -21,7 +16,6 @@ import org.springframework.context.annotation.Configuration;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 /**
  * @author twelvet
@@ -67,30 +61,6 @@ public class SwaggerConfig {
         info.setLicense(infoProperties.getLicense());
         info.setVersion(infoProperties.getVersion());
         return info;
-    }
-
-    /**
-     * 对已经生成好的 OpenApi 进行自定义操作
-     */
-    @Bean
-    public OpenApiCustomiser openApiCustomiser() {
-        String contextPath = serverProperties.getServlet().getContextPath();
-        String finalContextPath;
-        if (StringUtils.isBlank(contextPath) || "/".equals(contextPath)) {
-            finalContextPath = "";
-        } else {
-            finalContextPath = contextPath;
-        }
-        // 对所有路径增加前置上下文路径
-        return openApi -> {
-            Paths oldPaths = openApi.getPaths();
-            if (oldPaths instanceof PlusPaths) {
-                return;
-            }
-            PlusPaths newPaths = new PlusPaths();
-            oldPaths.forEach((k, v) -> newPaths.addPathItem(finalContextPath + k, v));
-            openApi.setPaths(newPaths);
-        };
     }
 
     /**

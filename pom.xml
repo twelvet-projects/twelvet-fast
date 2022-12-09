@@ -45,13 +45,13 @@
 
         <sa-token.version>1.33.0</sa-token.version>
 
-        <swagger.core.version>2.2.4</swagger.core.version>
-        <springdoc.version>1.6.12</springdoc.version>
+        <swagger.core.version>2.2.7</swagger.core.version>
+        <springdoc.version>2.0.0</springdoc.version>
         <knife4j.version>3.0.3</knife4j.version>
 
         <qiniu.version>7.12.0</qiniu.version>
         <velocity.version>2.3</velocity.version>
-        <redisson.version>3.18.0</redisson.version>
+        <redisson.version>3.18.1</redisson.version>
         <spring-boot.mybatis>3.0.0</spring-boot.mybatis>
         <druid.version>1.2.15</druid.version>
         <pagehelper.boot.version>1.4.5</pagehelper.boot.version>
@@ -116,21 +116,21 @@
             <!--Swagger-->
             <dependency>
                 <groupId>com.github.xiaoymin</groupId>
-                <artifactId>knife4j-springdoc-ui</artifactId>
+                <artifactId>knife4j-spring-boot-starter</artifactId>
                 <version>${knife4j.version}</version>
             </dependency>
 
             <!--Swagger -->
             <dependency>
                 <groupId>io.swagger.core.v3</groupId>
-                <artifactId>swagger-annotations</artifactId>
+                <artifactId>swagger-annotations-jakarta</artifactId>
                 <version>${swagger.core.version}</version>
             </dependency>
 
             <!--springdoc -->
             <dependency>
                 <groupId>org.springdoc</groupId>
-                <artifactId>springdoc-openapi-webmvc-core</artifactId>
+                <artifactId>springdoc-openapi-starter-webmvc-api</artifactId>
                 <version>${springdoc.version}</version>
             </dependency>
 
@@ -158,7 +158,7 @@
             <!--swagger-->
             <dependency>
                 <groupId>org.springdoc</groupId>
-                <artifactId>springdoc-openapi-ui</artifactId>
+                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
                 <version>${springdoc.version}</version>
             </dependency>
 
