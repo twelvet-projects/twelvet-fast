@@ -54,7 +54,7 @@
         <redisson.version>3.18.1</redisson.version>
         <spring-boot.mybatis>3.0.0</spring-boot.mybatis>
         <druid.version>1.2.15</druid.version>
-        <pagehelper.boot.version>1.4.5</pagehelper.boot.version>
+        <pagehelper.boot.version>1.4.6</pagehelper.boot.version>
         <dynamic-datasource.version>3.6.0</dynamic-datasource.version>
         <poi.version>5.2.3</poi.version>
         <commons.io.version>2.11.0</commons.io.version>
