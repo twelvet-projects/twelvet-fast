@@ -1,5 +1,4 @@
-# TwelveT Fast.
-## 等待SA-Token适配Spring Boot3
+# TwelveT Fast
 基于 Spring Boot 3 实现的twelvet单体服务，抢先体验 Spring 6 版本。
 
 ### 要求
