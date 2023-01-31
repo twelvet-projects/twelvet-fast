@@ -17,21 +17,22 @@ import java.util.List;
 @Component
 public class SaPermissionImpl implements StpInterface {
 
-    /**
-     * 获取菜单权限列表
-     */
-    @Override
-    public List<String> getPermissionList(Object loginId, String loginType) {
-        LoginUser loginUser = SecurityUtils.getLoginUser();
-        return new ArrayList<>(loginUser.getPermissions());
-    }
+	/**
+	 * 获取菜单权限列表
+	 */
+	@Override
+	public List<String> getPermissionList(Object loginId, String loginType) {
+		LoginUser loginUser = SecurityUtils.getLoginUser();
+		return new ArrayList<>(loginUser.getPermissions());
+	}
 
-    /**
-     * 获取角色权限列表
-     */
-    @Override
-    public List<String> getRoleList(Object loginId, String loginType) {
-        LoginUser loginUser = SecurityUtils.getLoginUser();
-        return new ArrayList<>(loginUser.getRoles());
-    }
+	/**
+	 * 获取角色权限列表
+	 */
+	@Override
+	public List<String> getRoleList(Object loginId, String loginType) {
+		LoginUser loginUser = SecurityUtils.getLoginUser();
+		return new ArrayList<>(loginUser.getRoles());
+	}
+
 }

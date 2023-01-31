@@ -21,20 +21,21 @@ public class LogAutoConfiguration {
 	 * @param remoteLogService RemoteLogService
 	 * @return SysLoginLogListener
 	 */
-	/*@Bean
-	public SysLoginLogListener sysLoginLogListener(RemoteLogService remoteLogService) {
-		return new SysLoginLogListener(remoteLogService);
-	}*/
+	/*
+	 * @Bean public SysLoginLogListener sysLoginLogListener(RemoteLogService
+	 * remoteLogService) { return new SysLoginLogListener(remoteLogService); }
+	 */
 
 	/**
 	 * 操作日志监听
 	 * @param remoteLogService RemoteLogService
 	 * @return SysLoginLogListener
 	 */
-	/*@Bean
-	public SysSysOperationLogEventLogListener sysOperationLogEventLogListener(RemoteLogService remoteLogService) {
-		return new SysSysOperationLogEventLogListener(remoteLogService);
-	}*/
+	/*
+	 * @Bean public SysSysOperationLogEventLogListener
+	 * sysOperationLogEventLogListener(RemoteLogService remoteLogService) { return new
+	 * SysSysOperationLogEventLogListener(remoteLogService); }
+	 */
 
 	/**
 	 * 系统操作日志

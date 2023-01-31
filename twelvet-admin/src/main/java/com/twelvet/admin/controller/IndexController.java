@@ -15,13 +15,14 @@ import org.springframework.web.bind.annotation.RestController;
 @RestController
 public class IndexController {
 
-    @Autowired
-    private TWProperties twProperties;
+	@Autowired
+	private TWProperties twProperties;
 
-    @SaIgnore
-    @GetMapping("/")
-    public String index() {
-        return StringUtils.format("<h1 style=\"text-align: center\">欢迎使用 {} 后台管理框架，当前版本：v{}。</h1>", twProperties.getName(), twProperties.getVersion());
-    }
+	@SaIgnore
+	@GetMapping("/")
+	public String index() {
+		return StringUtils.format("<h1 style=\"text-align: center\">欢迎使用 {} 后台管理框架，当前版本：v{}。</h1>",
+				twProperties.getName(), twProperties.getVersion());
+	}
 
 }

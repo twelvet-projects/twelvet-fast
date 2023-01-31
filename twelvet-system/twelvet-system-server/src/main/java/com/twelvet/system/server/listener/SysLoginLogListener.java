@@ -9,7 +9,6 @@ import org.springframework.core.annotation.Order;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
-
 /**
  * @author twelvet
  * @WebSite www.twelvet.cn
@@ -18,8 +17,8 @@ import org.springframework.stereotype.Component;
 @Component
 public class SysLoginLogListener {
 
-    @Autowired
-    private ISysLoginInfoService iSysLoginInfoService;
+	@Autowired
+	private ISysLoginInfoService iSysLoginInfoService;
 
 	@Async
 	@Order

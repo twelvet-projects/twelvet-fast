@@ -46,12 +46,12 @@ public class MimeTypeUtils {
 
 	public static String getExtension(String prefix) {
 		return switch (prefix) {
-			case IMAGE_PNG -> "png";
-			case IMAGE_JPG -> "jpg";
-			case IMAGE_JPEG -> "jpeg";
-			case IMAGE_BMP -> "bmp";
-			case IMAGE_GIF -> "gif";
-			default -> "";
+		case IMAGE_PNG -> "png";
+		case IMAGE_JPG -> "jpg";
+		case IMAGE_JPEG -> "jpeg";
+		case IMAGE_BMP -> "bmp";
+		case IMAGE_GIF -> "gif";
+		default -> "";
 		};
 	}
 

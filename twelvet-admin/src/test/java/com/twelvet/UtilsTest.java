@@ -9,8 +9,8 @@ import cn.dev33.satoken.secure.BCrypt;
  */
 public class UtilsTest {
 
-    public static void main(String[] args) {
-        System.out.println(BCrypt.hashpw("123456"));
-    }
+	public static void main(String[] args) {
+		System.out.println(BCrypt.hashpw("123456"));
+	}
 
 }

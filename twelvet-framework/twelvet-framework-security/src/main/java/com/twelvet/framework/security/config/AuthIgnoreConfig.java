@@ -13,14 +13,14 @@ import java.util.List;
 @ConfigurationProperties(prefix = "security.ignore")
 public class AuthIgnoreConfig {
 
-    private List<String> urls = new ArrayList<>();
+	private List<String> urls = new ArrayList<>();
 
-    public List<String> getUrls() {
-        return urls;
-    }
+	public List<String> getUrls() {
+		return urls;
+	}
 
-    public void setUrls(List<String> urls) {
-        this.urls = urls;
-    }
+	public void setUrls(List<String> urls) {
+		this.urls = urls;
+	}
 
 }

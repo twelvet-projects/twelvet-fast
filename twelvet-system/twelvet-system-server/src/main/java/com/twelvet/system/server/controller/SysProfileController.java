@@ -69,34 +69,29 @@ public class SysProfileController extends TWTController {
 	 * @param file MultipartFile
 	 * @return 上传信息
 	 */
-	/*@Operation(summary = "修改用户头像")
-	@Log(service = "用户头像", businessType = BusinessType.UPDATE)
-	@PostMapping("/avatar")
-	public AjaxResult avatar(@RequestParam("avatarFile") MultipartFile file) {
-
-		try {
-			R<SysFile> fileResult = remoteFileService.upload(file, SecurityConstants.INNER);
-
-			if (StringUtils.isNull(fileResult) || StringUtils.isNull(fileResult.getData())) {
-				return AjaxResult.error("文件服务异常，请联系管理员");
-			}
-
-			String url = fileResult.getData().getUrl();
-
-			LoginUser user = SecurityUtils.getLoginUser();
-
-			if (userService.updateUserAvatar(user.getUsername(), url)) {
-				AjaxResult ajax = AjaxResult.success("设置成功");
-				ajax.put("imgUrl", url);
-				return ajax;
-			}
-		}
-		catch (Exception e) {
-			logger.error("上传头像失败：", e);
-			return AjaxResult.error("发生未知错误");
-		}
-		return AjaxResult.error("上传失败");
-	}*/
+	/*
+	 * @Operation(summary = "修改用户头像")
+	 *
+	 * @Log(service = "用户头像", businessType = BusinessType.UPDATE)
+	 *
+	 * @PostMapping("/avatar") public AjaxResult avatar(@RequestParam("avatarFile")
+	 * MultipartFile file) {
+	 *
+	 * try { R<SysFile> fileResult = remoteFileService.upload(file,
+	 * SecurityConstants.INNER);
+	 *
+	 * if (StringUtils.isNull(fileResult) || StringUtils.isNull(fileResult.getData())) {
+	 * return AjaxResult.error("文件服务异常，请联系管理员"); }
+	 *
+	 * String url = fileResult.getData().getUrl();
+	 *
+	 * LoginUser user = SecurityUtils.getLoginUser();
+	 *
+	 * if (userService.updateUserAvatar(user.getUsername(), url)) { AjaxResult ajax =
+	 * AjaxResult.success("设置成功"); ajax.put("imgUrl", url); return ajax; } } catch
+	 * (Exception e) { logger.error("上传头像失败：", e); return AjaxResult.error("发生未知错误"); }
+	 * return AjaxResult.error("上传失败"); }
+	 */
 
 	/**
 	 * 重置密码

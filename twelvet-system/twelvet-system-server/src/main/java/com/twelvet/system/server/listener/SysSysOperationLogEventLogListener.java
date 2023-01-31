@@ -11,7 +11,6 @@ import org.springframework.core.annotation.Order;
 import org.springframework.scheduling.annotation.Async;
 import org.springframework.stereotype.Component;
 
-
 /**
  * @author twelvet
  * @WebSite www.twelvet.cn
@@ -20,15 +19,15 @@ import org.springframework.stereotype.Component;
 @Component
 public class SysSysOperationLogEventLogListener {
 
-    @Autowired
-    private ISysOperationLogService iSysOperationLogService;
+	@Autowired
+	private ISysOperationLogService iSysOperationLogService;
 
 	@Async
 	@Order
 	@EventListener(SysOperationLogEvent.class)
 	public void saveSysLog(SysOperationLogEvent event) {
-        SysOperationLog sysOperationLog = (SysOperationLog) event.getSource();
-        iSysOperationLogService.insertOperationLog(sysOperationLog);
+		SysOperationLog sysOperationLog = (SysOperationLog) event.getSource();
+		iSysOperationLogService.insertOperationLog(sysOperationLog);
 	}
 
 }

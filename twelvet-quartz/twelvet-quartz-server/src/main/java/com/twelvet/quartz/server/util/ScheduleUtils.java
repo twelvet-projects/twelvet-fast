@@ -80,13 +80,13 @@ public class ScheduleUtils {
 	public static CronScheduleBuilder handleCronScheduleMisfirePolicy(SysJob job, CronScheduleBuilder cb)
 			throws TaskException {
 		return switch (job.getMisfirePolicy()) {
-			case ScheduleConstants.MISFIRE_DEFAULT -> cb;
-			case ScheduleConstants.MISFIRE_IGNORE_MISFIRES -> cb.withMisfireHandlingInstructionIgnoreMisfires();
-			case ScheduleConstants.MISFIRE_FIRE_AND_PROCEED -> cb.withMisfireHandlingInstructionFireAndProceed();
-			case ScheduleConstants.MISFIRE_DO_NOTHING -> cb.withMisfireHandlingInstructionDoNothing();
-			default -> throw new TaskException(
-					"The task misfire policy '" + job.getMisfirePolicy() + "' cannot be used in cron schedule tasks",
-					TaskException.Code.CONFIG_ERROR);
+		case ScheduleConstants.MISFIRE_DEFAULT -> cb;
+		case ScheduleConstants.MISFIRE_IGNORE_MISFIRES -> cb.withMisfireHandlingInstructionIgnoreMisfires();
+		case ScheduleConstants.MISFIRE_FIRE_AND_PROCEED -> cb.withMisfireHandlingInstructionFireAndProceed();
+		case ScheduleConstants.MISFIRE_DO_NOTHING -> cb.withMisfireHandlingInstructionDoNothing();
+		default -> throw new TaskException(
+				"The task misfire policy '" + job.getMisfirePolicy() + "' cannot be used in cron schedule tasks",
+				TaskException.Code.CONFIG_ERROR);
 		};
 	}
 

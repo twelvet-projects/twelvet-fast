@@ -11,7 +11,7 @@ import java.io.Serializable;
  * @WebSite www.twelvet.cn
  * @Description: 统一操作信息实体(支持Swagger响应泛型)
  */
-@Schema(description ="统一操作信息实体")
+@Schema(description = "统一操作信息实体")
 public class JsonResult<T> implements Serializable {
 
 	private static final long serialVersionUID = 1L;

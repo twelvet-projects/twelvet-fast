@@ -10,16 +10,15 @@ import com.twelvet.system.api.domain.vo.LoginVO;
  */
 public interface LoginService {
 
-    /**
-     * 登录
-     *
-     * @param loginDTO LoginDTO
-     */
-    LoginVO login(LoginDTO loginDTO);
+	/**
+	 * 登录
+	 * @param loginDTO LoginDTO
+	 */
+	LoginVO login(LoginDTO loginDTO);
 
-    /**
-     * 退出登录
-     */
-    void logout();
+	/**
+	 * 退出登录
+	 */
+	void logout();
 
 }

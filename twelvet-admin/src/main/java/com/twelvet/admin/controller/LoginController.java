@@ -23,31 +23,29 @@ import java.util.Map;
 @RequestMapping("/auth")
 public class LoginController {
 
-    @Autowired
-    private LoginService loginService;
+	@Autowired
+	private LoginService loginService;
 
-    /**
-     * 用户登录
-     *
-     * @param loginDTO 用户登录信息
-     * @return JsonResult<String>
-     */
-    @SaIgnore
-    @PostMapping("/oauth2/token")
-    public LoginVO login(@Validated @RequestBody LoginDTO loginDTO) {
-        return loginService.login(loginDTO);
-    }
+	/**
+	 * 用户登录
+	 * @param loginDTO 用户登录信息
+	 * @return JsonResult<String>
+	 */
+	@SaIgnore
+	@PostMapping("/oauth2/token")
+	public LoginVO login(@Validated @RequestBody LoginDTO loginDTO) {
+		return loginService.login(loginDTO);
+	}
 
-    /**
-     * 退出登录
-     *
-     * @return JsonResult<String>
-     */
-    @SaIgnore
-    @DeleteMapping("/token/logout")
-    public JsonResult<String> logout() {
-        loginService.logout();
-        return JsonResult.success();
-    }
+	/**
+	 * 退出登录
+	 * @return JsonResult<String>
+	 */
+	@SaIgnore
+	@DeleteMapping("/token/logout")
+	public JsonResult<String> logout() {
+		loginService.logout();
+		return JsonResult.success();
+	}
 
 }

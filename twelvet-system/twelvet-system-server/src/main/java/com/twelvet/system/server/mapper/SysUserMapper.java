@@ -10,7 +10,7 @@ import java.util.List;
  * @WebSite www.twelvet.cn
  * @Description: 用户信息Mapper
  */
-public interface SysUserMapper  {
+public interface SysUserMapper {
 
 	/**
 	 * 根据条件分页查询用户列表

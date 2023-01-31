@@ -98,8 +98,7 @@ public class ServletUtils {
 	 * @return ServletRequestAttributes
 	 */
 	public static ServletRequestAttributes getRequestAttributes() {
-		return (ServletRequestAttributes) RequestContextHolder
-				.getRequestAttributes();
+		return (ServletRequestAttributes) RequestContextHolder.getRequestAttributes();
 	}
 
 	/**
@@ -150,7 +149,7 @@ public class ServletUtils {
 	public static String getStrFromStream(HttpServletRequest req) {
 		StringBuilder sb = new StringBuilder();
 		try (ServletInputStream inputStream = req.getInputStream();
-			 BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))) {
+				BufferedReader bufferedReader = new BufferedReader(new InputStreamReader(inputStream))) {
 			StringBuilder stringBuilder = new StringBuilder();
 			char[] charBuffer = new char[128];
 			int bytesRead;

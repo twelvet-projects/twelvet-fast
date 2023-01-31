@@ -27,50 +27,51 @@ import java.util.List;
 @ConditionalOnProperty(name = "swagger.enabled", havingValue = "true", matchIfMissing = true)
 public class SwaggerConfig {
 
-    @Autowired
-    private SwaggerProperties swaggerProperties;
+	@Autowired
+	private SwaggerProperties swaggerProperties;
 
-    @Autowired
-    private ServerProperties serverProperties;
+	@Autowired
+	private ServerProperties serverProperties;
 
-    @Bean
-    @ConditionalOnMissingBean(OpenAPI.class)
-    public OpenAPI openApi() {
-        OpenAPI openAPI = new OpenAPI();
-        // 文档基本信息
-        SwaggerProperties.InfoProperties infoProperties = swaggerProperties.getInfo();
-        Info info = convertInfo(infoProperties);
-        openAPI.info(info);
-        // 扩展文档信息
-        openAPI.externalDocs(swaggerProperties.getExternalDocs());
-        openAPI.tags(swaggerProperties.getTags());
-        openAPI.paths(swaggerProperties.getPaths());
-        openAPI.components(swaggerProperties.getComponents());
-        List<SecurityRequirement> list = new ArrayList<>();
-        list.add(new SecurityRequirement().addList("apikey"));
-        openAPI.security(list);
+	@Bean
+	@ConditionalOnMissingBean(OpenAPI.class)
+	public OpenAPI openApi() {
+		OpenAPI openAPI = new OpenAPI();
+		// 文档基本信息
+		SwaggerProperties.InfoProperties infoProperties = swaggerProperties.getInfo();
+		Info info = convertInfo(infoProperties);
+		openAPI.info(info);
+		// 扩展文档信息
+		openAPI.externalDocs(swaggerProperties.getExternalDocs());
+		openAPI.tags(swaggerProperties.getTags());
+		openAPI.paths(swaggerProperties.getPaths());
+		openAPI.components(swaggerProperties.getComponents());
+		List<SecurityRequirement> list = new ArrayList<>();
+		list.add(new SecurityRequirement().addList("apikey"));
+		openAPI.security(list);
 
-        return openAPI;
-    }
+		return openAPI;
+	}
 
-    private Info convertInfo(SwaggerProperties.InfoProperties infoProperties) {
-        Info info = new Info();
-        info.setTitle(infoProperties.getTitle());
-        info.setDescription(infoProperties.getDescription());
-        info.setContact(infoProperties.getContact());
-        info.setLicense(infoProperties.getLicense());
-        info.setVersion(infoProperties.getVersion());
-        return info;
-    }
+	private Info convertInfo(SwaggerProperties.InfoProperties infoProperties) {
+		Info info = new Info();
+		info.setTitle(infoProperties.getTitle());
+		info.setDescription(infoProperties.getDescription());
+		info.setContact(infoProperties.getContact());
+		info.setLicense(infoProperties.getLicense());
+		info.setVersion(infoProperties.getVersion());
+		return info;
+	}
 
-    /**
-     * 单独使用一个类便于判断 解决springdoc路径拼接重复问题
-     */
-    static class PlusPaths extends Paths {
+	/**
+	 * 单独使用一个类便于判断 解决springdoc路径拼接重复问题
+	 */
+	static class PlusPaths extends Paths {
 
-        public PlusPaths() {
-            super();
-        }
-    }
+		public PlusPaths() {
+			super();
+		}
+
+	}
 
 }
