@@ -37,6 +37,9 @@ spring:
         # password:
         # url:
         # driver-class-name:
+        shardingSphere:
+          driver-class-name: org.apache.shardingsphere.driver.ShardingSphereDriver
+          url: jdbc:shardingsphere:classpath:sharding-jdbc-pro.yml
   data:
     redis:
       host: 127.0.0.1

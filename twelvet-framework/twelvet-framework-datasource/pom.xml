@@ -32,6 +32,12 @@
             <artifactId>dynamic-datasource-spring-boot-starter</artifactId>
         </dependency>
 
+        <!--Sharding-JDBC-->
+        <dependency>
+            <groupId>org.apache.shardingsphere</groupId>
+            <artifactId>shardingsphere-jdbc-core</artifactId>
+        </dependency>
+
         <!-- pageHelper 分页插件 -->
         <dependency>
             <groupId>com.github.pagehelper</groupId>
