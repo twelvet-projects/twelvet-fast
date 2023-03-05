@@ -15,6 +15,8 @@ import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.concurrent.CompletableFuture;
+
 /**
  * @author twelvet
  * @WebSite www.twelvet.cn
@@ -36,13 +38,13 @@ public class SysProfileController extends TWTController {
 	@GetMapping
 	public JsonResult<UserInfoVo> profile() {
 		String username = SecurityUtils.getUsername();
-		SysUser user = userService.selectUserByUserName(username, true);
-
 		UserInfoVo userInfoVo = new UserInfoVo();
 
-		userInfoVo.setUser(user);
-		userInfoVo.setPostGroup(userService.selectUserPostGroup(username));
-		userInfoVo.setRoleGroup(userService.selectUserRoleGroup(username));
+		CompletableFuture<Void> sysUserCompletableFuture = CompletableFuture.runAsync(() -> userInfoVo.setUser(userService.selectUserByUserName(username, true)));
+		CompletableFuture<Void> postGroupCompletableFuture = CompletableFuture.runAsync(() -> userInfoVo.setPostGroup(userService.selectUserPostGroup(username)));
+		CompletableFuture<Void> roleGroupCompletableFuture = CompletableFuture.runAsync(() -> userInfoVo.setRoleGroup(userService.selectUserRoleGroup(username)));
+
+		CompletableFuture.allOf(sysUserCompletableFuture, postGroupCompletableFuture, roleGroupCompletableFuture).join();
 
 		return JsonResult.success(userInfoVo);
 	}
