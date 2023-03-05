@@ -108,7 +108,7 @@ public class SysProfileController extends TWTController {
 		}
 
 		String username = SecurityUtils.getUsername();
-		SysUser user = userService.selectUserByUserName(username, true);
+		SysUser user = userService.selectUserByUserName(username, false);
 		String password = user.getPassword();
 
 		if (!BCrypt.checkpw(userPassword.getOldPassword(), password)) {
