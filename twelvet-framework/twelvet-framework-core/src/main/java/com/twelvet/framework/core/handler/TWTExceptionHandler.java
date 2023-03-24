@@ -36,6 +36,7 @@ public class TWTExceptionHandler {
 	 * @return JsonResult<String>
 	 */
 	@ExceptionHandler(NotLoginException.class)
+	@ResponseStatus(HttpStatus.UNAUTHORIZED)
 	public JsonResult<String> handlerException(NotLoginException e) {
 		return JsonResult.error(HttpStatus.UNAUTHORIZED.value(), e.getMessage());
 	}
@@ -46,6 +47,7 @@ public class TWTExceptionHandler {
 	 * @return JsonResult<String>
 	 */
 	@ExceptionHandler(NotRoleException.class)
+	@ResponseStatus(HttpStatus.BAD_REQUEST)
 	public JsonResult<String> handleNotRoleException(NotRoleException e) {
 		return JsonResult.error(e.getMessage());
 	}

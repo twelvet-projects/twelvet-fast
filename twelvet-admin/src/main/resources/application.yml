@@ -59,6 +59,7 @@ security:
       - /**/*.css
       - /**/*.js
       # swagger 文档配置
+      - /doc.html
       - /*/api-docs
       - /*/api-docs/**
       # druid 监控配置
