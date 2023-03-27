@@ -14,10 +14,17 @@
 
     <dependencies>
 
-        <!--webmvc-->
+        <!--Spring WEB 模块-->
         <dependency>
-            <groupId>org.springframework</groupId>
-            <artifactId>spring-webmvc</artifactId>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-web</artifactId>
+            <!--排除tomcat-->
+            <exclusions>
+                <exclusion>
+                    <artifactId>org.springframework.boot</artifactId>
+                    <groupId>spring-boot-starter-tomcat</groupId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!--Spring Context-->
@@ -30,13 +37,6 @@
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-undertow</artifactId>
-            <!--排除tomcat-->
-            <exclusions>
-                <exclusion>
-                    <artifactId>org.springframework.boot</artifactId>
-                    <groupId>spring-boot-start-tomcat</groupId>
-                </exclusion>
-            </exclusions>
         </dependency>
 
         <!--hibernate-validator-->
