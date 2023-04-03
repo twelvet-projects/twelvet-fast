@@ -15,7 +15,7 @@ init() {
 
   # copy jar
   echo "begin copy twelvet-admin "
-  cp ../twelvet-admin/target/twelvet-admin.jar ./twelvet/admin/twelvet-admin/jar
+  cp ../twelvet-admin/target/twelvet-admin.jar ./twelvet/twelvet-admin/jar
 }
 
 # 开启所需端口
