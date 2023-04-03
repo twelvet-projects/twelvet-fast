@@ -7,8 +7,8 @@ spring:
         # 主库数据源
         master:
           driver-class-name: com.mysql.cj.jdbc.Driver
-          # host: 127.0.0.1 twelvet-mysql
-          url: jdbc:mysql://127.0.0.1:3306/twelvet-fast?allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8
+          # host: twelvet-redis twelvet-mysql
+          url: jdbc:mysql://twelvet-mysql:3306/twelvet-fast?allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8
           username: root
           password: 123456
         # 从库数据源
@@ -22,7 +22,7 @@ spring:
           url: jdbc:shardingsphere:classpath:sharding-jdbc-pro.yml
   data:
     redis:
-      host: 127.0.0.1
+      host: twelvet-redis
       port: 6379
       # 连接超时时间
       timeout: 30s

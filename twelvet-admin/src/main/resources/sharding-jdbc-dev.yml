@@ -14,7 +14,7 @@ dataSources:
     # 连接超时时间:毫秒，小于250毫秒，否则被重置为默认值30秒
     connection-timeout: 60000
     driverClassName: com.mysql.cj.jdbc.Driver
-    url: jdbc:mysql://127.0.0.1:3306/twelvet-fast?allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8
+    url: jdbc:mysql://twelvet-mysql:3306/twelvet-fast?allowPublicKeyRetrieval=true&useUnicode=true&characterEncoding=utf8&zeroDateTimeBehavior=convertToNull&useSSL=false&serverTimezone=GMT%2B8
     username: root
     password: 123456
 
