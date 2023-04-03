@@ -60,21 +60,6 @@ public class LoginServiceImpl implements LoginService {
 
 		loginVO.setAccessToken(StpUtil.getTokenValue());
 
-		// 发送异步日志事件
-		String username = loginUser.getUsername();
-		Long deptId = loginUser.getDeptId();
-		SysLoginInfo sysLoginInfo = new SysLoginInfo();
-		sysLoginInfo.setStatus(SecurityConstants.LOGIN_SUCCESS);
-		sysLoginInfo.setUserName(username);
-		sysLoginInfo.setDeptId(deptId);
-		sysLoginInfo.setIpaddr(IpUtils.getIpAddr());
-		sysLoginInfo.setMsg("登录成功");
-		// 发送异步日志事件
-		sysLoginInfo.setCreateTime(DateUtils.getNowDate());
-		sysLoginInfo.setCreateBy(username);
-		sysLoginInfo.setUpdateBy(username);
-		SpringContextHolder.publishEvent(new SysLoginLogEvent(sysLoginInfo));
-
 		return loginVO;
 	}
 
@@ -120,6 +105,7 @@ public class LoginServiceImpl implements LoginService {
 		sysLoginInfo.setUserName(username);
 		sysLoginInfo.setDeptId(deptId);
 		sysLoginInfo.setIpaddr(IpUtils.getIpAddr());
+		sysLoginInfo.setMsg("登录成功");
 
 		if (sysUser.getStatus().equals("1")) {
 			String error = "账号已被冻结";
