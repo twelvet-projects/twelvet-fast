@@ -74,7 +74,7 @@ create table QRTZ_SIMPLE_TRIGGERS
 
 -- ----------------------------
 -- 4、 存储 Cron Trigger，包括 Cron 表达式和时区信息
--- ---------------------------- 
+-- ----------------------------
 create table QRTZ_CRON_TRIGGERS
 (
     sched_name      varchar(120) not null comment '调度名称',
@@ -88,7 +88,7 @@ create table QRTZ_CRON_TRIGGERS
 
 -- ----------------------------
 -- 5、 Trigger 作为 Blob 类型存储(用于 Quartz 用户用 JDBC 创建他们自己定制的 Trigger 类型，JobStore 并不知道如何存储实例的时候)
--- ---------------------------- 
+-- ----------------------------
 create table QRTZ_BLOB_TRIGGERS
 (
     sched_name    varchar(120) not null comment '调度名称',
@@ -101,7 +101,7 @@ create table QRTZ_BLOB_TRIGGERS
 
 -- ----------------------------
 -- 6、 以 Blob 类型存储存放日历信息， quartz可配置一个日历来指定一个时间范围
--- ---------------------------- 
+-- ----------------------------
 create table QRTZ_CALENDARS
 (
     sched_name    varchar(120) not null comment '调度名称',
@@ -112,7 +112,7 @@ create table QRTZ_CALENDARS
 
 -- ----------------------------
 -- 7、 存储已暂停的 Trigger 组的信息
--- ---------------------------- 
+-- ----------------------------
 create table QRTZ_PAUSED_TRIGGER_GRPS
 (
     sched_name    varchar(120) not null comment '调度名称',
@@ -122,7 +122,7 @@ create table QRTZ_PAUSED_TRIGGER_GRPS
 
 -- ----------------------------
 -- 8、 存储与已触发的 Trigger 相关的状态信息，以及相联 Job 的执行信息
--- ---------------------------- 
+-- ----------------------------
 create table QRTZ_FIRED_TRIGGERS
 (
     sched_name        varchar(120) not null comment '调度名称',
@@ -143,7 +143,7 @@ create table QRTZ_FIRED_TRIGGERS
 
 -- ----------------------------
 -- 9、 存储少量的有关 Scheduler 的状态信息，假如是用于集群中，可以看到其他的 Scheduler 实例
--- ---------------------------- 
+-- ----------------------------
 create table QRTZ_SCHEDULER_STATE
 (
     sched_name        varchar(120) not null comment '调度名称',
@@ -155,7 +155,7 @@ create table QRTZ_SCHEDULER_STATE
 
 -- ----------------------------
 -- 10、 存储程序的悲观锁的信息(假如使用了悲观锁)
--- ---------------------------- 
+-- ----------------------------
 create table QRTZ_LOCKS
 (
     sched_name varchar(120) not null comment '调度名称',
@@ -165,7 +165,7 @@ create table QRTZ_LOCKS
 
 -- ----------------------------
 -- 11、 Quartz集群实现同步机制的行锁表
--- ---------------------------- 
+-- ----------------------------
 create table QRTZ_SIMPROP_TRIGGERS
 (
     sched_name    varchar(120) not null comment '调度名称',
@@ -194,7 +194,7 @@ CREATE TABLE `sys_job`  (
     `cron_expression` varchar(255) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT 'cron执行表达式',
     `misfire_policy` tinyint(1) NULL DEFAULT NULL COMMENT '计划执行错误策略（1立即执行 2执行一次 3放弃执行）',
     `concurrent` tinyint(1) NULL DEFAULT NULL COMMENT '是否并发执行（1允许 0禁止）',
-    `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '状态（1正常 0暂停）',
+    `status` char(1) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '0' COMMENT '状态（0正常 1暂停）',
     `create_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '创建者',
     `create_time` datetime NULL DEFAULT NULL COMMENT '创建时间',
     `update_by` varchar(64) CHARACTER SET utf8 COLLATE utf8_general_ci NULL DEFAULT '' COMMENT '更新者',
@@ -206,7 +206,7 @@ CREATE TABLE `sys_job`  (
 -- ----------------------------
 -- Records of sys_job
 -- ----------------------------
-INSERT INTO `sys_job` VALUES (1, '系统默认（无参）', 'DEFAULT', 'twtTask.twtNoParams', '0 */15 * * * ?', 3, 1, '0', 'admin', '2018-03-16 11:33:00', 'admin', '2021-08-06 23:02:47', '');
-INSERT INTO `sys_job` VALUES (106, '系统默认（有参）', 'DEFAULT', 'twtTask.twtParams(\'twt\')', '0/5 * * * * ?', 1, 1, '0', 'admin', '2020-12-10 23:37:38', 'admin', '2021-08-06 23:02:45', '');
+INSERT INTO `sys_job` VALUES (1, '系统默认（无参）', 'DEFAULT', 'twtTask.twtNoParams', '0 */15 * * * ?', 3, 1, '1', 'admin', '2018-03-16 11:33:00', 'admin', '2021-08-06 23:02:47', '');
+INSERT INTO `sys_job` VALUES (106, '系统默认（有参）', 'DEFAULT', 'twtTask.twtParams(\'twt\')', '0/5 * * * * ?', 1, 1, '1', 'admin', '2020-12-10 23:37:38', 'admin', '2021-08-06 23:02:45', '');
 
 commit;

@@ -1,0 +1,12 @@
+# 基础镜像
+FROM mysql/mysql-server:8.0.31
+# author
+MAINTAINER twelvet
+
+ENV TZ=America/New_York
+
+RUN ln -sf /usr/share/zoneinfo/$TZ /etc/localtime && echo $TZ > /etc/timezone
+
+# 执行sql脚本
+COPY ./db/twelvet.sql /docker-entrypoint-initdb.d/
+COPY ./db/twelvet_job.sql /docker-entrypoint-initdb.d/
