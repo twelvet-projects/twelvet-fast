@@ -101,7 +101,7 @@ public class LoginServiceImpl implements LoginService {
 		// 发送异步日志事件
 		Long deptId = sysUser.getDeptId();
 		SysLoginInfo sysLoginInfo = new SysLoginInfo();
-		sysLoginInfo.setStatus(SecurityConstants.LOGIN_FAIL);
+		sysLoginInfo.setStatus(SecurityConstants.LOGIN_SUCCESS);
 		sysLoginInfo.setUserName(username);
 		sysLoginInfo.setDeptId(deptId);
 		sysLoginInfo.setIpaddr(IpUtils.getIpAddr());
@@ -110,6 +110,7 @@ public class LoginServiceImpl implements LoginService {
 		if (sysUser.getStatus().equals("1")) {
 			String error = "账号已被冻结";
 			sysLoginInfo.setMsg(error);
+			sysLoginInfo.setStatus(SecurityConstants.LOGIN_FAIL);
 			throw new TWTException(error);
 		}
 
