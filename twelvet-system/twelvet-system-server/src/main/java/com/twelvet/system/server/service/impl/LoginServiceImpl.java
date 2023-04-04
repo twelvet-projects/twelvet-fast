@@ -111,6 +111,11 @@ public class LoginServiceImpl implements LoginService {
 			String error = "账号已被冻结";
 			sysLoginInfo.setMsg(error);
 			sysLoginInfo.setStatus(SecurityConstants.LOGIN_FAIL);
+			// 发送异步日志事件
+			sysLoginInfo.setCreateTime(DateUtils.getNowDate());
+			sysLoginInfo.setCreateBy(username);
+			sysLoginInfo.setUpdateBy(username);
+			SpringContextHolder.publishEvent(new SysLoginLogEvent(sysLoginInfo));
 			throw new TWTException(error);
 		}
 
