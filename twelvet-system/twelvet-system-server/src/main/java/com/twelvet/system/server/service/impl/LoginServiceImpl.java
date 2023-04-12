@@ -94,7 +94,7 @@ public class LoginServiceImpl implements LoginService {
 	 */
 	private SysUser loadUserByUsername(String username) {
 		SysUser sysUser = userMapper.selectUserByUserName(username);
-		if (TUtils.isEmpty(username)) {
+		if (TUtils.isEmpty(sysUser)) {
 			throw new TWTException("登录用户：" + username + " 不存在.");
 		}
 
