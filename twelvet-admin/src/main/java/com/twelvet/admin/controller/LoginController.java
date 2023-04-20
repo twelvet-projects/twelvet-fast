@@ -16,7 +16,7 @@ import java.util.Map;
 
 /**
  * @author twelvet
- * @WebSite www.twelvet.cn
+ * @WebSite twelvet.cn
  * @Description: 登录控制器
  */
 @RestController

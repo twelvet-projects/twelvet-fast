@@ -11,7 +11,7 @@ import java.util.List;
 
 /**
  * @author twelvet
- * @WebSite www.twelvet.cn
+ * @WebSite twelvet.cn
  * @Description: sa-token 权限管理实现类
  */
 @Component

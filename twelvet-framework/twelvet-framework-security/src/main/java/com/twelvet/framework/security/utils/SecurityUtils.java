@@ -7,7 +7,7 @@ import com.twelvet.framework.security.enums.DeviceType;
 
 /**
  * @author twelvet
- * @WebSite www.twelvet.cn
+ * @WebSite twelvet.cn
  * @Description: 安全工具类
  */
 public class SecurityUtils {

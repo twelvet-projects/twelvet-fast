@@ -7,7 +7,7 @@ import java.io.Serializable;
 
 /**
  * @author twelvet
- * @WebSite www.twelvet.cn
+ * @WebSite twelvet.cn
  * @Description: 用户信息
  */
 public class UserInfoVo implements Serializable {

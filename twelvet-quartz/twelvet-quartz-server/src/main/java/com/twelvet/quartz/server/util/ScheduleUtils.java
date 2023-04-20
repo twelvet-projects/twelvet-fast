@@ -10,7 +10,7 @@ import org.quartz.*;
 
 /**
  * @author twelvet
- * @WebSite www.twelvet.cn
+ * @WebSite twelvet.cn
  * @Description: 定时任务工具类
  */
 public class ScheduleUtils {

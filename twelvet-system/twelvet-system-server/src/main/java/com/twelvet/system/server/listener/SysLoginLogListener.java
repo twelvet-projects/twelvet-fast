@@ -11,7 +11,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * @author twelvet
- * @WebSite www.twelvet.cn
+ * @WebSite twelvet.cn
  * @Description: 异步监听系统登录日志事件
  */
 @Component

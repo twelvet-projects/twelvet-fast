@@ -4,7 +4,7 @@ import cn.dev33.satoken.secure.BCrypt;
 
 /**
  * @author twelvet
- * @WebSite www.twelvet.cn
+ * @WebSite twelvet.cn
  * @Description: 工具测试
  */
 public class UtilsTest {

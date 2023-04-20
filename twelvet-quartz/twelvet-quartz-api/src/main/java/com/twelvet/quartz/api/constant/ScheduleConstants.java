@@ -2,7 +2,7 @@ package com.twelvet.quartz.api.constant;
 
 /**
  * @author twelvet
- * @WebSite www.twelvet.cn
+ * @WebSite twelvet.cn
  * @Description: 任务调度通用常量
  */
 public class ScheduleConstants {

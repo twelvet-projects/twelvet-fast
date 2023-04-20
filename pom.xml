@@ -9,12 +9,12 @@
     <version>1.0.0</version>
 
     <name>twelvet</name>
-    <url>https://www.twelvet.cn</url>
+    <url>https://twelvet.cn</url>
     <description>TwelveT 极速开发后台管理系统</description>
 
     <organization>
         <name>twelvet</name>
-        <url>https://www.twelvet.cn</url>
+        <url>https://twelvet.cn</url>
     </organization>
 
     <licenses>

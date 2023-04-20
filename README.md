@@ -11,16 +11,16 @@
 
 <table>
     <tr>
-        <td><img src="https://www.twelvet.cn/assets/images/twelvet/1.png"/></td>
-        <td><img src="https://www.twelvet.cn/assets/images/twelvet/2.png"/></td>
+        <td><img src="https://twelvet.cn/assets/images/twelvet/1.png"/></td>
+        <td><img src="https://twelvet.cn/assets/images/twelvet/2.png"/></td>
     </tr>
     <tr>
-        <td><img src="https://www.twelvet.cn/assets/images/twelvet/3.png"/></td>
-        <td><img src="https://www.twelvet.cn/assets/images/twelvet/4.png"/></td>
+        <td><img src="https://twelvet.cn/assets/images/twelvet/3.png"/></td>
+        <td><img src="https://twelvet.cn/assets/images/twelvet/4.png"/></td>
     </tr>
     <tr>
-        <td><img src="https://www.twelvet.cn/assets/images/twelvet/5.png"/></td>
-        <td><img src="https://www.twelvet.cn/assets/images/twelvet/6.png"/></td>
+        <td><img src="https://twelvet.cn/assets/images/twelvet/5.png"/></td>
+        <td><img src="https://twelvet.cn/assets/images/twelvet/6.png"/></td>
     </tr>
 </table>
 

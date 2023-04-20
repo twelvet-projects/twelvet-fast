@@ -5,7 +5,7 @@ import com.twelvet.system.api.domain.vo.LoginVO;
 
 /**
  * @author twelvet
- * @WebSite www.twelvet.cn
+ * @WebSite twelvet.cn
  * @Description: 登录服务
  */
 public interface LoginService {

@@ -11,7 +11,7 @@ import java.util.Date;
 
 /**
  * @author twelvet
- * @WebSite www.twelvet.cn
+ * @WebSite twelvet.cn
  * @Description: 基础控制器
  */
 public class TWTController {

@@ -6,7 +6,7 @@ import java.lang.annotation.*;
 
 /**
  * @author twelvet
- * @WebSite www.twelvet.cn
+ * @WebSite twelvet.cn
  * @Description: 从库数据源
  */
 @Target({ ElementType.TYPE, ElementType.METHOD })
