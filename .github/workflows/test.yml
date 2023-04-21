@@ -23,6 +23,11 @@ jobs:
           distribution: zulu
           cache: maven
 
+      - name: End
+        run: |
+          echo "Failed to start my-service!"
+          exit 1
+
       - name: mvn spring-javaformat:validate
         run: mvn spring-javaformat:validate
 
