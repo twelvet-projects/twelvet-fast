@@ -23,11 +23,6 @@ jobs:
           distribution: zulu
           cache: maven
 
-      - name: End
-        run: |
-          echo "Failed to start my-service!"
-          exit 1
-
       - name: mvn spring-javaformat:validate
         run: mvn spring-javaformat:validate
 
@@ -42,3 +37,7 @@ jobs:
 
       - name: Start Server
         run: cd docker && ./deploy.sh server
+
+      - name: Server Check
+        run: |
+          docker-compose ps twelvet-admin | grep -E '(Exit|Restarting)' && (docker logs --tail 200 twelvet-admin; docker-compose down; exit 1)
