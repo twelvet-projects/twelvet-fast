@@ -40,4 +40,5 @@ jobs:
 
       - name: Server Check
         run: |
-          cd docker && && docker-compose ps twelvet-admin | grep -E '(Exit|Restarting)' && (docker logs --tail 200 twelvet-admin; docker-compose down; exit 1)
+          cd docker
+          docker-compose ps twelvet-admin | grep -E '(Exit|Restarting)' && (docker logs --tail 200 twelvet-admin; docker-compose down; exit 1)
