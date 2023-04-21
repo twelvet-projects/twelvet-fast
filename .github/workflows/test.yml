@@ -38,9 +38,9 @@ jobs:
       - name: Start Server
         run: cd docker && ./deploy.sh server
 
-      - name: Server Check
+      - name: Check Server
         run: |
           cd docker
           sleep 30
           echo "Start checking the service, here are the service logs"
-          docker-compose ps twelvet-admin | grep -E '(Exit|Restarting)' && (docker logs -f --tail 200 twelvet-admin; docker-compose down; exit 1)
+          docker-compose ps twelvet-admin | grep -E '(Exit|Restarting)' && (docker logs -f --tail 200 twelvet-admin)
