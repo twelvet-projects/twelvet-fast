@@ -43,4 +43,4 @@ jobs:
           cd docker
           sleep 30
           echo "Start checking the service, here are the service logs"
-          docker-compose ps twelvet-admin
+          docker log --tail 200 twelvet-admin
