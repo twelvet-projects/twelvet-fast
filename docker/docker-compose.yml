@@ -22,7 +22,7 @@ services:
     ]
     environment:
       MYSQL_ROOT_HOST: "%"
-      MYSQL_ROOT_PASSWORD: chat@2023
+      MYSQL_ROOT_PASSWORD: 123456
 
   twelvet-redis:
     container_name: twelvet-redis
