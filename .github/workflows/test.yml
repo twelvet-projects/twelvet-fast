@@ -38,6 +38,14 @@ jobs:
       - name: Start Server
         run: cd docker && ./deploy.sh server
 
+      - name: Check Server twelvet-mysql
+        run: |
+          docker logs --tail 500 twelvet-mysql
+
+      - name: Check Server twelvet-redis
+        run: |
+          docker logs --tail 500 twelvet-redis
+
       - name: Check Server
         run: |
           cd docker
