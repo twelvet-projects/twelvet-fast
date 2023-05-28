@@ -73,7 +73,7 @@ public class ServletUtils {
 	 */
 	public static Optional<HttpServletRequest> getRequest() {
 		return Optional
-				.ofNullable(((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest());
+			.ofNullable(((ServletRequestAttributes) RequestContextHolder.getRequestAttributes()).getRequest());
 	}
 
 	/**

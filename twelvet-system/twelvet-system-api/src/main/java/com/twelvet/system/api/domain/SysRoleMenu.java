@@ -49,7 +49,8 @@ public class SysRoleMenu implements Serializable {
 	@Override
 	public String toString() {
 		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("roleId", getRoleId())
-				.append("menuId", getMenuId()).toString();
+			.append("menuId", getMenuId())
+			.toString();
 	}
 
 }

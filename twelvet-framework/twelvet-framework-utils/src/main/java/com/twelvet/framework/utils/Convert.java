@@ -462,14 +462,14 @@ public class Convert {
 		}
 		valueStr = valueStr.trim().toLowerCase();
 		return switch (valueStr) {
-		case "true" -> true;
-		case "false" -> false;
-		case "yes" -> true;
-		case "ok" -> true;
-		case "no" -> false;
-		case "1" -> true;
-		case "0" -> false;
-		default -> defaultValue;
+			case "true" -> true;
+			case "false" -> false;
+			case "yes" -> true;
+			case "ok" -> true;
+			case "no" -> false;
+			case "1" -> true;
+			case "0" -> false;
+			default -> defaultValue;
 		};
 	}
 
@@ -812,8 +812,11 @@ public class Convert {
 			}
 			s.insert(0, p.replaceAll("(零.)*零$", "").replaceAll("^$", "零") + unit[0][i]);
 		}
-		return head + s.toString().replaceAll("(零.)*零元", "元").replaceFirst("(零.)+", "").replaceAll("(零.)+", "零")
-				.replaceAll("^整$", "零元整");
+		return head + s.toString()
+			.replaceAll("(零.)*零元", "元")
+			.replaceFirst("(零.)+", "")
+			.replaceAll("(零.)+", "零")
+			.replaceAll("^整$", "零元整");
 	}
 
 }
