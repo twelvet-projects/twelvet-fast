@@ -61,7 +61,7 @@
 
         <poi.version>5.2.3</poi.version>
         <commons.io.version>2.11.0</commons.io.version>
-        <hutool.version>5.8.15</hutool.version>
+        <hutool.version>5.8.19</hutool.version>
 
         <docker.plugin.version>0.32.0</docker.plugin.version>
         <spring.checkstyle.plugin>0.0.39</spring.checkstyle.plugin>
