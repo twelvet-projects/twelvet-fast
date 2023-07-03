@@ -62,8 +62,6 @@ security:
       - /doc.html
       - /*/api-docs
       - /*/api-docs/**
-      # druid 监控配置
-      - /druid/**
 
 # Mybatis配置
 mybatis:
