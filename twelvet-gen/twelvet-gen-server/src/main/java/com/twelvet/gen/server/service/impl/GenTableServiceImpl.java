@@ -224,7 +224,7 @@ public class GenTableServiceImpl implements IGenTableService {
 		// 获取模板列表
 		List<String> templates = VelocityUtils.getTemplateList(table.getTplCategory());
 		for (String template : templates) {
-			if (!StringUtils.containsAny(template, "sql.vm", "api.ts.vm", "index.tsx.vm", "index-tree.tsx.vm")) {
+			if (!StringUtils.containsAny(template, "sql.vm", "service.ts.vm", "index.tsx.vm", "index-tree.tsx.vm")) {
 				// 渲染模板
 				StringWriter sw = new StringWriter();
 				Template tpl = Velocity.getTemplate(template, Constants.UTF8);
@@ -265,8 +265,8 @@ public class GenTableServiceImpl implements IGenTableService {
 		});
 
 		List<GenTableColumn> delColumns = tableColumns.stream()
-			.filter(column -> !dbTableColumnNames.contains(column.getColumnName()))
-			.collect(Collectors.toList());
+				.filter(column -> !dbTableColumnNames.contains(column.getColumnName()))
+				.collect(Collectors.toList());
 		if (StringUtils.isNotEmpty(delColumns)) {
 			genTableColumnMapper.deleteGenTableColumns(delColumns);
 		}
@@ -401,7 +401,7 @@ public class GenTableServiceImpl implements IGenTableService {
 			String treeCode = paramsObj.get(GenConstants.TREE_CODE);
 			String treeParentCode = paramsObj.get(GenConstants.TREE_PARENT_CODE);
 			String treeName = paramsObj.get(GenConstants.TREE_NAME);
-			Long parentMenuId = Long.valueOf(paramsObj.get(GenConstants.PARENT_MENU_ID));
+			String parentMenuId = paramsObj.get(GenConstants.PARENT_MENU_ID);
 			String parentMenuName = paramsObj.get(GenConstants.PARENT_MENU_NAME);
 
 			genTable.setTreeCode(treeCode);
