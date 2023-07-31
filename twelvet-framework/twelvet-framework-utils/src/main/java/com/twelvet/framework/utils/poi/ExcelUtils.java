@@ -397,6 +397,8 @@ public class ExcelUtils<T> {
 	public void exportExcel(HttpServletResponse response) {
 		try {
 			writeSheet();
+			response.setHeader("Access-Control-Allow-Origin", "*");
+			response.setHeader("Access-Control-Expose-Headers", "Content-Disposition");
 			wb.write(response.getOutputStream());
 		}
 		catch (Exception e) {

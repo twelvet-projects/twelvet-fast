@@ -37,7 +37,7 @@ import com.twelvet.framework.jdbc.web.utils.PageUtils;
  */
 @Tag(description = "${ClassName}Controller", name = "${functionName}")
 @RestController
-@RequestMapping("/${businessName}")
+@RequestMapping("/${moduleName}/${businessName}")
 public class ${ClassName}Controller extends TWTController
 {
     @Autowired
@@ -48,7 +48,7 @@ public class ${ClassName}Controller extends TWTController
      */
     @Operation(summary = "查询${functionName}列表")
     @SaCheckPermission("${permissionPrefix}:list")
-    @GetMapping("/list")
+    @GetMapping("/pageQuery")
     #if($table.crud || $table.sub)
     public JsonResult<TableDataInfo> list(${ClassName} ${className})
     {
