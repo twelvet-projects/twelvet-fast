@@ -86,12 +86,9 @@ public class SysProfileController extends TWTController {
 	 */
 
 	@Operation(summary = "修改用户头像")
-
 	@Log(service = "用户头像", businessType = BusinessType.UPDATE)
-
 	@PostMapping("/avatar")
 	public AjaxResult avatar(@RequestParam("avatarFile") MultipartFile file) {
-
 		try {
 			// 上传并返回访问地址
 			SysDfs sysDfs = sysFileService.uploadFile(file);
