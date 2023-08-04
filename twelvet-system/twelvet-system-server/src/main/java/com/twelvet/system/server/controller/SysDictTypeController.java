@@ -49,7 +49,6 @@ public class SysDictTypeController extends TWTController {
 
 	/**
 	 * 数据字典导出
-	 *
 	 * @param dictType SysDictType
 	 * @return List<SysDictType>
 	 */
