@@ -1,5 +1,6 @@
 package com.twelvet.system.server.controller;
 
+import cn.twelvet.excel.annotation.ResponseExcel;
 import com.twelvet.system.api.domain.SysDictType;
 import com.twelvet.framework.core.application.controller.TWTController;
 import com.twelvet.framework.core.application.domain.JsonResult;
@@ -9,7 +10,6 @@ import com.twelvet.framework.jdbc.web.utils.PageUtils;
 import com.twelvet.framework.log.annotation.Log;
 import com.twelvet.framework.log.enums.BusinessType;
 import com.twelvet.framework.security.utils.SecurityUtils;
-import com.twelvet.framework.utils.poi.ExcelUtils;
 import com.twelvet.system.server.service.ISysDictTypeService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
@@ -18,7 +18,6 @@ import cn.dev33.satoken.annotation.SaCheckPermission;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -50,17 +49,17 @@ public class SysDictTypeController extends TWTController {
 
 	/**
 	 * 数据字典导出
-	 * @param response HttpServletResponse
+	 *
 	 * @param dictType SysDictType
+	 * @return List<SysDictType>
 	 */
+	@ResponseExcel(name = "字典类型")
 	@Operation(summary = "数据字典导出")
 	@Log(service = "字典类型", businessType = BusinessType.EXPORT)
 	@PostMapping("/export")
 	@SaCheckPermission("system:dict:export")
-	public void export(HttpServletResponse response, @RequestBody SysDictType dictType) {
-		List<SysDictType> list = dictTypeService.selectDictTypeList(dictType);
-		ExcelUtils<SysDictType> excelUtils = new ExcelUtils<>(SysDictType.class);
-		excelUtils.exportExcel(response, list, "字典类型");
+	public List<SysDictType> export(@RequestBody SysDictType dictType) {
+		return dictTypeService.selectDictTypeList(dictType);
 	}
 
 	/**
