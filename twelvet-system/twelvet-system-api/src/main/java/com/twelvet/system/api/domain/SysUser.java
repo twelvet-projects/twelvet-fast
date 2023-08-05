@@ -1,5 +1,6 @@
 package com.twelvet.system.api.domain;
 
+import com.alibaba.excel.annotation.ExcelIgnore;
 import com.alibaba.excel.annotation.ExcelProperty;
 import com.twelvet.framework.core.application.domain.BaseEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
@@ -115,24 +116,28 @@ public class SysUser extends BaseEntity {
 	/**
 	 * 部门对象
 	 */
+	@ExcelIgnore
 	@Schema(description = "部门对象")
 	private SysDept dept;
 
 	/**
 	 * 角色对象
 	 */
+	@ExcelIgnore
 	@Schema(description = "角色对象")
 	private List<SysRole> roles;
 
 	/**
 	 * 角色组
 	 */
+	@ExcelIgnore
 	@Schema(description = "角色组")
 	private Long[] roleIds;
 
 	/**
 	 * 岗位组
 	 */
+	@ExcelIgnore
 	@Schema(description = "岗位组")
 	private Long[] postIds;
 
