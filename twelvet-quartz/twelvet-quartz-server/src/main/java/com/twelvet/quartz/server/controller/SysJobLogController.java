@@ -1,13 +1,13 @@
 package com.twelvet.quartz.server.controller;
 
 import cn.dev33.satoken.annotation.SaCheckPermission;
+import cn.twelvet.excel.annotation.ResponseExcel;
 import com.twelvet.framework.core.application.controller.TWTController;
 import com.twelvet.framework.core.application.domain.JsonResult;
 import com.twelvet.framework.jdbc.web.page.TableDataInfo;
 import com.twelvet.framework.jdbc.web.utils.PageUtils;
 import com.twelvet.framework.log.annotation.Log;
 import com.twelvet.framework.log.enums.BusinessType;
-import com.twelvet.framework.utils.poi.ExcelUtils;
 import com.twelvet.quartz.api.domain.SysJobLog;
 import com.twelvet.quartz.server.service.ISysJobLogService;
 import io.swagger.v3.oas.annotations.Operation;
@@ -47,17 +47,16 @@ public class SysJobLogController extends TWTController {
 
 	/**
 	 * 导出定时任务调度日志列表
-	 * @param response HttpServletResponse
 	 * @param sysJobLog SysJobLog
+	 * @return List<SysJobLog>
 	 */
+	@ResponseExcel(name = "任务调度日志")
 	@Operation(summary = "导出定时任务调度日志列表")
 	@Log(service = "任务调度日志", businessType = BusinessType.EXPORT)
 	@PostMapping("/export")
 	@SaCheckPermission("system:job:export")
-	public void export(HttpServletResponse response, @RequestBody SysJobLog sysJobLog) {
-		List<SysJobLog> list = jobLogService.selectJobLogList(sysJobLog);
-		ExcelUtils<SysJobLog> excelUtils = new ExcelUtils<>(SysJobLog.class);
-		excelUtils.exportExcel(response, list, "调度日志");
+	public List<SysJobLog> export(@RequestBody SysJobLog sysJobLog) {
+		return jobLogService.selectJobLogList(sysJobLog);
 	}
 
 	/**

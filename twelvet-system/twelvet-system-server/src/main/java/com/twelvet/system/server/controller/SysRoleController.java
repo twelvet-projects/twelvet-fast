@@ -1,6 +1,7 @@
 package com.twelvet.system.server.controller;
 
-import com.twelvet.system.api.domain.SysRole;
+import cn.dev33.satoken.annotation.SaCheckPermission;
+import cn.twelvet.excel.annotation.ResponseExcel;
 import com.twelvet.framework.core.application.controller.TWTController;
 import com.twelvet.framework.core.application.domain.JsonResult;
 import com.twelvet.framework.core.constants.UserConstants;
@@ -9,16 +10,14 @@ import com.twelvet.framework.jdbc.web.utils.PageUtils;
 import com.twelvet.framework.log.annotation.Log;
 import com.twelvet.framework.log.enums.BusinessType;
 import com.twelvet.framework.security.utils.SecurityUtils;
-import com.twelvet.framework.utils.poi.ExcelUtils;
+import com.twelvet.system.api.domain.SysRole;
 import com.twelvet.system.server.service.ISysRoleService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import cn.dev33.satoken.annotation.SaCheckPermission;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
-import jakarta.servlet.http.HttpServletResponse;
 import java.util.List;
 
 /**
@@ -50,17 +49,16 @@ public class SysRoleController extends TWTController {
 
 	/**
 	 * 数据导出
-	 * @param response HttpServletResponse
 	 * @param role SysRole
+	 * @return List<SysRole>
 	 */
+	@ResponseExcel(name = "角色管理")
 	@Operation(summary = "数据导出")
 	@Log(service = "角色管理", businessType = BusinessType.EXPORT)
 	@PostMapping("/export")
 	@SaCheckPermission("system:role:export")
-	public void export(HttpServletResponse response, @RequestBody SysRole role) {
-		List<SysRole> list = iSysRoleService.selectRoleList(role);
-		ExcelUtils<SysRole> excelUtils = new ExcelUtils<>(SysRole.class);
-		excelUtils.exportExcel(response, list, "角色数据");
+	public List<SysRole> export(@RequestBody SysRole role) {
+		return iSysRoleService.selectRoleList(role);
 	}
 
 	/**

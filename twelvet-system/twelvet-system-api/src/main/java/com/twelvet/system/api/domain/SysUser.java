@@ -1,17 +1,14 @@
 package com.twelvet.system.api.domain;
 
+import com.alibaba.excel.annotation.ExcelProperty;
 import com.twelvet.framework.core.application.domain.BaseEntity;
-import com.twelvet.framework.utils.annotation.excel.Excel;
-import com.twelvet.framework.utils.annotation.excel.Excel.ColumnType;
-import com.twelvet.framework.utils.annotation.excel.Excel.Type;
-import com.twelvet.framework.utils.annotation.excel.Excels;
 import io.swagger.v3.oas.annotations.media.Schema;
-import org.apache.commons.lang3.builder.ToStringBuilder;
-import org.apache.commons.lang3.builder.ToStringStyle;
-
 import jakarta.validation.constraints.Email;
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+import org.apache.commons.lang3.builder.ToStringBuilder;
+import org.apache.commons.lang3.builder.ToStringStyle;
+
 import java.io.Serial;
 import java.util.Date;
 import java.util.List;
@@ -31,49 +28,49 @@ public class SysUser extends BaseEntity {
 	 * 用户ID
 	 */
 	@Schema(description = "用户ID")
-	@Excel(name = "用户序号", cellType = ColumnType.NUMERIC, prompt = "用户编号")
+	@ExcelProperty(value = "用户序号")
 	private Long userId;
 
 	/**
 	 * 部门ID
 	 */
 	@Schema(description = "部门ID")
-	@Excel(name = "部门编号", type = Type.IMPORT)
+	@ExcelProperty(value = "部门编号")
 	private Long deptId;
 
 	/**
 	 * 用户账号
 	 */
 	@Schema(description = "用户账号")
-	@Excel(name = "登录名称")
+	@ExcelProperty(value = "登录名称")
 	private String username;
 
 	/**
 	 * 用户昵称
 	 */
 	@Schema(description = "用户昵称")
-	@Excel(name = "用户名称")
+	@ExcelProperty(value = "用户名称")
 	private String nickName;
 
 	/**
 	 * 用户邮箱
 	 */
 	@Schema(description = "用户邮箱")
-	@Excel(name = "用户邮箱")
+	@ExcelProperty(value = "用户邮箱")
 	private String email;
 
 	/**
 	 * 手机号码
 	 */
 	@Schema(description = "手机号码")
-	@Excel(name = "手机号码")
+	@ExcelProperty(value = "手机号码")
 	private String phonenumber;
 
 	/**
 	 * 用户性别
 	 */
 	@Schema(description = "用户性别")
-	@Excel(name = "用户性别", readConverterExp = "0=男,1=女,2=未知")
+	@ExcelProperty(value = "用户性别(0=男,1=女,2=未知)")
 	private String sex;
 
 	/**
@@ -92,7 +89,7 @@ public class SysUser extends BaseEntity {
 	 * 帐号状态（0正常 1停用）
 	 */
 	@Schema(description = "帐号状态")
-	@Excel(name = "帐号状态", readConverterExp = "0=正常,1=停用")
+	@ExcelProperty(value = "帐号状态(0=正常,1=停用)")
 	private String status;
 
 	/**
@@ -105,22 +102,20 @@ public class SysUser extends BaseEntity {
 	 * 最后登录IP
 	 */
 	@Schema(description = "最后登录IP")
-	@Excel(name = "最后登录IP", type = Type.EXPORT)
+	@ExcelProperty(value = "最后登录IP")
 	private String loginIp;
 
 	/**
 	 * 最后登录时间
 	 */
 	@Schema(description = "最后登录时间")
-	@Excel(name = "最后登录时间", width = 30, dateFormat = "yyyy-MM-dd HH:mm:ss", type = Type.EXPORT)
+	@ExcelProperty(value = "最后登录时间")
 	private Date loginDate;
 
 	/**
 	 * 部门对象
 	 */
 	@Schema(description = "部门对象")
-	@Excels({ @Excel(name = "部门名称", targetAttr = "deptName", type = Type.EXPORT),
-			@Excel(name = "部门负责人", targetAttr = "leader", type = Type.EXPORT) })
 	private SysDept dept;
 
 	/**

@@ -1,9 +1,9 @@
 package com.twelvet.system.server.controller;
 
+import cn.dev33.satoken.annotation.SaCheckPermission;
 import cn.dev33.satoken.secure.BCrypt;
-import com.twelvet.system.api.domain.SysMenu;
-import com.twelvet.system.api.domain.SysRole;
-import com.twelvet.system.api.domain.SysUser;
+import cn.twelvet.excel.annotation.RequestExcel;
+import cn.twelvet.excel.annotation.ResponseExcel;
 import com.twelvet.framework.core.application.controller.TWTController;
 import com.twelvet.framework.core.application.domain.AjaxResult;
 import com.twelvet.framework.core.application.domain.JsonResult;
@@ -15,21 +15,21 @@ import com.twelvet.framework.log.enums.BusinessType;
 import com.twelvet.framework.security.utils.SecurityUtils;
 import com.twelvet.framework.utils.StringUtils;
 import com.twelvet.framework.utils.TUtils;
-import com.twelvet.framework.utils.poi.ExcelUtils;
-import com.twelvet.system.server.service.*;
+import com.twelvet.system.api.domain.SysRole;
+import com.twelvet.system.api.domain.SysUser;
+import com.twelvet.system.server.service.ISysPermissionService;
+import com.twelvet.system.server.service.ISysPostService;
+import com.twelvet.system.server.service.ISysRoleService;
+import com.twelvet.system.server.service.ISysUserService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import jakarta.servlet.http.HttpServletResponse;
 import org.springframework.beans.factory.annotation.Autowired;
-import cn.dev33.satoken.annotation.SaCheckPermission;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
-import jakarta.servlet.http.HttpServletResponse;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
-import java.util.Set;
+import java.util.*;
 import java.util.stream.Collectors;
 
 /**
@@ -70,22 +70,21 @@ public class SysUserController extends TWTController {
 
 	/**
 	 * 用户用户导出
-	 * @param response HttpServletResponse
 	 * @param user SysUser
+	 * @return List<SysUser>
 	 */
+	@ResponseExcel(name = "用户管理")
 	@Operation(summary = "用户用户导出")
 	@PostMapping("/export")
 	@Log(service = "用户管理", businessType = BusinessType.EXPORT)
 	@SaCheckPermission("system:user:export")
-	public void export(HttpServletResponse response, @RequestBody SysUser user) {
-		List<SysUser> list = iSysUserService.selectUserList(user);
-		ExcelUtils<SysUser> excelUtils = new ExcelUtils<>(SysUser.class);
-		excelUtils.exportExcel(response, list, "用户数据");
+	public List<SysUser> export(@RequestBody SysUser user) {
+		return iSysUserService.selectUserList(user);
 	}
 
 	/**
 	 * 用户数据导入
-	 * @param files MultipartFile[]
+	 * @param userList List<SysUser>
 	 * @param cover 是否允许覆盖
 	 * @return JsonResult<String>
 	 * @throws Exception Exception
@@ -94,26 +93,20 @@ public class SysUserController extends TWTController {
 	@PostMapping("/importData")
 	@Log(service = "用户管理", businessType = BusinessType.IMPORT)
 	@SaCheckPermission("system:user:import")
-	public JsonResult<String> importData(MultipartFile[] files, boolean cover) throws Exception {
-		ExcelUtils<SysUser> excelUtils = new ExcelUtils<>(SysUser.class);
-		// 支持多数据源导入
-		for (MultipartFile file : files) {
-			List<SysUser> userList = excelUtils.importExcel(file.getInputStream());
-			String operName = SecurityUtils.getUsername();
-			iSysUserService.importUser(userList, cover, operName);
-		}
+	public JsonResult<String> importData(@RequestExcel List<SysUser> userList, boolean cover) throws Exception {
+		String operName = SecurityUtils.getUsername();
+		iSysUserService.importUser(userList, cover, operName);
 		return JsonResult.success();
 	}
 
 	/**
 	 * 导出模板
-	 * @param response HttpServletResponse
 	 */
+	@ResponseExcel(name = "导出模板")
 	@Operation(summary = "导出模板")
 	@PostMapping("/exportTemplate")
-	public void exportTemplate(HttpServletResponse response) {
-		ExcelUtils<SysUser> excelUtils = new ExcelUtils<>(SysUser.class);
-		excelUtils.exportExcel(response, "用户数据");
+	public List<SysUser> exportTemplate() {
+		return List.of(new SysUser());
 	}
 
 	/**

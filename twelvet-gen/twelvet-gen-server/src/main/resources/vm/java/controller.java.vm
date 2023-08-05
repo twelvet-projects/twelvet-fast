@@ -22,7 +22,7 @@ import ${packageName}.service.I${ClassName}Service;
 import com.twelvet.framework.core.application.controller.TWTController;
 import com.twelvet.framework.core.application.domain.AjaxResult;
 import com.twelvet.framework.core.application.domain.JsonResult;
-import com.twelvet.framework.utils.poi.ExcelUtils;
+import cn.twelvet.excel.annotation.ResponseExcel;
 #if($table.crud || $table.sub)
 import com.twelvet.framework.jdbc.web.utils.PageUtils;
 #elseif($table.tree)
@@ -67,15 +67,14 @@ public class ${ClassName}Controller extends TWTController
     /**
      * 导出${functionName}列表
      */
+    @ResponseExcel(name = "${functionName}")
     @Operation(summary = "导出${functionName}列表")
     @SaCheckPermission("${permissionPrefix}:export")
     @Log(service = "${functionName}", businessType = BusinessType.EXPORT)
     @PostMapping("/export")
-    public void export(HttpServletResponse response, ${ClassName} ${className})
+    public List<${ClassName}> export(${ClassName} ${className})
     {
-        List<${ClassName}> list = ${className}Service.select${ClassName}List(${className});
-        ExcelUtils<${ClassName}> util = new ExcelUtils<${ClassName}>(${ClassName}.class);
-        util.exportExcel(response, list, "${functionName}数据");
+        return ${className}Service.select${ClassName}List(${className});
     }
 
     /**

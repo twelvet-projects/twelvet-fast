@@ -1,6 +1,7 @@
 package com.twelvet.quartz.server.controller;
 
 import cn.dev33.satoken.annotation.SaCheckPermission;
+import cn.twelvet.excel.annotation.ResponseExcel;
 import com.twelvet.framework.core.application.controller.TWTController;
 import com.twelvet.framework.core.application.domain.JsonResult;
 import com.twelvet.framework.core.constants.Constants;
@@ -10,7 +11,6 @@ import com.twelvet.framework.log.annotation.Log;
 import com.twelvet.framework.log.enums.BusinessType;
 import com.twelvet.framework.security.utils.SecurityUtils;
 import com.twelvet.framework.utils.StringUtils;
-import com.twelvet.framework.utils.poi.ExcelUtils;
 import com.twelvet.quartz.api.domain.SysJob;
 import com.twelvet.quartz.server.exception.TaskException;
 import com.twelvet.quartz.server.service.ISysJobService;
@@ -54,17 +54,16 @@ public class SysJobController extends TWTController {
 
 	/**
 	 * 导出定时任务列表
-	 * @param response HttpServletResponse
 	 * @param sysJob SysJob
+	 * @return List<SysJob>
 	 */
+	@ResponseExcel(name = "定时任务")
 	@Operation(summary = "导出定时任务列表")
 	@Log(service = "定时任务", businessType = BusinessType.EXPORT)
 	@PostMapping("/export")
 	@SaCheckPermission("monitor:job:export")
-	public void export(HttpServletResponse response, @RequestBody SysJob sysJob) {
-		List<SysJob> list = jobService.selectJobList(sysJob);
-		ExcelUtils<SysJob> excelUtils = new ExcelUtils<>(SysJob.class);
-		excelUtils.exportExcel(response, list, "定时任务");
+	public List<SysJob> export(@RequestBody SysJob sysJob) {
+		return jobService.selectJobList(sysJob);
 	}
 
 	/**

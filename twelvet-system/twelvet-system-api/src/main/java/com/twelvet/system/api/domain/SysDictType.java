@@ -8,6 +8,7 @@ import org.apache.commons.lang3.builder.ToStringStyle;
 
 import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.Size;
+
 import java.io.Serial;
 
 @Schema(description = "字典表")
@@ -20,28 +21,28 @@ public class SysDictType extends BaseEntity {
 	 * 字典主键
 	 */
 	@Schema(description = "字典主键")
-	@ExcelProperty("字典主键")
+	@ExcelProperty(value = "字典主键")
 	private Long dictId;
 
 	/**
 	 * 字典名称
 	 */
 	@Schema(description = "字典名称")
-	@ExcelProperty("字典名称")
+	@ExcelProperty(value = "字典名称")
 	private String dictName;
 
 	/**
 	 * 字典类型
 	 */
 	@Schema(description = "字典类型")
-	@ExcelProperty("字典类型")
+	@ExcelProperty(value = "字典类型")
 	private String dictType;
 
 	/**
 	 * 状态（0正常 1停用）
 	 */
 	@Schema(description = "状态")
-	@ExcelProperty("状态（0-正常 1-停用）")
+	@ExcelProperty(value = "状态（0-正常 1-停用）")
 	private String status;
 
 	public Long getDictId() {
