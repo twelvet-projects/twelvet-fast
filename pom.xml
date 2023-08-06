@@ -56,7 +56,7 @@
         <velocity.version>2.3</velocity.version>
         <redisson.version>3.20.0</redisson.version>
         <spring-boot.mybatis>3.0.1</spring-boot.mybatis>
-        <excel-spring-boot-starter.version>3.0.0</excel-spring-boot-starter.version>
+        <excel-spring-boot-starter.version>3.0.1</excel-spring-boot-starter.version>
 
         <pagehelper.boot.version>1.4.6</pagehelper.boot.version>
 
