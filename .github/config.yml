@@ -1,5 +1,5 @@
 blank_issues_enabled: false
 contact_links:
   - name: Issues
-    url: https://github.com/twelvet-s/twelvet/issues/new/choose
+    url: https://github.com/twelvet-s/twelvet/issues
     about: Please submit issues in this repository.
