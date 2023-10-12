@@ -5,7 +5,7 @@
 - jdk >= 17
 - maven >= 3.8
 
-前端源码：https://gitee.com/twelvet/twelvet-ui-react
+前端源码：https://github.com/twelvet-s/twelvet-ui
 
 ## 演示图
 
