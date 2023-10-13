@@ -117,12 +117,18 @@ gen:
   # 表前缀（生成类名不会包含表前缀，多个用逗号分隔）
   tablePrefix: sys_
 
-##qiniu账户信息配置##
+# 通用OSS S3配置
 oss:
-  qiniu:
-    ## key
-    accessKey: accessKey
-    # 秘钥
-    secretKey: secretKey
-    # 储存桶
-    bucketName: twelvet
+  # 开启ossTemplte（默认开启）
+  enable: true
+  accessKey: twelvet
+  secretKey: twelvet
+  region: us-east-2
+  bucketName: twelvet-static
+  endpoint: s3.us-east-2.amazonaws.com
+  # 自带controller
+  http:
+    # 是否开启（默认关闭）
+    enable: false
+    prefix: /s3
+
