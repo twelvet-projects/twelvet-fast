@@ -55,6 +55,12 @@
             <artifactId>twelvet-framework-log</artifactId>
         </dependency>
 
+        <!--幂等-->
+        <dependency>
+            <groupId>cn.twelvet</groupId>
+            <artifactId>idempotent-spring-boot-starter</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>

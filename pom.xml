@@ -155,6 +155,34 @@
                 <version>${sa-token.version}</version>
             </dependency>
 
+            <!--Excel-->
+            <dependency>
+                <groupId>cn.twelvet</groupId>
+                <artifactId>excel-spring-boot-starter</artifactId>
+                <version>${excel-spring-boot-starter.version}</version>
+            </dependency>
+
+            <!--幂等-->
+            <dependency>
+                <groupId>cn.twelvet</groupId>
+                <artifactId>idempotent-spring-boot-starter</artifactId>
+                <version>${idempotent-spring-boot-starter.version}</version>
+            </dependency>
+
+            <!--通用OSS-->
+            <dependency>
+                <groupId>cn.twelvet</groupId>
+                <artifactId>oss-spring-boot-starter</artifactId>
+                <version>${oss-spring-boot-starter.version}</version>
+            </dependency>
+
+            <!--XSS-->
+            <dependency>
+                <groupId>cn.twelvet</groupId>
+                <artifactId>xss-spring-boot-starter</artifactId>
+                <version>${xss-spring-boot-starter.version}</version>
+            </dependency>
+
             <!--swagger-->
             <dependency>
                 <groupId>org.springdoc</groupId>
@@ -306,34 +334,6 @@
     </dependencyManagement>
 
     <dependencies>
-
-        <!--Excel-->
-        <dependency>
-            <groupId>cn.twelvet</groupId>
-            <artifactId>excel-spring-boot-starter</artifactId>
-            <version>${excel-spring-boot-starter.version}</version>
-        </dependency>
-
-        <!--幂等-->
-        <dependency>
-            <groupId>cn.twelvet</groupId>
-            <artifactId>idempotent-spring-boot-starter</artifactId>
-            <version>${idempotent-spring-boot-starter.version}</version>
-        </dependency>
-
-        <!--通用OSS-->
-        <dependency>
-            <groupId>cn.twelvet</groupId>
-            <artifactId>oss-spring-boot-starter</artifactId>
-            <version>${oss-spring-boot-starter.version}</version>
-        </dependency>
-
-        <!--XSS-->
-        <dependency>
-            <groupId>cn.twelvet</groupId>
-            <artifactId>xss-spring-boot-starter</artifactId>
-            <version>${xss-spring-boot-starter.version}</version>
-        </dependency>
 
         <!--配置文件处理器元数据提示-->
         <dependency>
