@@ -63,6 +63,12 @@
             <artifactId>sa-token-spring-boot3-starter</artifactId>
         </dependency>
 
+        <!--XSS-->
+        <dependency>
+            <groupId>cn.twelvet</groupId>
+            <artifactId>xss-spring-boot-starter</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>
