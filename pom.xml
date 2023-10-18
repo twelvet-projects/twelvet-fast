@@ -141,13 +141,6 @@
                 <version>${springdoc.version}</version>
             </dependency>
 
-            <!--通用OSS-->
-            <dependency>
-                <groupId>cn.twelvet.oss</groupId>
-                <artifactId>oss-spring-boot-starter</artifactId>
-                <version>${oss-spring-boot-starter.version}</version>
-            </dependency>
-
             <!-- Sa-Token安全框架 -->
             <dependency>
                 <groupId>cn.dev33</groupId>
@@ -328,11 +321,18 @@
             <version>${idempotent-spring-boot-starter.version}</version>
         </dependency>
 
-        <!--Excel-->
+        <!--通用OSS-->
         <dependency>
             <groupId>cn.twelvet</groupId>
-            <artifactId>excel-spring-boot-starter</artifactId>
-            <version>${excel-spring-boot-starter.version}</version>
+            <artifactId>oss-spring-boot-starter</artifactId>
+            <version>${oss-spring-boot-starter.version}</version>
+        </dependency>
+
+        <!--XSS-->
+        <dependency>
+            <groupId>cn.twelvet</groupId>
+            <artifactId>xss-spring-boot-starter</artifactId>
+            <version>${xss-spring-boot-starter.version}</version>
         </dependency>
 
         <!--配置文件处理器元数据提示-->
