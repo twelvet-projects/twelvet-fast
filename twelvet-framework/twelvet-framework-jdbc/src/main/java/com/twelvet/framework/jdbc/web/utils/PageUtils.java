@@ -34,15 +34,13 @@ public class PageUtils {
 
 	/**
 	 * 响应请求分页数据
+	 *
 	 * @param list 数据列表
 	 * @return 适应Json
 	 */
-	public static TableDataInfo getDataTable(List<?> list) {
-		TableDataInfo rspData = new TableDataInfo();
-		rspData.setRecords(list);
+	public static <T> TableDataInfo<T> getDataTable(List<T> list) {
 		PageInfo<?> pageInfo = new PageInfo<>(list);
-		rspData.setTotal(pageInfo.getTotal());
-		return rspData;
+        return  TableDataInfo.page(list, pageInfo.getTotal());
 	}
 
 }

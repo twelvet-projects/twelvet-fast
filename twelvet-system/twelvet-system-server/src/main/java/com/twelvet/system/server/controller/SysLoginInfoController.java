@@ -39,7 +39,7 @@ public class SysLoginInfoController extends TWTController {
 	@Operation(summary = "登录日志查询")
 	@GetMapping("/pageQuery")
 	@SaCheckPermission("system:logininfor:list")
-	public JsonResult<TableDataInfo> pageQuery(SysLoginInfo loginInfo) {
+	public JsonResult<TableDataInfo<SysLoginInfo>> pageQuery(SysLoginInfo loginInfo) {
 		PageUtils.startPage();
 		List<SysLoginInfo> list = iSysLoginInfoService.selectLoginInfoList(loginInfo);
 		return JsonResult.success(PageUtils.getDataTable(list));

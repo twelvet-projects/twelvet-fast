@@ -4,6 +4,7 @@ import io.swagger.v3.oas.annotations.media.Schema;
 
 import org.springframework.http.HttpStatus;
 
+import java.io.Serial;
 import java.io.Serializable;
 
 /**
@@ -14,6 +15,7 @@ import java.io.Serializable;
 @Schema(description = "统一操作信息实体")
 public class JsonResult<T> implements Serializable {
 
+	@Serial
 	private static final long serialVersionUID = 1L;
 
 	/**
