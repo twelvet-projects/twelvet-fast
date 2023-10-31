@@ -34,13 +34,12 @@ public class PageUtils {
 
 	/**
 	 * 响应请求分页数据
-	 *
 	 * @param list 数据列表
 	 * @return 适应Json
 	 */
 	public static <T> TableDataInfo<T> getDataTable(List<T> list) {
 		PageInfo<?> pageInfo = new PageInfo<>(list);
-        return  TableDataInfo.page(list, pageInfo.getTotal());
+		return TableDataInfo.page(list, pageInfo.getTotal());
 	}
 
 }
