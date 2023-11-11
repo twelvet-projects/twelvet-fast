@@ -1,7 +1,7 @@
 package com.twelvet.dfs.server.service.impl;
 
-import cn.twelvet.oss.config.properties.OssProperties;
-import cn.twelvet.oss.service.OssTemplate;
+import com.pig4cloud.plugin.oss.OssProperties;
+import com.pig4cloud.plugin.oss.service.OssTemplate;
 import com.twelvet.dfs.api.domain.SysDfs;
 import com.twelvet.dfs.server.mapper.DFSMapper;
 import com.twelvet.dfs.server.service.IDFSService;

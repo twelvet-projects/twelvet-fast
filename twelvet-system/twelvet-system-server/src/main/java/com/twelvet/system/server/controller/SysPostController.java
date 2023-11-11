@@ -1,7 +1,7 @@
 package com.twelvet.system.server.controller;
 
 import cn.dev33.satoken.annotation.SaCheckPermission;
-import cn.twelvet.excel.annotation.ResponseExcel;
+import com.pig4cloud.plugin.excel.annotation.ResponseExcel;
 import com.twelvet.framework.core.application.controller.TWTController;
 import com.twelvet.framework.core.application.domain.JsonResult;
 import com.twelvet.framework.core.constants.UserConstants;

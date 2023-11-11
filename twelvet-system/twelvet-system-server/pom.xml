@@ -57,7 +57,7 @@
 
         <!--幂等-->
         <dependency>
-            <groupId>cn.twelvet</groupId>
+            <groupId>com.pig4cloud.plugin</groupId>
             <artifactId>idempotent-spring-boot-starter</artifactId>
         </dependency>
 
