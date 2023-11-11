@@ -1,12 +1,14 @@
 package com.twelvet.gen.server.service.impl;
 
 import com.twelvet.gen.api.domain.GenGroup;
+import com.twelvet.gen.api.domain.GenTemplate;
 import com.twelvet.gen.api.domain.GenTemplateGroup;
 import com.twelvet.gen.api.domain.dto.GenGroupDTO;
 import com.twelvet.framework.security.utils.SecurityUtils;
 import com.twelvet.framework.utils.DateUtils;
 import com.twelvet.gen.server.mapper.GenGroupMapper;
 import com.twelvet.gen.server.mapper.GenTemplateGroupMapper;
+import com.twelvet.gen.server.mapper.GenTemplateMapper;
 import com.twelvet.gen.server.service.IGenGroupService;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -29,6 +31,9 @@ public class GenGroupServiceImpl implements IGenGroupService {
 
 	@Autowired
 	private GenTemplateGroupMapper genTemplateGroupMapper;
+
+	@Autowired
+	private GenTemplateMapper genTemplateMapper;
 
 	/**
 	 * 查询模板分组
@@ -132,6 +137,15 @@ public class GenGroupServiceImpl implements IGenGroupService {
 	@Override
 	public int deleteGenGroupById(Long id) {
 		return genGroupMapper.deleteGenGroupById(id);
+	}
+
+	/**
+	 * 查询代码生成业务所有模板列表
+	 * @return List<GenTemplate>
+	 */
+	@Override
+	public List<GenTemplate> selectGenTemplateAll() {
+		return genTemplateMapper.selectGenTemplateAll();
 	}
 
 }

@@ -33,17 +33,14 @@ public class GenGroupController extends TWTController {
 	@Autowired
 	private IGenGroupService genGroupService;
 
-	@Autowired
-	private IGenTemplateService genTemplateService;
-
 	/**
-	 * 查询代码生成业务模板列表
+	 * 查询代码生成业务所有模板列表
 	 */
-	@Operation(summary = "查询代码生成业务模板列表")
-	@SaCheckPermission("gen:templateGroup:list")
+	@Operation(summary = "查询代码生成业务所有模板列表")
+	@SaCheckPermission("gen:group:list")
 	@GetMapping("/queryTemplateList")
-	public JsonResult<List<GenTemplate>> queryTemplateListAll(GenTemplate genTemplate) {
-		return JsonResult.success(genTemplateService.selectGenTemplateList(genTemplate));
+	public JsonResult<List<GenTemplate>> selectGenTemplateAll() {
+		return JsonResult.success(genGroupService.selectGenTemplateAll());
 	}
 
 	/**

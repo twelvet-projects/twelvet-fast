@@ -1,6 +1,7 @@
 package com.twelvet.gen.server.service;
 
 import com.twelvet.gen.api.domain.GenGroup;
+import com.twelvet.gen.api.domain.GenTemplate;
 import com.twelvet.gen.api.domain.dto.GenGroupDTO;
 
 import java.util.List;
@@ -54,5 +55,11 @@ public interface IGenGroupService {
 	 * @return 结果
 	 */
 	public int deleteGenGroupById(Long id);
+
+	/**
+	 * 查询代码生成业务所有模板列表
+	 * @return List GenTemplate
+	 */
+	public List<GenTemplate> selectGenTemplateAll();
 
 }
