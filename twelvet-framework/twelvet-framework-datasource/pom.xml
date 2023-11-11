@@ -32,10 +32,17 @@
             <artifactId>shardingsphere-jdbc-core</artifactId>
         </dependency>
 
-        <!-- pageHelper 分页插件 -->
+        <!--webmvc-->
         <dependency>
-            <groupId>com.github.pagehelper</groupId>
-            <artifactId>pagehelper-spring-boot-starter</artifactId>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-webmvc</artifactId>
+            <scope>provided</scope>
+        </dependency>
+
+        <!--servlet-->
+        <dependency>
+            <groupId>jakarta.servlet</groupId>
+            <artifactId>jakarta.servlet-api</artifactId>
         </dependency>
 
     </dependencies>

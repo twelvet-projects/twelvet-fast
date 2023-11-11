@@ -55,6 +55,7 @@
         <velocity.version>2.3</velocity.version>
         <redisson.version>3.23.5</redisson.version>
         <spring-boot.mybatis>3.0.2</spring-boot.mybatis>
+        <jasypt.version>3.0.5</jasypt.version>
 
         <excel-spring-boot-starter.version>3.0.0</excel-spring-boot-starter.version>
         <xss-spring-boot-starter.version>3.0.0</xss-spring-boot-starter.version>
@@ -340,6 +341,13 @@
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-configuration-processor</artifactId>
             <optional>true</optional> <!-- 表示依赖不会传递 -->
+        </dependency>
+
+        <!--配置文件加解密-->
+        <dependency>
+            <groupId>com.github.ulisesbocchio</groupId>
+            <artifactId>jasypt-spring-boot-starter</artifactId>
+            <version>${jasypt.version}</version>
         </dependency>
 
         <!--Spring Test-->

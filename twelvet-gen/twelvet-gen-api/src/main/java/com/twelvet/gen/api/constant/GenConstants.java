@@ -8,19 +8,19 @@ package com.twelvet.gen.api.constant;
 public class GenConstants {
 
 	/**
-	 * 单表（增删改查）
+	 * 单表CRUD
 	 */
-	public static final String TPL_CRUD = "crud";
+	public static final Long TPL_CRUD = 1L;
+
+	/**
+	 * 主子模板CRUD
+	 */
+	public static final Long TPL_SUB = 2L;
 
 	/**
 	 * 树表（增删改查）
 	 */
-	public static final String TPL_TREE = "tree";
-
-	/**
-	 * 主子表（增删改查）
-	 */
-	public static final String TPL_SUB = "sub";
+	public static final Long TPL_TREE = 3L;
 
 	/**
 	 * 树编码字段
@@ -174,6 +174,11 @@ public class GenConstants {
 	 * 模糊查询
 	 */
 	public static final String QUERY_LIKE = "LIKE";
+
+	/**
+	 * 相等查询
+	 */
+	public static final String QUERY_EQ = "EQ";
 
 	/**
 	 * 需要

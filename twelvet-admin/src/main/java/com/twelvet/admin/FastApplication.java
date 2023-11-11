@@ -1,5 +1,6 @@
 package com.twelvet.admin;
 
+import com.twelvet.framework.datasource.annotation.EnableDynamicDataSource;
 import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -11,6 +12,7 @@ import org.springframework.context.annotation.EnableAspectJAutoProxy;
  * @WebSite twelvet.cn
  * @Description: 启动入口
  */
+@EnableDynamicDataSource
 @MapperScan(basePackages = { "com.twelvet.**.mapper" })
 @ComponentScan(basePackages = { "com.twelvet" })
 // 表示通过aop框架暴露该代理对象,AopContext能够访问
