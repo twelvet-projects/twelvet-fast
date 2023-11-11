@@ -22,9 +22,10 @@
             <artifactId>sa-token-spring-boot3-starter</artifactId>
         </dependency>
 
+        <!--sa-token支持Redis-->
         <dependency>
             <groupId>cn.dev33</groupId>
-            <artifactId>sa-token-dao-redis-jackson</artifactId>
+            <artifactId>sa-token-redis</artifactId>
         </dependency>
 
         <!--twelvet utils-->

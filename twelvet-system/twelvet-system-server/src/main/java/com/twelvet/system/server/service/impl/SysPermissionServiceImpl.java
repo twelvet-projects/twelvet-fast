@@ -52,7 +52,7 @@ public class SysPermissionServiceImpl implements ISysPermissionService {
 		Set<String> perms = new HashSet<>();
 		// 管理员拥有所有权限
 		if (SysUser.isAdmin(userId)) {
-			perms.add("*:*:*");
+			perms.add("*");
 		}
 		else {
 			perms.addAll(menuService.selectMenuPermsByUserId(userId));
