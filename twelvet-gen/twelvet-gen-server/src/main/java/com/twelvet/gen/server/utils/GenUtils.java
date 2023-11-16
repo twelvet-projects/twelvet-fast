@@ -1,19 +1,19 @@
 package com.twelvet.gen.server.utils;
 
 import cn.hutool.core.util.StrUtil;
+import com.twelvet.framework.datasource.enums.DsJdbcUrlEnum;
+import com.twelvet.framework.datasource.support.DataSourceConstants;
+import com.twelvet.framework.utils.SpringContextHolder;
+import com.twelvet.framework.utils.StringUtils;
 import com.twelvet.gen.api.constant.GenConstants;
 import com.twelvet.gen.api.domain.GenDatasourceConf;
 import com.twelvet.gen.api.domain.GenFieldType;
 import com.twelvet.gen.api.domain.GenTable;
 import com.twelvet.gen.api.domain.GenTableColumn;
-import com.twelvet.framework.datasource.enums.DsJdbcUrlEnum;
-import com.twelvet.framework.datasource.support.DataSourceConstants;
-import com.twelvet.framework.utils.SpringContextHolder;
-import com.twelvet.framework.utils.StringUtils;
 import com.twelvet.gen.server.config.GenConfig;
 import com.twelvet.gen.server.mapper.GenDatasourceConfMapper;
 import com.twelvet.gen.server.mapper.GenFieldTypeMapper;
-import com.twelvet.gen.server.mapper.GenTableMapper;
+import com.twelvet.gen.server.mapper.GenMapper;
 import org.apache.commons.lang3.RegExUtils;
 import org.springframework.context.ApplicationContext;
 
@@ -244,7 +244,7 @@ public class GenUtils {
 	 * @param dsName 数据源名称
 	 * @return GeneratorMapper
 	 */
-	public static GenTableMapper getMapper(String dsName) {
+	public static GenMapper getMapper(String dsName) {
 		String dbConfType;
 		// 获取目标数据源数据库类型
 		if (DataSourceConstants.DS_MASTER.equals(dsName)) {
@@ -265,7 +265,7 @@ public class GenUtils {
 
 		// 获取全部数据实现
 		ApplicationContext context = SpringContextHolder.getApplicationContext();
-		Map<String, GenTableMapper> beansOfType = context.getBeansOfType(GenTableMapper.class);
+		Map<String, GenMapper> beansOfType = context.getBeansOfType(GenMapper.class);
 
 		// 根据数据类型选择mapper
 		for (String key : beansOfType.keySet()) {
@@ -281,7 +281,7 @@ public class GenUtils {
 	 * 获取数据源对应方言的mapper
 	 * @return GeneratorMapper
 	 */
-	public static GenTableMapper getMapper() {
+	public static GenMapper getMapper() {
 		return getMapper(DataSourceConstants.DS_MASTER);
 	}
 
