@@ -1,15 +1,5 @@
-DROP
-DATABASE IF EXISTS `twelvet_gen`;
-
-CREATE
-DATABASE `twelvet_gen` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
-
-SET NAMES utf8mb4;
-SET
-FOREIGN_KEY_CHECKS = 0;
-
 USE
-`twelvet_gen`;
+    `twelvet-fast`;
 
 -- ----------------------------
 -- Table structure for gen_datasource_conf
@@ -386,5 +376,3 @@ VALUES (3, 10);
 INSERT INTO `gen_template_group`
 VALUES (3, 11);
 
-SET
-FOREIGN_KEY_CHECKS = 1;
