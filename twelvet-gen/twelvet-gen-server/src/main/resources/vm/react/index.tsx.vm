@@ -12,19 +12,19 @@ import {Popconfirm, Button, message, Modal, Form, Input, Space, Divider} from 'a
 import {FormInstance} from 'antd/lib/form'
 #foreach($column in $columns)
     #if($column.htmlType == "select")
-import DictionariesSelect from '@/components/TwelveT/Dictionaries/DictionariesSelect/Index'
+    import DictionariesSelect from '@/components/TwelveT/Dictionaries/DictionariesSelect/Index'
         #break
     #end
 #end
 #foreach($column in $columns)
     #if($column.htmlType == "radio")
-import DictionariesRadio from '@/components/TwelveT/Dictionaries/DictionariesRadio/Index'
+    import DictionariesRadio from '@/components/TwelveT/Dictionaries/DictionariesRadio/Index'
         #break
     #end
 #end
 #foreach($column in $columns)
     #if($column.htmlType == "checkbox")
-import DictionariesCheckbox from '@/components/TwelveT/Dictionaries/DictionariesCheckbox/Index'
+    import DictionariesCheckbox from '@/components/TwelveT/Dictionaries/DictionariesCheckbox/Index'
         #break
     #end
 #end
@@ -42,7 +42,7 @@ import {isArray} from 'lodash'
 #foreach($column in $columns)
     #if($column.htmlType == "imageUpload" || $column.htmlType == "fileUpload")
         #set($importTwT = true)
-import UploadTWT from '@/components/TwelveT/Upload'
+    import UploadTWT from '@/components/TwelveT/Upload'
         #break
     #end
 #end
@@ -324,19 +324,6 @@ const ${BusinessName}: React.FC = () => {
                     });
                 }}
                 rowSelection={{}}
-                beforeSearchSubmit={(params) => {
-                    // 分隔搜索参数
-                    if (params.between) {
-                        const {between} = params
-                        // 移除参数
-                        delete params.between
-
-                        // 适配参数
-                        params.beginTime = between[0]
-                        params.endTime = between[1]
-                    }
-                    return params
-                }}
                 toolBarRender={(action, {selectedRowKeys}) => [
                     <Button key='add' type="default" onClick={refPost}>
                         <PlusOutlined/>
@@ -477,7 +464,7 @@ const ${BusinessName}: React.FC = () => {
                                         rules={[{required: ${isRequired}, message: '${comment}不能为空'}]}
                                         name="${field}"
                                     >
-                                        <DictionariesSelect type='${dictType}' />
+                                        <DictionariesSelect type='${dictType}'/>
                                     </Form.Item>
                                 #elseif($column.htmlType == "checkbox" && $dictType)
                                     <Form.Item
