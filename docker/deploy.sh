@@ -11,6 +11,7 @@ init() {
   # copy sql
   echo "begin copy sql "
   cp ../data/twelvet.sql ./mysql/db
+  cp ../data/twelvet_gen.sql ./mysql/db
   cp ../data/twelvet_job.sql ./mysql/db
 
   # copy jar
