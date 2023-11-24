@@ -1,5 +1,4 @@
-USE
-    `twelvet-fast`;
+USE `twelvet-fast`;
 
 -- ----------------------------
 -- Table structure for gen_datasource_conf

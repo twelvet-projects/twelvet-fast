@@ -49,6 +49,6 @@ jobs:
       - name: Check Server
         run: |
           cd docker
-          sleep 30
+          sleep 60
           echo "Start checking the service, here are the service logs"
           docker logs --tail 500 twelvet-admin
