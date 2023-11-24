@@ -55,7 +55,7 @@
 
         <velocity.version>2.3</velocity.version>
         <redisson.version>3.23.5</redisson.version>
-        <spring-boot.mybatis>3.0.2</spring-boot.mybatis>
+        <spring-boot.mybatis>3.0.3</spring-boot.mybatis>
         <jasypt.version>3.0.5</jasypt.version>
 
         <xss-spring-boot-starter.version>3.1.5.1</xss-spring-boot-starter.version>
