@@ -63,7 +63,7 @@
         <oss-spring-boot-starter.version>3.0.0</oss-spring-boot-starter.version>
         <idempotent-spring-boot-starter.version>0.3.0</idempotent-spring-boot-starter.version>
 
-        <pagehelper.boot.version>1.4.7</pagehelper.boot.version>
+        <pagehelper.boot.version>2.0.0</pagehelper.boot.version>
 
         <commons.io.version>2.14.0</commons.io.version>
         <hutool.version>5.8.22</hutool.version>
