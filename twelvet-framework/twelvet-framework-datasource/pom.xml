@@ -26,12 +26,6 @@
             <artifactId>dynamic-datasource-spring-boot3-starter</artifactId>
         </dependency>
 
-        <!--Sharding-JDBC-->
-        <dependency>
-            <groupId>org.apache.shardingsphere</groupId>
-            <artifactId>shardingsphere-jdbc-core</artifactId>
-        </dependency>
-
         <!--webmvc-->
         <dependency>
             <groupId>org.springframework</groupId>

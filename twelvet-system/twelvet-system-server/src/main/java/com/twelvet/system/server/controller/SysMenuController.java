@@ -1,9 +1,6 @@
 package com.twelvet.system.server.controller;
 
-import com.pig4cloud.plugin.idempotent.annotation.Idempotent;
-import com.twelvet.system.api.domain.SysMenu;
-import com.twelvet.system.api.domain.vo.RouterVo;
-import com.twelvet.system.api.domain.vo.TreeSelect;
+import cn.dev33.satoken.annotation.SaCheckPermission;
 import com.twelvet.framework.core.application.controller.TWTController;
 import com.twelvet.framework.core.application.domain.AjaxResult;
 import com.twelvet.framework.core.application.domain.JsonResult;
@@ -13,11 +10,13 @@ import com.twelvet.framework.log.annotation.Log;
 import com.twelvet.framework.log.enums.BusinessType;
 import com.twelvet.framework.security.domain.LoginUser;
 import com.twelvet.framework.security.utils.SecurityUtils;
+import com.twelvet.system.api.domain.SysMenu;
+import com.twelvet.system.api.domain.vo.RouterVo;
+import com.twelvet.system.api.domain.vo.TreeSelect;
 import com.twelvet.system.server.service.ISysMenuService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
 import org.springframework.beans.factory.annotation.Autowired;
-import cn.dev33.satoken.annotation.SaCheckPermission;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
 
@@ -80,7 +79,7 @@ public class SysMenuController extends TWTController {
 	 * @param menu SysMenu
 	 * @return JsonResult<String>
 	 */
-	@Idempotent(key = "#menu.menuId", expireTime = 3)
+	//@Idempotent(key = "#menu.menuId", expireTime = 3)
 	@Operation(summary = "修改菜单")
 	@Log(service = "菜单管理", businessType = BusinessType.UPDATE)
 	@PutMapping
