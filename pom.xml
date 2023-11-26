@@ -54,7 +54,7 @@
         <shardingsphere-jdbc.version>5.3.2</shardingsphere-jdbc.version>
 
         <velocity.version>2.3</velocity.version>
-        <redisson.version>3.23.5</redisson.version>
+        <redisson.version>3.24.3</redisson.version>
         <spring-boot.mybatis>3.0.3</spring-boot.mybatis>
         <jasypt.version>3.0.5</jasypt.version>
 
