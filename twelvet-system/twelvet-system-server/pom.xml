@@ -56,10 +56,10 @@
         </dependency>
 
         <!--幂等-->
-        <!--<dependency>
+        <dependency>
             <groupId>com.pig4cloud.plugin</groupId>
             <artifactId>idempotent-spring-boot-starter</artifactId>
-        </dependency>-->
+        </dependency>
 
     </dependencies>
 

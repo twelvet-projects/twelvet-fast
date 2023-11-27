@@ -1,6 +1,7 @@
 package com.twelvet.system.server.controller;
 
 import cn.dev33.satoken.annotation.SaCheckPermission;
+import com.pig4cloud.plugin.idempotent.annotation.Idempotent;
 import com.twelvet.framework.core.application.controller.TWTController;
 import com.twelvet.framework.core.application.domain.AjaxResult;
 import com.twelvet.framework.core.application.domain.JsonResult;
@@ -79,7 +80,7 @@ public class SysMenuController extends TWTController {
 	 * @param menu SysMenu
 	 * @return JsonResult<String>
 	 */
-	// @Idempotent(key = "#menu.menuId", expireTime = 3)
+	@Idempotent(key = "#menu.menuId", expireTime = 3)
 	@Operation(summary = "修改菜单")
 	@Log(service = "菜单管理", businessType = BusinessType.UPDATE)
 	@PutMapping
