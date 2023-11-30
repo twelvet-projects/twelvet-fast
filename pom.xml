@@ -46,7 +46,7 @@
         <sa-token.version>1.37.0</sa-token.version>
         <sa-token-redis.version>1.34.0</sa-token-redis.version>
 
-        <swagger.core.version>2.2.16</swagger.core.version>
+        <swagger.core.version>2.2.19</swagger.core.version>
         <springdoc.version>2.2.0</springdoc.version>
         <knife4j.version>3.0.3</knife4j.version>
 
