@@ -46,14 +46,14 @@
         <sa-token.version>1.37.0</sa-token.version>
         <sa-token-redis.version>1.34.0</sa-token-redis.version>
 
-        <swagger-core.version>2.2.19</swagger-core.version>
-        <springdoc.version>2.2.0</springdoc.version>
+        <swagger-core.version>2.2.20</swagger-core.version>
+        <springdoc.version>2.3.0</springdoc.version>
         <knife4j.version>3.0.3</knife4j.version>
 
         <dynamic-datasource.version>4.2.0</dynamic-datasource.version>
 
         <velocity.version>2.3</velocity.version>
-        <redisson.version>3.24.3</redisson.version>
+        <redisson.version>3.25.2</redisson.version>
         <spring-boot.mybatis>3.0.3</spring-boot.mybatis>
         <jasypt.version>3.0.5</jasypt.version>
 
