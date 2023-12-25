@@ -31,6 +31,12 @@
         <dependency>
             <groupId>com.twelvet</groupId>
             <artifactId>twelvet-dfs-server</artifactId>
+            <exclusions>
+                <exclusion>
+                    <groupId>commons-logging</groupId>
+                    <artifactId>commons-logging</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- Fast quartz -->
