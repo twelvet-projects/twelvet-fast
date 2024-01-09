@@ -94,8 +94,15 @@ swagger:
         in: HEADER
         name: ${sa-token.token-name}
 
+
+# springdoc-openapi项目配置
 springdoc:
-  #这里定义了分组，可定义多个，也可以不定义
+  swagger-ui:
+    path: /swagger-ui.html
+    tags-sorter: alpha
+    operations-sorter: alpha
+  api-docs:
+    path: /v3/api-docs
   group-configs:
     - group: 1.系统模块
       packages-to-scan: com.twelvet.system
@@ -105,6 +112,11 @@ springdoc:
       packages-to-scan: com.twelvet.quartz
     - group: 4.代码生成模块
       packages-to-scan: com.twelvet.gen
+# knife4j的增强配置，不需要增强可以不配
+knife4j:
+  enable: true
+  setting:
+    language: zh_cn
 
 # 代码生成
 gen:

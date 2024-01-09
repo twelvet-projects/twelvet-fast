@@ -46,9 +46,7 @@
         <sa-token.version>1.37.0</sa-token.version>
         <sa-token-redis.version>1.34.0</sa-token-redis.version>
 
-        <swagger-core.version>2.2.20</swagger-core.version>
-        <springdoc.version>2.3.0</springdoc.version>
-        <knife4j.version>3.0.3</knife4j.version>
+        <knife4j-openapi3.version>4.5.0</knife4j-openapi3.version>
 
         <dynamic-datasource.version>4.2.0</dynamic-datasource.version>
 
@@ -114,34 +112,6 @@
                 <version>${dynamic-datasource.version}</version>
             </dependency>
 
-            <!--Swagger-->
-            <dependency>
-                <groupId>com.github.xiaoymin</groupId>
-                <artifactId>knife4j-spring-boot-starter</artifactId>
-                <version>${knife4j.version}</version>
-            </dependency>
-
-            <!--Swagger -->
-            <dependency>
-                <groupId>io.swagger.core.v3</groupId>
-                <artifactId>swagger-annotations-jakarta</artifactId>
-                <version>${swagger-core.version}</version>
-            </dependency>
-
-            <!--springdoc -->
-            <dependency>
-                <groupId>org.springdoc</groupId>
-                <artifactId>springdoc-openapi-starter-webmvc-api</artifactId>
-                <version>${springdoc.version}</version>
-            </dependency>
-
-            <!--swagger-->
-            <dependency>
-                <groupId>org.springdoc</groupId>
-                <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-                <version>${springdoc.version}</version>
-            </dependency>
-
             <!-- Sa-Token安全框架 -->
             <dependency>
                 <groupId>cn.dev33</groupId>
@@ -203,6 +173,13 @@
                 <groupId>cn.hutool</groupId>
                 <artifactId>hutool-all</artifactId>
                 <version>${hutool.version}</version>
+            </dependency>
+
+            <!--Swagger-->
+            <dependency>
+                <groupId>com.github.xiaoymin</groupId>
+                <artifactId>knife4j-openapi3-jakarta-spring-boot-starter</artifactId>
+                <version>${knife4j-openapi3.version}</version>
             </dependency>
 
             <!-- Fast framework core-->

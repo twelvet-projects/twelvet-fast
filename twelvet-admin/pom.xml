@@ -45,12 +45,6 @@
             <artifactId>twelvet-quartz-server</artifactId>
         </dependency>
 
-        <!--swagger-->
-        <dependency>
-            <groupId>org.springdoc</groupId>
-            <artifactId>springdoc-openapi-starter-webmvc-ui</artifactId>
-        </dependency>
-
     </dependencies>
 
     <build>
