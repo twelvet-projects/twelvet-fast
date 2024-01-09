@@ -24,7 +24,6 @@ import java.util.List;
  */
 @Configuration
 @AutoConfigureBefore(SpringDocConfiguration.class)
-@ConditionalOnProperty(name = "swagger.enabled", havingValue = "true", matchIfMissing = true)
 public class SwaggerConfig {
 
 	@Autowired

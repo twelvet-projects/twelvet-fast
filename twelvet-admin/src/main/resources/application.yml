@@ -72,8 +72,6 @@ mybatis:
 
 # Swagger配置
 swagger:
-  # 是否开启swagger
-  enabled: true
   info:
     # 标题
     title: '标题：${twelvet.name}后台管理系统_接口文档'
@@ -98,6 +96,8 @@ swagger:
 # springdoc-openapi项目配置
 springdoc:
   swagger-ui:
+    # 是否开启swagger
+    enabled: true
     path: /swagger-ui.html
     tags-sorter: alpha
     operations-sorter: alpha

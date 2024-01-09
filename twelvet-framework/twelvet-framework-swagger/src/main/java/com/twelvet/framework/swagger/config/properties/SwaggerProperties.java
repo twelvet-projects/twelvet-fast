@@ -22,11 +22,6 @@ import java.util.List;
 public class SwaggerProperties {
 
 	/**
-	 * 是否开启 openApi 文档
-	 */
-	private Boolean enabled = true;
-
-	/**
 	 * 文档基本信息
 	 */
 	@NestedConfigurationProperty
@@ -133,14 +128,6 @@ public class SwaggerProperties {
 			this.version = version;
 		}
 
-	}
-
-	public Boolean getEnabled() {
-		return enabled;
-	}
-
-	public void setEnabled(Boolean enabled) {
-		this.enabled = enabled;
 	}
 
 	public InfoProperties getInfo() {
