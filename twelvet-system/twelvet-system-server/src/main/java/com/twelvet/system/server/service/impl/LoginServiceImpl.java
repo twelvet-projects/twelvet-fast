@@ -86,7 +86,8 @@ public class LoginServiceImpl implements LoginService {
 	/**
 	 * 通过账号名称登录
 	 * @param username 账号名称
-	 * @return 用户
+	 * @param password 账号密码
+	 * @return
 	 */
 	private SysUser loadUserByUsername(String username, String password) {
 		SysUser sysUser = userMapper.selectUserByUserName(username);
