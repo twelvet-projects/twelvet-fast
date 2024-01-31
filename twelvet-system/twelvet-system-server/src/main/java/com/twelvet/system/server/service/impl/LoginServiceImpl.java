@@ -99,7 +99,6 @@ public class LoginServiceImpl implements LoginService {
 		sysLoginInfo.setDeptId(deptId);
 		sysLoginInfo.setIpaddr(IpUtils.getIpAddr());
 		sysLoginInfo.setMsg("登录成功");
-		// 发送异步日志事件
 		sysLoginInfo.setCreateTime(DateUtils.getNowDate());
 		sysLoginInfo.setCreateBy(username);
 		sysLoginInfo.setUpdateBy(username);
