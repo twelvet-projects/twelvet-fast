@@ -92,6 +92,10 @@ public class LoginServiceImpl implements LoginService {
 	private SysUser loadUserByUsername(String username, String password) {
 		SysUser sysUser = userMapper.selectUserByUserName(username);
 
+		if (TUtils.isEmpty(sysUser)) {
+			throw new TWTException("登录用户：" + username + " 不存在.");
+		}
+
 		// 发送异步日志事件
 		Long deptId = sysUser.getDeptId();
 		SysLoginInfo sysLoginInfo = new SysLoginInfo();
@@ -103,10 +107,6 @@ public class LoginServiceImpl implements LoginService {
 		sysLoginInfo.setCreateTime(DateUtils.getNowDate());
 		sysLoginInfo.setCreateBy(username);
 		sysLoginInfo.setUpdateBy(username);
-
-		if (TUtils.isEmpty(sysUser)) {
-			throw new TWTException("登录用户：" + username + " 不存在.");
-		}
 
 		if (!BCrypt.checkpw(password, sysUser.getPassword())) {
 			sysLoginInfo.setMsg("账号密码不正确");
