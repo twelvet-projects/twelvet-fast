@@ -44,11 +44,7 @@ public class LoginServiceImpl implements LoginService {
 	 */
 	@Override
 	public LoginVO login(LoginDTO loginDTO) {
-		SysUser sysUser = loadUserByUsername(loginDTO.getUsername());
-
-		if (!BCrypt.checkpw(loginDTO.getPassword(), sysUser.getPassword())) {
-			throw new TWTException("账号密码不正确");
-		}
+		SysUser sysUser = loadUserByUsername(loginDTO.getUsername(), loginDTO.getPassword());
 
 		// 构建用户信息
 		LoginUser loginUser = buildLoginUser(sysUser);
@@ -92,11 +88,8 @@ public class LoginServiceImpl implements LoginService {
 	 * @param username 账号名称
 	 * @return 用户
 	 */
-	private SysUser loadUserByUsername(String username) {
+	private SysUser loadUserByUsername(String username, String password) {
 		SysUser sysUser = userMapper.selectUserByUserName(username);
-		if (TUtils.isEmpty(sysUser)) {
-			throw new TWTException("登录用户：" + username + " 不存在.");
-		}
 
 		// 发送异步日志事件
 		Long deptId = sysUser.getDeptId();
@@ -106,23 +99,30 @@ public class LoginServiceImpl implements LoginService {
 		sysLoginInfo.setDeptId(deptId);
 		sysLoginInfo.setIpaddr(IpUtils.getIpAddr());
 		sysLoginInfo.setMsg("登录成功");
+		// 发送异步日志事件
+		sysLoginInfo.setCreateTime(DateUtils.getNowDate());
+		sysLoginInfo.setCreateBy(username);
+		sysLoginInfo.setUpdateBy(username);
+
+		if (TUtils.isEmpty(sysUser)) {
+			throw new TWTException("登录用户：" + username + " 不存在.");
+		}
+
+		if (!BCrypt.checkpw(password, sysUser.getPassword())) {
+			sysLoginInfo.setMsg("账号密码不正确");
+			sysLoginInfo.setStatus(SecurityConstants.LOGIN_FAIL);
+			SpringContextHolder.publishEvent(new SysLoginLogEvent(sysLoginInfo));
+			throw new TWTException("账号密码不正确");
+		}
 
 		if (sysUser.getStatus().equals("1")) {
 			String error = "账号已被冻结";
 			sysLoginInfo.setMsg(error);
 			sysLoginInfo.setStatus(SecurityConstants.LOGIN_FAIL);
-			// 发送异步日志事件
-			sysLoginInfo.setCreateTime(DateUtils.getNowDate());
-			sysLoginInfo.setCreateBy(username);
-			sysLoginInfo.setUpdateBy(username);
 			SpringContextHolder.publishEvent(new SysLoginLogEvent(sysLoginInfo));
 			throw new TWTException(error);
 		}
 
-		// 发送异步日志事件
-		sysLoginInfo.setCreateTime(DateUtils.getNowDate());
-		sysLoginInfo.setCreateBy(username);
-		sysLoginInfo.setUpdateBy(username);
 		SpringContextHolder.publishEvent(new SysLoginLogEvent(sysLoginInfo));
 		return sysUser;
 	}
