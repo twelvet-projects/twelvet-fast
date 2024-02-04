@@ -111,7 +111,7 @@ public class SysMenuController extends TWTController {
 	/**
 	 * 根据ID获取菜单信息
 	 * @param menuId menuId
-	 * @return 操心信息
+	 * @return 菜单信息
 	 */
 	@Operation(summary = "根据ID获取菜单信息")
 	@GetMapping(value = "/{menuId}")
