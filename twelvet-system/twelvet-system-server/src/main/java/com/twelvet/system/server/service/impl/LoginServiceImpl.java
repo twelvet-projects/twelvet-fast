@@ -139,13 +139,11 @@ public class LoginServiceImpl implements LoginService {
 		loginUser.setUsername(sysUser.getUsername());
 		loginUser.setDeptId(sysUser.getDeptId());
 
-		// 角色集合
-		Set<String> roles = iSysPermissionService.getRolePermission(sysUser.getUserId());
 		// 权限集合
 		Set<String> permissions = iSysPermissionService.getMenuPermission(sysUser.getUserId());
 
 		loginUser.setPermissions(permissions);
-		loginUser.setRoles(roles);
+		loginUser.setRoles(sysUser.getRoles());
 		return loginUser;
 	}
 

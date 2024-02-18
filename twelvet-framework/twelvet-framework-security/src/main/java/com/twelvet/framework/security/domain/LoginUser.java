@@ -35,7 +35,7 @@ public class LoginUser implements Serializable {
 	/**
 	 * 角色对象
 	 */
-	private Set<String> roles;
+	private List<SysRole> roles;
 
 	/**
 	 * 权限标识集合
@@ -66,11 +66,11 @@ public class LoginUser implements Serializable {
 		this.username = username;
 	}
 
-	public Set<String> getRoles() {
+	public List<SysRole> getRoles() {
 		return roles;
 	}
 
-	public void setRoles(Set<String> roles) {
+	public void setRoles(List<SysRole> roles) {
 		this.roles = roles;
 	}
 

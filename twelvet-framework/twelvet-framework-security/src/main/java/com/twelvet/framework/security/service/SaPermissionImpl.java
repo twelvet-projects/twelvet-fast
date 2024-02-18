@@ -3,11 +3,12 @@ package com.twelvet.framework.security.service;
 import cn.dev33.satoken.stp.StpInterface;
 import com.twelvet.framework.security.domain.LoginUser;
 import com.twelvet.framework.security.utils.SecurityUtils;
+import com.twelvet.framework.utils.TUtils;
+import com.twelvet.system.api.domain.SysRole;
 import org.apache.xmlbeans.UserType;
 import org.springframework.stereotype.Component;
 
-import java.util.ArrayList;
-import java.util.List;
+import java.util.*;
 
 /**
  * @author twelvet
@@ -32,7 +33,14 @@ public class SaPermissionImpl implements StpInterface {
 	@Override
 	public List<String> getRoleList(Object loginId, String loginType) {
 		LoginUser loginUser = SecurityUtils.getLoginUser();
-		return new ArrayList<>(loginUser.getRoles());
+		List<SysRole> roles = loginUser.getRoles();
+		List<String> permsSet = new ArrayList<>();
+		for (SysRole role : roles) {
+			if (TUtils.isNotEmpty(role)) {
+				permsSet.addAll(Arrays.asList(role.getRoleKey().trim().split(",")));
+			}
+		}
+		return permsSet;
 	}
 
 }

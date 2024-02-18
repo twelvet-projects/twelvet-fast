@@ -12,4 +12,14 @@
     <artifactId>twelvet-framework-datascope</artifactId>
     <description>数据权限模块</description>
 
+    <dependencies>
+
+        <!--twelvet system api-->
+        <dependency>
+            <groupId>com.twelvet</groupId>
+            <artifactId>twelvet-framework-security</artifactId>
+        </dependency>
+
+    </dependencies>
+
 </project>
