@@ -1096,7 +1096,7 @@ CREATE TABLE `i18n`
 (
     `i18n_id`     bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
     `code`        varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '唯一Code',
-    `type`        varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci  NOT NULL DEFAULT '' COMMENT '语言类型：zh_CN,en...',
+    `type`        varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci  NOT NULL DEFAULT '' COMMENT '语言类型：zh_CN,en_US...',
     `value`       text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '翻译值',
     `create_time` datetime                                                      NOT NULL COMMENT '创建时间',
     `update_by`   varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '更新者',
