@@ -118,11 +118,7 @@ CREATE TABLE `sys_dict_data`
     `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
     `remark`      varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
     PRIMARY KEY (`dict_code`) USING BTREE
-) ENGINE = InnoDB
-  AUTO_INCREMENT = 110
-  CHARACTER SET = utf8mb4
-  COLLATE = utf8mb4_general_ci COMMENT = '字典数据表'
-  ROW_FORMAT = DYNAMIC;
+) ENGINE = InnoDB AUTO_INCREMENT = 121 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '字典数据表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_dict_data
@@ -234,6 +230,10 @@ VALUES (117, 1, 'JDBC', '1', 'ds_config_type', NULL, NULL, 'N', 0, 'admin', '202
 INSERT INTO `sys_dict_data`
 VALUES (118, 7, '瀚高', 'highgo', 'ds_type', NULL, NULL, 'N', 0, 'admin', '2023-11-16 13:58:38', 'admin',
         '2023-11-16 13:58:42', '瀚高数据库');
+INSERT INTO `sys_dict_data`
+VALUES (119, 1, '简体中文', 'zh_CN', 'i18n', NULL, NULL, 'N', 0, 'admin', '2024-03-26 21:16:31', '', NULL, NULL);
+INSERT INTO `sys_dict_data`
+VALUES (120, 2, 'English US', 'en_US', 'i18n', NULL, NULL, 'N', 0, 'admin', '2024-03-26 21:17:03', '', NULL, NULL);
 
 -- ----------------------------
 -- Table structure for sys_dict_type
@@ -251,12 +251,8 @@ CREATE TABLE `sys_dict_type`
     `update_time` datetime NULL DEFAULT NULL COMMENT '更新时间',
     `remark`      varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
     PRIMARY KEY (`dict_id`) USING BTREE,
-    UNIQUE INDEX `dict_type` (`dict_type`) USING BTREE
-) ENGINE = InnoDB
-  AUTO_INCREMENT = 104
-  CHARACTER SET = utf8mb4
-  COLLATE = utf8mb4_general_ci COMMENT = '字典类型表'
-  ROW_FORMAT = DYNAMIC;
+    UNIQUE INDEX `dict_type`(`dict_type`) USING BTREE
+) ENGINE = InnoDB AUTO_INCREMENT = 107 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '字典类型表' ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
 -- Records of sys_dict_type
@@ -289,6 +285,8 @@ VALUES (104, '代码生成器支持的数据库类型', 'ds_type', 0, 'admin', '
         '代码生成器支持的数据库类型');
 INSERT INTO `sys_dict_type`
 VALUES (105, '数据库链接类型', 'ds_config_type', 0, 'admin', '2023-11-04 19:03:57', '', NULL, '数据库链接类型');
+INSERT INTO `sys_dict_type`
+VALUES (106, '国际化', 'i18n', 0, 'admin', '2024-03-26 21:15:49', '', NULL, '国际化i18n');
 
 
 -- ----------------------------
@@ -1089,6 +1087,37 @@ CREATE TABLE `undo_log`
   CHARACTER SET = utf8mb4
   COLLATE = utf8mb4_general_ci COMMENT = 'AT transaction mode undo table'
   ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Table structure for i18n
+-- ----------------------------
+DROP TABLE IF EXISTS `i18n`;
+CREATE TABLE `i18n`
+(
+    `i18n_id`     bigint(20) NOT NULL AUTO_INCREMENT COMMENT 'ID',
+    `code`        varchar(128) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL DEFAULT '' COMMENT '唯一Code',
+    `type`        varchar(32) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci  NOT NULL DEFAULT '' COMMENT '语言类型：zh_CN,en...',
+    `value`       text CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NOT NULL COMMENT '翻译值',
+    `create_time` datetime                                                      NOT NULL COMMENT '创建时间',
+    `update_by`   varchar(64) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT '' COMMENT '更新者',
+    `update_time` datetime                                                      NOT NULL COMMENT '更新时间',
+    `remark`      varchar(500) CHARACTER SET utf8mb4 COLLATE utf8mb4_general_ci NULL DEFAULT NULL COMMENT '备注',
+    PRIMARY KEY (`i18n_id`) USING BTREE,
+    UNIQUE INDEX `un_code_type`(`code`, `type`) USING BTREE COMMENT 'Code翻译唯一'
+) ENGINE = InnoDB AUTO_INCREMENT = 5 CHARACTER SET = utf8mb4 COLLATE = utf8mb4_general_ci COMMENT = '国际化表' ROW_FORMAT = DYNAMIC;
+
+-- ----------------------------
+-- Records of i18n
+-- ----------------------------
+INSERT INTO `i18n`
+VALUES (1, 'system.error', 'zh_CN', '系统错误', '2024-03-28 15:39:56', 'admin', '2024-03-30 09:34:21', '系统错误');
+INSERT INTO `i18n`
+VALUES (2, 'system.error', 'en_US', 'System Error', '2024-03-28 15:41:00', 'admin', '2024-03-30 10:51:04',
+        'System Error');
+INSERT INTO `i18n`
+VALUES (3, 'system.success', 'zh_CN', '操作成功', '2024-03-28 16:25:18', 'admin', '2024-03-30 09:34:26', '操作成功');
+INSERT INTO `i18n`
+VALUES (4, 'system.success', 'en_US', 'Success', '2024-03-28 16:25:39', 'admin', '2024-03-30 10:51:08', 'Success');
 
 -- ----------------------------
 -- Records of undo_log
