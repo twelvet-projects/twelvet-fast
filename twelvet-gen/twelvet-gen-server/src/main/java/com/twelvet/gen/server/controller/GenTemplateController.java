@@ -11,6 +11,7 @@ import com.twelvet.gen.api.domain.GenTemplate;
 import com.twelvet.gen.server.service.IGenTemplateService;
 import io.swagger.v3.oas.annotations.Operation;
 import io.swagger.v3.oas.annotations.tags.Tag;
+import net.dreamlu.mica.xss.core.XssCleanIgnore;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -55,6 +56,7 @@ public class GenTemplateController extends TWTController {
 	/**
 	 * 新增代码生成业务模板
 	 */
+	@XssCleanIgnore
 	@Operation(summary = "新增代码生成业务模板")
 	@SaCheckPermission("gen:template:add")
 	@Log(service = "代码生成业务模板", businessType = BusinessType.INSERT)
@@ -66,6 +68,7 @@ public class GenTemplateController extends TWTController {
 	/**
 	 * 修改代码生成业务模板
 	 */
+	@XssCleanIgnore
 	@Operation(summary = "修改代码生成业务模板")
 	@SaCheckPermission("gen:template:edit")
 	@Log(service = "代码生成业务模板", businessType = BusinessType.UPDATE)

@@ -155,3 +155,8 @@ jasypt:
     password: twelvet
     algorithm: PBEWithMD5AndDES
     iv-generator-classname: org.jasypt.iv.NoIvGenerator
+
+mica:
+  xss:
+    enabled: true
+    trim-text: true

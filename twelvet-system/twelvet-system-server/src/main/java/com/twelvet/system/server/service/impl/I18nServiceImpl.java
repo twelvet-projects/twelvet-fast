@@ -1,5 +1,6 @@
 package com.twelvet.system.server.service.impl;
 
+import java.util.Date;
 import java.util.List;
 
 import com.twelvet.framework.RedisUtils;
@@ -45,7 +46,7 @@ public class I18nServiceImpl implements II18nService, ApplicationRunner {
 	 */
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
-		String hashFormat = String.format("%s::%s:*", LocaleCacheConstants.LOCALE, LocaleCacheConstants.ZH_CN);
+		String hashFormat = String.format("%s::%s", LocaleCacheConstants.LOCALE, LocaleCacheConstants.ZH_CN);
 		if (!RedisUtils.getClient().getBucket(hashFormat).isExists()) {
 			log.info("Detected i18n deficiency, initializing");
 			List<I18n> i18ns = i18nMapper.selectI18nList(new I18n());
@@ -93,11 +94,16 @@ public class I18nServiceImpl implements II18nService, ApplicationRunner {
 	 */
 	@Override
 	public int insertI18n(I18n i18n) {
-		i18n.setCreateTime(DateUtils.getNowDate());
+		Date nowDate = DateUtils.getNowDate();
+		i18n.setCreateTime(nowDate);
+		i18n.setUpdateTime(nowDate);
 		String loginUsername = SecurityUtils.getUsername();
 		i18n.setCreateBy(loginUsername);
 		i18n.setUpdateBy(loginUsername);
-		return i18nMapper.insertI18n(i18n);
+		int insertCount = i18nMapper.insertI18n(i18n);
+		String format = String.format("%s::%s:%s", LocaleCacheConstants.LOCALE, i18n.getType(), i18n.getCode());
+		RedisUtils.setCacheObject(format, i18n.getValue());
+		return insertCount;
 	}
 
 	/**
@@ -111,7 +117,12 @@ public class I18nServiceImpl implements II18nService, ApplicationRunner {
 		String loginUsername = SecurityUtils.getUsername();
 		i18n.setCreateBy(loginUsername);
 		i18n.setUpdateBy(loginUsername);
-		return i18nMapper.updateI18n(i18n);
+		int updateCount = i18nMapper.updateI18n(i18n);
+
+		String format = String.format("%s::%s:%s", LocaleCacheConstants.LOCALE, i18n.getType(), i18n.getCode());
+		RedisUtils.setCacheObject(format, i18n.getValue());
+
+		return updateCount;
 	}
 
 	/**
@@ -121,7 +132,14 @@ public class I18nServiceImpl implements II18nService, ApplicationRunner {
 	 */
 	@Override
 	public int deleteI18nByI18nIds(Long[] i18nIds) {
-		return i18nMapper.deleteI18nByI18nIds(i18nIds);
+		int deleteCount = i18nMapper.deleteI18nByI18nIds(i18nIds);
+		for (Long i18nId : i18nIds) {
+			I18n i18n = i18nMapper.selectI18nByI18nId(i18nId);
+
+			String format = String.format("%s::%s:%s", LocaleCacheConstants.LOCALE, i18n.getType(), i18n.getCode());
+			RedisUtils.deleteObject(format);
+		}
+		return deleteCount;
 	}
 
 	/**
@@ -131,6 +149,10 @@ public class I18nServiceImpl implements II18nService, ApplicationRunner {
 	 */
 	@Override
 	public int deleteI18nByI18nId(Long i18nId) {
+		I18n i18n = i18nMapper.selectI18nByI18nId(i18nId);
+
+		String format = String.format("%s::%s:%s", LocaleCacheConstants.LOCALE, i18n.getType(), i18n.getCode());
+		RedisUtils.deleteObject(format);
 		return i18nMapper.deleteI18nByI18nId(i18nId);
 	}
 

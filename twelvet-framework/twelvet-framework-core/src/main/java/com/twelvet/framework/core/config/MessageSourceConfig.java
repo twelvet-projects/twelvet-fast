@@ -75,7 +75,7 @@ public class MessageSourceConfig extends AbstractMessageSource implements Applic
 		List<SysDictData> localeCacheList = (List<SysDictData>) cache
 			.getIfPresent(LocaleCacheConstants.CACHE_DICT_CODE);
 		if (TUtils.isEmpty(localeCacheList)) {
-			localeCacheList = (List<SysDictData>) RedisUtils.getCacheObject(LocaleCacheConstants.CACHE_DICT_CODE);
+			localeCacheList = RedisUtils.getCacheObject(LocaleCacheConstants.CACHE_DICT_CODE);
 
 			cache.put(LocaleCacheConstants.CACHE_DICT_CODE, localeCacheList);
 		}
@@ -155,7 +155,7 @@ public class MessageSourceConfig extends AbstractMessageSource implements Applic
 	private String getMessageFromDatabase(String code, Locale locale) {
 
 		String format = String.format("%s::%s:%s", LocaleCacheConstants.LOCALE, locale.toString(), code);
-		String message = (String) RedisUtils.getCacheObject(format);
+		String message = RedisUtils.getCacheObject(format);
 		if (StringUtils.isEmpty(message)) {
 			message = code;
 		}
