@@ -69,6 +69,18 @@
             <artifactId>mica-xss</artifactId>
         </dependency>
 
+        <!--caffeine-->
+        <dependency>
+            <groupId>com.github.ben-manes.caffeine</groupId>
+            <artifactId>caffeine</artifactId>
+        </dependency>
+
+        <!-- Fast Redis -->
+        <dependency>
+            <groupId>com.twelvet</groupId>
+            <artifactId>twelvet-framework-redis</artifactId>
+        </dependency>
+
     </dependencies>
 
 </project>

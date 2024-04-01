@@ -31,7 +31,7 @@
             <artifactId>twelvet-framework-datascope</artifactId>
         </dependency>
 
-        <!-- Fast 核心 -->
+        <!-- Fast Redis -->
         <dependency>
             <groupId>com.twelvet</groupId>
             <artifactId>twelvet-framework-redis</artifactId>

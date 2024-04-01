@@ -1,5 +1,7 @@
 package com.twelvet.framework.core.application.domain;
 
+import com.twelvet.framework.core.locale.I18nUtils;
+import com.twelvet.framework.core.locale.constants.LocaleSystemConstants;
 import io.swagger.v3.oas.annotations.media.Schema;
 
 import org.springframework.http.HttpStatus;
@@ -65,7 +67,7 @@ public class JsonResult<T> implements Serializable {
 	 * @return 成功消息
 	 */
 	public static <T> JsonResult<T> success() {
-		return JsonResult.success("操作成功");
+		return JsonResult.success(I18nUtils.getLocale(LocaleSystemConstants.SYS_SUCCESS));
 	}
 
 	/**
@@ -73,7 +75,7 @@ public class JsonResult<T> implements Serializable {
 	 * @return 成功消息
 	 */
 	public static <T> JsonResult<T> success(T data) {
-		return JsonResult.success("操作成功", data);
+		return JsonResult.success(I18nUtils.getLocale(LocaleSystemConstants.SYS_SUCCESS), data);
 	}
 
 	/**

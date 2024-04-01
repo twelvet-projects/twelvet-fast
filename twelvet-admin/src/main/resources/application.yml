@@ -14,6 +14,11 @@ twelvet:
   copyrightYear: 2023
 
 spring:
+  messages:
+    #国际化路径
+    basename: i18n/system/twelvet
+    # 缓存时间（秒）
+    cache-duration: 1800
   application:
     # 应用名称
     name: @artifactId@
