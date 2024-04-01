@@ -12,9 +12,9 @@ import com.twelvet.system.api.domain.I18n;
  * @date 2024-04-01
  */
 public interface II18nService {
+
 	/**
 	 * 查询国际化
-	 *
 	 * @param i18nId 国际化主键
 	 * @return 国际化
 	 */
@@ -22,7 +22,6 @@ public interface II18nService {
 
 	/**
 	 * 查询国际化列表
-	 *
 	 * @param i18n 国际化
 	 * @return 国际化集合
 	 */
@@ -30,7 +29,6 @@ public interface II18nService {
 
 	/**
 	 * 新增国际化
-	 *
 	 * @param i18n 国际化
 	 * @return 结果
 	 */
@@ -38,7 +36,6 @@ public interface II18nService {
 
 	/**
 	 * 修改国际化
-	 *
 	 * @param i18n 国际化
 	 * @return 结果
 	 */
@@ -46,7 +43,6 @@ public interface II18nService {
 
 	/**
 	 * 批量删除国际化
-	 *
 	 * @param i18nIds 需要删除的国际化主键集合
 	 * @return 结果
 	 */
@@ -54,9 +50,9 @@ public interface II18nService {
 
 	/**
 	 * 删除国际化信息
-	 *
 	 * @param i18nId 国际化主键
 	 * @return 结果
 	 */
 	public int deleteI18nByI18nId(Long i18nId);
+
 }
