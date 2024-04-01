@@ -12,51 +12,47 @@ import java.util.List;
  * @date 2024-04-01
  */
 public interface II18nService {
-    /**
-     * 查询国际化
-     *
-     * @param i18nId 国际化主键
-     * @return 国际化
-     */
-    public I18n selectI18nByI18nId(Long i18nId);
 
-    /**
-     * 查询国际化列表
-     *
-     * @param i18n 国际化
-     * @return 国际化集合
-     */
-    public List<I18n> selectI18nList(I18n i18n);
+	/**
+	 * 查询国际化
+	 * @param i18nId 国际化主键
+	 * @return 国际化
+	 */
+	public I18n selectI18nByI18nId(Long i18nId);
 
-    /**
-     * 新增国际化
-     *
-     * @param i18n 国际化
-     * @return 结果
-     */
-    public int insertI18n(I18n i18n);
+	/**
+	 * 查询国际化列表
+	 * @param i18n 国际化
+	 * @return 国际化集合
+	 */
+	public List<I18n> selectI18nList(I18n i18n);
 
-    /**
-     * 修改国际化
-     *
-     * @param i18n 国际化
-     * @return 结果
-     */
-    public int updateI18n(I18n i18n);
+	/**
+	 * 新增国际化
+	 * @param i18n 国际化
+	 * @return 结果
+	 */
+	public int insertI18n(I18n i18n);
 
-    /**
-     * 批量删除国际化
-     *
-     * @param i18nIds 需要删除的国际化主键集合
-     * @return 结果
-     */
-    public int deleteI18nByI18nIds(Long[] i18nIds);
+	/**
+	 * 修改国际化
+	 * @param i18n 国际化
+	 * @return 结果
+	 */
+	public int updateI18n(I18n i18n);
 
-    /**
-     * 删除国际化信息
-     *
-     * @param i18nId 国际化主键
-     * @return 结果
-     */
-    public int deleteI18nByI18nId(Long i18nId);
+	/**
+	 * 批量删除国际化
+	 * @param i18nIds 需要删除的国际化主键集合
+	 * @return 结果
+	 */
+	public int deleteI18nByI18nIds(Long[] i18nIds);
+
+	/**
+	 * 删除国际化信息
+	 * @param i18nId 国际化主键
+	 * @return 结果
+	 */
+	public int deleteI18nByI18nId(Long i18nId);
+
 }

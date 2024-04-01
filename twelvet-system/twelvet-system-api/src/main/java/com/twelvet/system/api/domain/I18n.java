@@ -14,78 +14,73 @@ import io.swagger.v3.oas.annotations.media.Schema;
  * @WebSite twelvet.cn
  * @date 2024-04-01
  */
-@Schema(description ="国际化对象")
+@Schema(description = "国际化对象")
 public class I18n extends BaseEntity {
 
-    private static final long serialVersionUID = 1L;
+	private static final long serialVersionUID = 1L;
 
-    /** ID */
-    @Schema(description = "ID")
-    private Long i18nId;
+	/** ID */
+	@Schema(description = "ID")
+	private Long i18nId;
 
-    /** 唯一Code */
-    @Schema(description = "唯一Code")
-    @ExcelProperty(value ="唯一Code")
-    private String code;
+	/** 唯一Code */
+	@Schema(description = "唯一Code")
+	@ExcelProperty(value = "唯一Code")
+	private String code;
 
-    /** 语言类型：zh_CN,en_US... */
-    @Schema(description = "语言类型：zh_CN,en_US...")
-    @ExcelProperty(value ="语言类型：zh_CN,en_US...")
-    private String type;
+	/** 语言类型：zh_CN,en_US... */
+	@Schema(description = "语言类型：zh_CN,en_US...")
+	@ExcelProperty(value = "语言类型：zh_CN,en_US...")
+	private String type;
 
-    /** 翻译值 */
-    @Schema(description = "翻译值")
-    @ExcelProperty(value ="翻译值")
-    private String value;
+	/** 翻译值 */
+	@Schema(description = "翻译值")
+	@ExcelProperty(value = "翻译值")
+	private String value;
 
-    public void setI18nId(Long i18nId)
-    {
-        this.i18nId = i18nId;
-    }
+	public void setI18nId(Long i18nId) {
+		this.i18nId = i18nId;
+	}
 
-    public Long getI18nId()
-    {
-        return i18nId;
-    }
-    public void setCode(String code)
-    {
-        this.code = code;
-    }
+	public Long getI18nId() {
+		return i18nId;
+	}
 
-    public String getCode()
-    {
-        return code;
-    }
-    public void setType(String type)
-    {
-        this.type = type;
-    }
+	public void setCode(String code) {
+		this.code = code;
+	}
 
-    public String getType()
-    {
-        return type;
-    }
-    public void setValue(String value)
-    {
-        this.value = value;
-    }
+	public String getCode() {
+		return code;
+	}
 
-    public String getValue()
-    {
-        return value;
-    }
+	public void setType(String type) {
+		this.type = type;
+	}
 
-    @Override
-    public String toString() {
-        return new ToStringBuilder(this,ToStringStyle.MULTI_LINE_STYLE)
-            .append("i18nId", getI18nId())
-            .append("code", getCode())
-            .append("type", getType())
-            .append("value", getValue())
-            .append("createTime", getCreateTime())
-            .append("updateBy", getUpdateBy())
-            .append("updateTime", getUpdateTime())
-            .append("remark", getRemark())
-            .toString();
-    }
+	public String getType() {
+		return type;
+	}
+
+	public void setValue(String value) {
+		this.value = value;
+	}
+
+	public String getValue() {
+		return value;
+	}
+
+	@Override
+	public String toString() {
+		return new ToStringBuilder(this, ToStringStyle.MULTI_LINE_STYLE).append("i18nId", getI18nId())
+			.append("code", getCode())
+			.append("type", getType())
+			.append("value", getValue())
+			.append("createTime", getCreateTime())
+			.append("updateBy", getUpdateBy())
+			.append("updateTime", getUpdateTime())
+			.append("remark", getRemark())
+			.toString();
+	}
+
 }
