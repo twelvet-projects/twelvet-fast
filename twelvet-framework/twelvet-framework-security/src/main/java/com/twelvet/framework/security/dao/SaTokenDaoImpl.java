@@ -8,6 +8,7 @@ import java.time.Duration;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
+import java.util.concurrent.TimeUnit;
 
 /**
  * @author twelvet
@@ -37,7 +38,7 @@ public class SaTokenDaoImpl implements SaTokenDao {
 			RedisUtils.setCacheObject(key, value);
 		}
 		else {
-			RedisUtils.setCacheObject(key, value, Duration.ofSeconds(timeout));
+			RedisUtils.setCacheObject(key, value, timeout, TimeUnit.SECONDS);
 		}
 	}
 
@@ -67,7 +68,7 @@ public class SaTokenDaoImpl implements SaTokenDao {
 	 */
 	@Override
 	public long getTimeout(String key) {
-		long timeout = RedisUtils.getTimeToLive(key);
+		long timeout = RedisUtils.geteExpire(key);
 		return timeout < 0 ? timeout : timeout / 1000;
 	}
 
@@ -88,7 +89,7 @@ public class SaTokenDaoImpl implements SaTokenDao {
 			}
 			return;
 		}
-		RedisUtils.expire(key, Duration.ofSeconds(timeout));
+		RedisUtils.expire(key, timeout);
 	}
 
 	/**
@@ -112,7 +113,7 @@ public class SaTokenDaoImpl implements SaTokenDao {
 			RedisUtils.setCacheObject(key, object);
 		}
 		else {
-			RedisUtils.setCacheObject(key, object, Duration.ofSeconds(timeout));
+			RedisUtils.setCacheObject(key, object, timeout, TimeUnit.SECONDS);
 		}
 	}
 
@@ -142,7 +143,7 @@ public class SaTokenDaoImpl implements SaTokenDao {
 	 */
 	@Override
 	public long getObjectTimeout(String key) {
-		long timeout = RedisUtils.getTimeToLive(key);
+		long timeout = RedisUtils.geteExpire(key);
 		return timeout < 0 ? timeout : timeout / 1000;
 	}
 
@@ -163,7 +164,7 @@ public class SaTokenDaoImpl implements SaTokenDao {
 			}
 			return;
 		}
-		RedisUtils.expire(key, Duration.ofSeconds(timeout));
+		RedisUtils.expire(key, timeout);
 	}
 
 	/**

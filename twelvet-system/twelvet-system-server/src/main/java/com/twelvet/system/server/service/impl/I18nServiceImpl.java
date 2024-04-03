@@ -47,7 +47,7 @@ public class I18nServiceImpl implements II18nService, ApplicationRunner {
 	@Override
 	public void run(ApplicationArguments args) throws Exception {
 		String hashFormat = String.format("%s::%s", LocaleCacheConstants.LOCALE, LocaleCacheConstants.ZH_CN);
-		if (!RedisUtils.getClient().getBucket(hashFormat).isExists()) {
+		if (!RedisUtils.hashKey(hashFormat)) {
 			log.info("Detected i18n deficiency, initializing");
 			List<I18n> i18ns = i18nMapper.selectI18nList(new I18n());
 			for (I18n i18n : i18ns) {
@@ -60,7 +60,7 @@ public class I18nServiceImpl implements II18nService, ApplicationRunner {
 		}
 
 		// 处理i18n支持语言缓存
-		if (!RedisUtils.getClient().getBucket(LocaleCacheConstants.CACHE_DICT_CODE).isExists()) {
+		if (!RedisUtils.hashKey(LocaleCacheConstants.CACHE_DICT_CODE)) {
 			List<SysDictData> sysDictData = dictDataMapper.selectDictDataByType(LocaleCacheConstants.DICT_CODE);
 			RedisUtils.setCacheObject(LocaleCacheConstants.CACHE_DICT_CODE, sysDictData);
 		}
