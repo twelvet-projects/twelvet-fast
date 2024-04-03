@@ -29,7 +29,7 @@ import com.twelvet.framework.jdbc.web.utils.PageUtils;
  */
 @Tag(description = "I18nController", name = "国际化")
 @RestController
-@RequestMapping("/i18n")
+@RequestMapping("/system/i18n")
 public class I18nController extends TWTController {
 
 	@Autowired
