@@ -54,7 +54,7 @@ public class RedisUtils {
 	 * @param timeUnit 时间颗粒度
 	 */
 	public static <T> void setCacheObject(final String key, final T value, final long timeout,
-										  final TimeUnit timeUnit) {
+			final TimeUnit timeUnit) {
 		redisTemplate.opsForValue().set(key, value, timeout, timeUnit);
 	}
 
