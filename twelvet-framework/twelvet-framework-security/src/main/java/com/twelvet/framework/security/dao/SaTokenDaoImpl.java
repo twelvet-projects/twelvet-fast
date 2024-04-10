@@ -68,7 +68,7 @@ public class SaTokenDaoImpl implements SaTokenDao {
 	 */
 	@Override
 	public long getTimeout(String key) {
-		long timeout = RedisUtils.geteExpire(key);
+		long timeout = RedisUtils.getExpire(key);
 		return timeout < 0 ? timeout : timeout / 1000;
 	}
 
@@ -143,7 +143,7 @@ public class SaTokenDaoImpl implements SaTokenDao {
 	 */
 	@Override
 	public long getObjectTimeout(String key) {
-		long timeout = RedisUtils.geteExpire(key);
+		long timeout = RedisUtils.getExpire(key);
 		return timeout < 0 ? timeout : timeout / 1000;
 	}
 
