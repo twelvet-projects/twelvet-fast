@@ -75,12 +75,29 @@ public class I18nUtils {
 	 * 获取当前国际化文字
 	 * @param code 需要国际化的文字
 	 * @param args 动态参数
+	 * @param defaultMessage 默认参数
+	 * @return 返回国际化文字
+	 */
+	public static String getLocale(String code, @Nullable Object[] args, @Nullable String defaultMessage) {
+		try {
+			return getLocale(code, args, defaultMessage, LocaleContextHolder.getLocale());
+		}
+		catch (Exception e) {
+			log.error("获取国际化失败：{}", code, e);
+			return code;
+		}
+	}
+
+	/**
+	 * 获取当前国际化文字
+	 * @param code 需要国际化的文字
+	 * @param args 动态参数
 	 * @param locale 使用语言
 	 * @return 返回国际化文字
 	 */
 	public static String getLocale(String code, @Nullable Object[] args, Locale locale) {
 		try {
-			return getLocale(code, args, code, LocaleContextHolder.getLocale());
+			return getLocale(code, args, code, locale);
 		}
 		catch (Exception e) {
 			log.error("获取国际化失败：{}", code, e);
@@ -96,9 +113,10 @@ public class I18nUtils {
 	 * @param locale 使用语言
 	 * @return 返回国际化文字
 	 */
-	public static String getLocale(String code, @Nullable Object[] args, @Nullable String defaultMessage, Locale locale) {
+	public static String getLocale(String code, @Nullable Object[] args, @Nullable String defaultMessage,
+			Locale locale) {
 		try {
-			return messageSource.getMessage(code, args, defaultMessage, LocaleContextHolder.getLocale());
+			return messageSource.getMessage(code, args, defaultMessage, locale);
 		}
 		catch (Exception e) {
 			log.error("获取国际化失败：{}", code, e);
