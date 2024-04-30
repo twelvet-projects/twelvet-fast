@@ -62,7 +62,7 @@
 
         <pagehelper.boot.version>2.1.0</pagehelper.boot.version>
 
-        <commons.io.version>2.15.1</commons.io.version>
+        <commons.io.version>2.16.1</commons.io.version>
         <hutool.version>5.8.27</hutool.version>
 
         <docker.plugin.version>0.32.0</docker.plugin.version>
