@@ -1,15 +1,11 @@
-DROP
-    DATABASE IF EXISTS `twelvet-fast`;
+DROP DATABASE IF EXISTS `twelvet-fast`;
 
-CREATE
-    DATABASE `twelvet-fast` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
+CREATE DATABASE `twelvet-fast` DEFAULT CHARACTER SET utf8mb4 COLLATE utf8mb4_unicode_ci;
 
 SET NAMES utf8mb4;
-SET
-    FOREIGN_KEY_CHECKS = 0;
+SET FOREIGN_KEY_CHECKS = 0;
 
-USE
-    `twelvet-fast`;
+USE `twelvet-fast`;
 
 -- ----------------------------
 -- Table structure for sys_dept
