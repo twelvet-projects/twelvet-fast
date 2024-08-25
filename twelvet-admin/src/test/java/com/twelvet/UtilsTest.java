@@ -10,6 +10,7 @@ import cn.dev33.satoken.secure.BCrypt;
 public class UtilsTest {
 
 	public static void main(String[] args) {
+		// 密码测试
 		System.out.println(BCrypt.hashpw("123456"));
 	}
 
