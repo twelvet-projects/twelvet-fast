@@ -50,11 +50,3 @@ services:
       dockerfile: dockerfile
     ports:
       - "8080:8080"
-    # 允许使用外部网络
-    networks:
-      - twelvet
-
-networks:
-  twelvet-mysql:
-    # 互通网络
-    external: true
