@@ -50,6 +50,9 @@ services:
       dockerfile: dockerfile
     ports:
       - "8080:8080"
+    # 允许使用外部网络
+    networks:
+      - frontend
 
 networks:
   frontend:
