@@ -13,12 +13,12 @@ services:
       - ./mysql/logs:/logs
       - ./mysql/data:/var/lib/mysql
     command: [
-        'mysqld',
-        '--innodb-buffer-pool-size=80M',
-        '--character-set-server=utf8mb4',
-        '--collation-server=utf8mb4_unicode_ci',
-        '--default-time-zone=+8:00',
-        '--lower-case-table-names=1'
+      'mysqld',
+      '--innodb-buffer-pool-size=80M',
+      '--character-set-server=utf8mb4',
+      '--collation-server=utf8mb4_unicode_ci',
+      '--default-time-zone=+8:00',
+      '--lower-case-table-names=1'
     ]
     environment:
       MYSQL_ROOT_HOST: "%"
@@ -50,3 +50,8 @@ services:
       dockerfile: dockerfile
     ports:
       - "8080:8080"
+
+networks:
+  frontend:
+    # 互通网络
+    external: true
