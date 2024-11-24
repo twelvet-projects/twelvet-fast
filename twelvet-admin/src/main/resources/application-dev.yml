@@ -19,6 +19,7 @@ spring:
     redis:
       host: twelvet-redis
       port: 6379
+      database: 1
       # 连接超时时间
       timeout: 30s
       lettuce:
