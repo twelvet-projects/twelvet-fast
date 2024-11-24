@@ -30,12 +30,12 @@ port() {
 # 启动基础环境（必须）
 base() {
   docker network create twelvet-network
-  docker compose up -d twelvet-mysql twelvet-redis
+  docker-compose up -d twelvet-mysql twelvet-redis
 }
 
 # 启动程序模块（必须）
 server() {
-  docker compose up -d twelvet-admin
+  docker-compose up -d twelvet-admin
 }
 
 # 启动nginx（必须）
