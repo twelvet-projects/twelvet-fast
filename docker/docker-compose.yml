@@ -52,7 +52,7 @@ services:
       - "8080:8080"
     # 允许使用外部网络
     networks:
-      - twelvet-mysql
+      - twelvet
 
 networks:
   twelvet-mysql:
