@@ -52,9 +52,9 @@ services:
       - "8080:8080"
     # 允许使用外部网络
     networks:
-      - frontend
+      - twelvet-mysql
 
 networks:
-  frontend:
+  twelvet-mysql:
     # 互通网络
     external: true
