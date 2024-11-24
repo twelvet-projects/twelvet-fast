@@ -29,6 +29,7 @@ port() {
 
 # 启动基础环境（必须）
 base() {
+  docker network create twelvet-network
   docker compose up -d twelvet-mysql twelvet-redis
 }
 

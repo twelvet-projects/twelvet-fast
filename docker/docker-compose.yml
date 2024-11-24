@@ -1,6 +1,9 @@
 version: '3'
 services:
   twelvet-mysql:
+    # 加入网络
+    networks:
+      - twelvet-network
     container_name: twelvet-mysql
     restart: always
     image: twelvet-mysql
@@ -25,6 +28,9 @@ services:
       MYSQL_ROOT_PASSWORD: 123456
 
   twelvet-redis:
+    # 加入网络
+    networks:
+      - twelvet-network
     container_name: twelvet-redis
     restart: always
     image: twelvet-redis
@@ -39,6 +45,9 @@ services:
     command: redis-server /home/twelvet/redis/redis.conf
 
   twelvet-admin:
+    # 加入网络
+    networks:
+      - twelvet-network
     container_name: twelvet-admin
     image: twelvet-admin
     restart: always
@@ -50,3 +59,7 @@ services:
       dockerfile: dockerfile
     ports:
       - "8080:8080"
+# 共享网络
+networks:
+  twelvet-network:
+    external: true
