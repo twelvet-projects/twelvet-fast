@@ -44,7 +44,7 @@ services:
     restart: always
     environment:
       - MODE=standalone
-      - TZ=America/New_York
+      - TZ=Asia/Shanghai
     build:
       context: twelvet/twelvet-admin
       dockerfile: dockerfile

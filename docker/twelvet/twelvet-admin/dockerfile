@@ -10,5 +10,5 @@ WORKDIR /home/twelvet
 # 复制jar文件到路径
 COPY ./jar/twelvet-admin.jar /home/twelvet/twelvet-admin.jar
 # 启动服务
-ENV TZ=America/New_York JAVA_OPTS="-Xms128m -Xmx256m -Djava.security.egd=file:/dev/./urandom"
+ENV TZ=Asia/Shanghai JAVA_OPTS="-Xms128m -Xmx256m -Djava.security.egd=file:/dev/./urandom"
 CMD java -jar twelvet-admin.jar
