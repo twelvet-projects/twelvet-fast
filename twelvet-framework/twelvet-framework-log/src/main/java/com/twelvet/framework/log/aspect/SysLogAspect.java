@@ -8,11 +8,12 @@ import com.twelvet.framework.security.domain.LoginUser;
 import com.twelvet.framework.security.utils.SecurityUtils;
 import com.twelvet.framework.utils.JacksonUtils;
 import com.twelvet.framework.utils.SpringContextHolder;
-import com.twelvet.framework.utils.StringUtils;
+import com.twelvet.framework.utils.StrUtils;
 import com.twelvet.framework.utils.TUtils;
 import com.twelvet.framework.utils.http.IpUtils;
 import com.twelvet.framework.utils.http.ServletUtils;
 import com.twelvet.system.api.domain.SysOperationLog;
+import org.apache.commons.lang3.StringUtils;
 import org.aspectj.lang.JoinPoint;
 import org.aspectj.lang.Signature;
 import org.aspectj.lang.annotation.AfterReturning;
@@ -32,6 +33,7 @@ import jakarta.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.lang.reflect.Method;
 import java.util.Map;
+import java.util.Objects;
 
 /**
  * @author twelvet
@@ -98,7 +100,7 @@ public class SysLogAspect {
 
 			if (e != null) {
 				operationLog.setStatus(BusinessStatus.FAIL.value());
-				operationLog.setErrorMsg(StringUtils.substring(e.getMessage(), 0, 2000));
+				operationLog.setErrorMsg(StrUtils.substring(e.getMessage(), 0, 2000));
 			}
 			// 设置方法名称
 			String className = joinPoint.getTarget().getClass().getName();
@@ -147,7 +149,7 @@ public class SysLogAspect {
 		if (HttpMethod.PUT.name().equals(requestMethod) || HttpMethod.POST.name().equals(requestMethod)) {
 			String params;
 			String contentType = ServletUtils.getRequest().get().getContentType();
-			if (!TUtils.isEmpty(contentType) && contentType.startsWith(MediaType.MULTIPART_FORM_DATA_VALUE)) {
+			if (!StringUtils.isEmpty(contentType) && contentType.startsWith(MediaType.MULTIPART_FORM_DATA_VALUE)) {
 				params = "FILE";
 			}
 			else {
@@ -159,13 +161,13 @@ public class SysLogAspect {
 				}
 			}
 
-			operationLog.setOperParam(StringUtils.substring(params, 0, 2000));
+			operationLog.setOperParam(StrUtils.substring(params, 0, 2000));
 		}
 		else {
 			Map<?, ?> paramsMap = (Map<?, ?>) ServletUtils.getRequest()
 				.get()
 				.getAttribute(HandlerMapping.URI_TEMPLATE_VARIABLES_ATTRIBUTE);
-			operationLog.setOperParam(StringUtils.substring(paramsMap.toString(), 0, 1000));
+			operationLog.setOperParam(StrUtils.substring(paramsMap.toString(), 0, 1000));
 		}
 	}
 

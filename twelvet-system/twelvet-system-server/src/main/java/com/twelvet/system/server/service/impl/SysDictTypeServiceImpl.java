@@ -3,7 +3,7 @@ package com.twelvet.system.server.service.impl;
 import com.twelvet.framework.constants.CacheConstants;
 import com.twelvet.framework.core.constants.UserConstants;
 import com.twelvet.framework.core.exception.TWTException;
-import com.twelvet.framework.utils.StringUtils;
+import com.twelvet.framework.utils.StrUtils;
 import com.twelvet.system.api.domain.SysDictData;
 import com.twelvet.system.api.domain.SysDictType;
 import com.twelvet.system.server.mapper.SysDictDataMapper;
@@ -147,9 +147,9 @@ public class SysDictTypeServiceImpl implements ISysDictTypeService {
 	 */
 	@Override
 	public String checkDictTypeUnique(SysDictType dict) {
-		long dictId = StringUtils.isNull(dict.getDictId()) ? -1L : dict.getDictId();
+		long dictId = StrUtils.isNull(dict.getDictId()) ? -1L : dict.getDictId();
 		SysDictType dictType = dictTypeMapper.checkDictTypeUnique(dict.getDictType());
-		if (StringUtils.isNotNull(dictType) && dictType.getDictId() != dictId) {
+		if (StrUtils.isNotNull(dictType) && dictType.getDictId() != dictId) {
 			return UserConstants.NOT_UNIQUE;
 		}
 		return UserConstants.UNIQUE;

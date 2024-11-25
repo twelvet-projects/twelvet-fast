@@ -1,7 +1,6 @@
 package com.twelvet.framework.jdbc.web.page;
 
-import com.twelvet.framework.utils.StringUtils;
-import com.twelvet.framework.utils.TUtils;
+import com.twelvet.framework.utils.StrUtils;
 
 /**
  * @author twelvet
@@ -32,10 +31,10 @@ public class PageDomain {
 	private String isAsc;
 
 	public String getOrderBy() {
-		if (TUtils.isEmpty(orderByColumn)) {
+		if (StrUtils.isEmpty(orderByColumn)) {
 			return null;
 		}
-		return StringUtils.toUnderScoreCase(orderByColumn) + " " + isAsc;
+		return StrUtils.toUnderScoreCase(orderByColumn) + " " + isAsc;
 	}
 
 	public Integer getCurrent() {

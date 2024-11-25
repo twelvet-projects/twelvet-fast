@@ -2,6 +2,7 @@ package com.twelvet.framework.utils.http;
 
 import com.twelvet.framework.utils.TUtils;
 import com.twelvet.framework.utils.exception.TWTUtilsException;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -47,19 +48,19 @@ public class IpUtils {
 
 		// X-Forwarded-For：Squid 服务代理
 		String ipAddresses = request.getHeader("X-Forwarded-For");
-		if (TUtils.isEmpty(ipAddresses) || ipAddresses.length() == 0 || UNKNOWN.equalsIgnoreCase(ipAddresses)) {
+		if (StringUtils.isEmpty(ipAddresses) || UNKNOWN.equalsIgnoreCase(ipAddresses)) {
 			// Proxy-Client-IP：apache 服务代理
 			ipAddresses = request.getHeader("Proxy-Client-IP");
 		}
-		if (TUtils.isEmpty(ipAddresses) || ipAddresses.length() == 0 || UNKNOWN.equalsIgnoreCase(ipAddresses)) {
+		if (StringUtils.isEmpty(ipAddresses) || UNKNOWN.equalsIgnoreCase(ipAddresses)) {
 			// WL-Proxy-Client-IP：weblogic 服务代理
 			ipAddresses = request.getHeader("WL-Proxy-Client-IP");
 		}
-		if (TUtils.isEmpty(ipAddresses) || ipAddresses.length() == 0 || UNKNOWN.equalsIgnoreCase(ipAddresses)) {
+		if (StringUtils.isEmpty(ipAddresses) || UNKNOWN.equalsIgnoreCase(ipAddresses)) {
 			// HTTP_CLIENT_IP：有些代理服务器
 			ipAddresses = request.getHeader("HTTP_CLIENT_IP");
 		}
-		if (TUtils.isEmpty(ipAddresses) || ipAddresses.length() == 0 || UNKNOWN.equalsIgnoreCase(ipAddresses)) {
+		if (StringUtils.isEmpty(ipAddresses) || UNKNOWN.equalsIgnoreCase(ipAddresses)) {
 			// X-Real-IP：nginx服务代理
 			ipAddresses = request.getHeader("X-Real-IP");
 		}

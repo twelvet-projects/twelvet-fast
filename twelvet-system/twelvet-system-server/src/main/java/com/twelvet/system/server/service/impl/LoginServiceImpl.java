@@ -22,6 +22,7 @@ import com.twelvet.system.server.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.Objects;
 import java.util.Set;
 
 /**
@@ -92,7 +93,7 @@ public class LoginServiceImpl implements LoginService {
 	private SysUser loadUserByUsername(String username, String password) {
 		SysUser sysUser = userMapper.selectUserByUserName(username);
 
-		if (TUtils.isEmpty(sysUser)) {
+		if (Objects.isNull(sysUser)) {
 			throw new TWTException("登录用户：" + username + " 不存在.");
 		}
 

@@ -1,14 +1,17 @@
 package com.twelvet.quartz.server.util;
 
+import cn.hutool.core.collection.CollectionUtil;
 import com.twelvet.framework.utils.SpringContextHolder;
-import com.twelvet.framework.utils.StringUtils;
+import com.twelvet.framework.utils.StrUtils;
 import com.twelvet.framework.utils.TUtils;
 import com.twelvet.quartz.api.domain.SysJob;
+import org.apache.commons.lang3.StringUtils;
 
 import java.lang.reflect.InvocationTargetException;
 import java.lang.reflect.Method;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author twelvet
@@ -46,7 +49,7 @@ public class JobInvokeUtil {
 	private static void invokeMethod(Object bean, String methodName, List<Object[]> methodParams)
 			throws NoSuchMethodException, SecurityException, IllegalAccessException, IllegalArgumentException,
 			InvocationTargetException {
-		if (TUtils.isNotEmpty(methodParams) && methodParams.size() > 0) {
+		if (CollectionUtil.isNotEmpty(methodParams)) {
 			Method method = bean.getClass().getDeclaredMethod(methodName, getMethodParamsType(methodParams));
 			method.invoke(bean, getMethodParamsValue(methodParams));
 		}
@@ -92,7 +95,7 @@ public class JobInvokeUtil {
 	 */
 	public static List<Object[]> getMethodParams(String invokeTarget) {
 		String methodStr = StringUtils.substringBetween(invokeTarget, "(", ")");
-		if (StringUtils.isEmpty(methodStr)) {
+		if (StrUtils.isEmpty(methodStr)) {
 			return null;
 		}
 		String[] methodParams = methodStr.split(",");

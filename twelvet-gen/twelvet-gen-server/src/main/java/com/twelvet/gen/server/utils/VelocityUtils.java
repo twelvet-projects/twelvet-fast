@@ -2,11 +2,12 @@ package com.twelvet.gen.server.utils;
 
 import cn.hutool.core.io.IoUtil;
 import cn.hutool.core.io.resource.ClassPathResource;
+import com.twelvet.framework.utils.JacksonUtils;
+import com.twelvet.framework.utils.StrUtils;
 import com.twelvet.gen.api.constant.GenConstants;
 import com.twelvet.gen.api.domain.GenTable;
 import com.twelvet.gen.api.domain.GenTableColumn;
-import com.twelvet.framework.utils.JacksonUtils;
-import com.twelvet.framework.utils.StringUtils;
+import org.apache.commons.lang3.StringUtils;
 import org.apache.velocity.VelocityContext;
 import org.apache.velocity.app.Velocity;
 
@@ -73,7 +74,7 @@ public class VelocityUtils {
 		String subTableName = genTable.getSubTableName();
 		String subTableFkName = genTable.getSubTableFkName();
 		String subClassName = genTable.getSubTable().getClassName();
-		String subTableFkClassName = StringUtils.convertToCamelCase(subTableFkName);
+		String subTableFkClassName = StrUtils.convertToCamelCase(subTableFkName);
 
 		dataModel.put("subTable", subTable);
 		dataModel.put("subTableName", subTableName);
@@ -92,7 +93,7 @@ public class VelocityUtils {
 	 */
 	public static String getPackagePrefix(String packageName) {
 		int lastIndex = packageName.lastIndexOf(".");
-		return StringUtils.substring(packageName, 0, lastIndex);
+		return StrUtils.substring(packageName, 0, lastIndex);
 	}
 
 	/**
@@ -104,7 +105,7 @@ public class VelocityUtils {
 		List<GenTableColumn> columns = genTable.getColumns();
 		GenTable subGenTable = genTable.getSubTable();
 		HashSet<String> importList = new HashSet<>();
-		if (StringUtils.isNotNull(subGenTable)) {
+		if (StrUtils.isNotNull(subGenTable)) {
 			importList.add("java.util.List");
 		}
 		for (GenTableColumn column : columns) {
@@ -126,7 +127,7 @@ public class VelocityUtils {
 	 * @return 返回权限前缀
 	 */
 	public static String getPermissionPrefix(String moduleName, String businessName) {
-		return StringUtils.format("{}:{}", moduleName, businessName);
+		return StrUtils.format("{}:{}", moduleName, businessName);
 	}
 
 	/**
@@ -135,7 +136,7 @@ public class VelocityUtils {
 	 * @return 上级菜单ID字段
 	 */
 	public static String getParentMenuId(Map<String, String> paramsObj) {
-		if (StringUtils.isNotEmpty(paramsObj) && paramsObj.containsKey(GenConstants.PARENT_MENU_ID)) {
+		if (StrUtils.isNotEmpty(paramsObj) && paramsObj.containsKey(GenConstants.PARENT_MENU_ID)) {
 			return paramsObj.get(GenConstants.PARENT_MENU_ID);
 		}
 		return DEFAULT_PARENT_MENU_ID;
@@ -148,9 +149,9 @@ public class VelocityUtils {
 	 */
 	public static String getTreecode(Map<String, String> paramsObj) {
 		if (paramsObj.containsKey(GenConstants.TREE_CODE)) {
-			return StringUtils.toCamelCase(paramsObj.get(GenConstants.TREE_CODE));
+			return StrUtils.toCamelCase(paramsObj.get(GenConstants.TREE_CODE));
 		}
-		return StringUtils.EMPTY;
+		return StrUtils.EMPTY;
 	}
 
 	/**
@@ -160,9 +161,9 @@ public class VelocityUtils {
 	 */
 	public static String getTreeParentCode(Map<String, String> paramsObj) {
 		if (paramsObj.containsKey(GenConstants.TREE_PARENT_CODE)) {
-			return StringUtils.toCamelCase(paramsObj.get(GenConstants.TREE_PARENT_CODE));
+			return StrUtils.toCamelCase(paramsObj.get(GenConstants.TREE_PARENT_CODE));
 		}
-		return StringUtils.EMPTY;
+		return StrUtils.EMPTY;
 	}
 
 	/**
@@ -172,9 +173,9 @@ public class VelocityUtils {
 	 */
 	public static String getTreeName(Map<String, String> paramsObj) {
 		if (paramsObj.containsKey(GenConstants.TREE_NAME)) {
-			return StringUtils.toCamelCase(paramsObj.get(GenConstants.TREE_NAME));
+			return StrUtils.toCamelCase(paramsObj.get(GenConstants.TREE_NAME));
 		}
-		return StringUtils.EMPTY;
+		return StrUtils.EMPTY;
 	}
 
 	/**

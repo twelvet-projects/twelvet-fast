@@ -68,12 +68,6 @@
             <artifactId>hutool-all</artifactId>
         </dependency>
 
-        <!--okhttp-->
-        <dependency>
-            <groupId>com.squareup.okhttp3</groupId>
-            <artifactId>okhttp</artifactId>
-        </dependency>
-
         <!--Excel-->
         <dependency>
             <groupId>com.pig4cloud.excel</groupId>

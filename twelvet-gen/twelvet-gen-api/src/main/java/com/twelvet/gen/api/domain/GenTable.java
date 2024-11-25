@@ -1,12 +1,13 @@
 package com.twelvet.gen.api.domain;
 
 import com.twelvet.framework.core.application.domain.BaseEntity;
-import com.twelvet.framework.utils.StringUtils;
+import com.twelvet.framework.utils.StrUtils;
 import com.twelvet.gen.api.constant.GenConstants;
 import io.swagger.v3.oas.annotations.media.Schema;
 import jakarta.validation.Valid;
 import jakarta.validation.constraints.NotBlank;
 import org.apache.commons.lang3.ArrayUtils;
+import org.apache.commons.lang3.StringUtils;
 
 import java.io.Serial;
 import java.util.List;

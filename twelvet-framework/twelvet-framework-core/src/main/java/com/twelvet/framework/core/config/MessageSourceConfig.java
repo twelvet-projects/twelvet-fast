@@ -5,16 +5,15 @@ import com.github.benmanes.caffeine.cache.Caffeine;
 import com.twelvet.framework.RedisUtils;
 import com.twelvet.framework.core.config.properties.MessageSourceProperties;
 import com.twelvet.framework.core.locale.constants.LocaleCacheConstants;
-import com.twelvet.framework.utils.StringUtils;
+import com.twelvet.framework.utils.StrUtils;
 import com.twelvet.framework.utils.TUtils;
 import com.twelvet.system.api.domain.SysDictData;
-import org.jetbrains.annotations.NotNull;
+import jakarta.validation.constraints.NotNull;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.ApplicationArguments;
 import org.springframework.boot.ApplicationRunner;
 import org.springframework.context.annotation.Primary;
 import org.springframework.context.support.AbstractMessageSource;
-import org.springframework.data.redis.core.RedisTemplate;
 
 import java.text.MessageFormat;
 import java.util.List;
@@ -74,7 +73,7 @@ public class MessageSourceConfig extends AbstractMessageSource implements Applic
 		// 三级缓存
 		List<SysDictData> localeCacheList = (List<SysDictData>) cache
 			.getIfPresent(LocaleCacheConstants.CACHE_DICT_CODE);
-		if (TUtils.isEmpty(localeCacheList)) {
+		if (Objects.isNull(localeCacheList)) {
 			localeCacheList = RedisUtils.getCacheObject(LocaleCacheConstants.CACHE_DICT_CODE);
 
 			cache.put(LocaleCacheConstants.CACHE_DICT_CODE, localeCacheList);
@@ -91,7 +90,7 @@ public class MessageSourceConfig extends AbstractMessageSource implements Applic
 				}
 			}
 		}
-		if (TUtils.isEmpty(useLocale)) {
+		if (Objects.isNull(useLocale)) {
 			// 默认中文
 			String[] dictValues = LocaleCacheConstants.ZH_CN.split("_");
 			useLocale = new Locale(dictValues[0], dictValues[1]);
@@ -99,7 +98,7 @@ public class MessageSourceConfig extends AbstractMessageSource implements Applic
 
 		String format = String.format("%s:%s:%s", LocaleCacheConstants.LOCALE, useLocale.toString(), code);
 		String cacheMessage = (String) cache.getIfPresent(format);
-		if (StringUtils.isNotEmpty(cacheMessage)) {
+		if (StrUtils.isNotEmpty(cacheMessage)) {
 			return cacheMessage;
 		}
 
@@ -109,7 +108,7 @@ public class MessageSourceConfig extends AbstractMessageSource implements Applic
 		String message = "";
 		for (String basename : basenameList) {
 			try {
-				if (StringUtils.isNotEmpty(message)) {
+				if (StrUtils.isNotEmpty(message)) {
 					break;
 				}
 				message = ResourceBundle.getBundle(basename, useLocale).getString(code);
@@ -119,13 +118,13 @@ public class MessageSourceConfig extends AbstractMessageSource implements Applic
 			}
 		}
 
-		if (StringUtils.isEmpty(message)) {
+		if (StrUtils.isEmpty(message)) {
 			// 从Redis缓存获取
 			message = getMessageFromDatabase(code, useLocale);
 		}
 
 		// 进行本地缓存
-		if (!message.equals(code) && TUtils.isNotEmpty(args) && args.length > 0) {
+		if (!message.equals(code) && Objects.nonNull(args) && args.length > 0) {
 			message = createMessageFormat(message, useLocale).format(args);
 			cache.put(format, message);
 		}
@@ -157,7 +156,7 @@ public class MessageSourceConfig extends AbstractMessageSource implements Applic
 
 		String format = String.format("%s::%s:%s", LocaleCacheConstants.LOCALE, locale.toString(), code);
 		String message = RedisUtils.getCacheObject(format);
-		if (StringUtils.isEmpty(message)) {
+		if (StrUtils.isEmpty(message)) {
 			message = code;
 		}
 		return message;

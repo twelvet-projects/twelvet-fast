@@ -1,7 +1,7 @@
 package com.twelvet.quartz.server.util;
 
 import com.twelvet.framework.utils.SpringContextHolder;
-import com.twelvet.framework.utils.StringUtils;
+import com.twelvet.framework.utils.StrUtils;
 import com.twelvet.framework.utils.bean.BeanUtils;
 import com.twelvet.framework.utils.exception.TWTUtilsException;
 import com.twelvet.quartz.api.constant.ScheduleConstants;
@@ -75,7 +75,7 @@ public abstract class AbstractQuartzJob implements Job {
 		sysJobLog.setJobMessage(sysJobLog.getJobName() + " 总共耗时：" + runMs + "毫秒");
 		if (e != null) {
 			sysJobLog.setStatus("1");
-			String errorMsg = StringUtils.substring(TWTUtilsException.getExceptionMessage(e), 0, 2000);
+			String errorMsg = StrUtils.substring(TWTUtilsException.getExceptionMessage(e), 0, 2000);
 			sysJobLog.setExceptionInfo(errorMsg);
 		}
 		else {

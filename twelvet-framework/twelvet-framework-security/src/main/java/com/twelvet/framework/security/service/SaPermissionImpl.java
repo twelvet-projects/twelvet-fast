@@ -36,7 +36,7 @@ public class SaPermissionImpl implements StpInterface {
 		List<SysRole> roles = loginUser.getRoles();
 		List<String> permsSet = new ArrayList<>();
 		for (SysRole role : roles) {
-			if (TUtils.isNotEmpty(role)) {
+			if (Objects.nonNull(role)) {
 				permsSet.addAll(Arrays.asList(role.getRoleKey().trim().split(",")));
 			}
 		}

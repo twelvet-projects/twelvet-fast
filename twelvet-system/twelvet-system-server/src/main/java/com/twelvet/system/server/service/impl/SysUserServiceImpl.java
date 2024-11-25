@@ -1,16 +1,18 @@
 package com.twelvet.system.server.service.impl;
 
 import cn.dev33.satoken.secure.BCrypt;
+import cn.hutool.core.collection.CollectionUtil;
 import com.twelvet.framework.core.constants.UserConstants;
 import com.twelvet.framework.core.exception.TWTException;
 import com.twelvet.framework.datascope.annotation.SysDataScope;
 import com.twelvet.framework.security.utils.SecurityUtils;
 import com.twelvet.framework.utils.SpringContextHolder;
-import com.twelvet.framework.utils.StringUtils;
+import com.twelvet.framework.utils.StrUtils;
 import com.twelvet.framework.utils.TUtils;
 import com.twelvet.system.api.domain.*;
 import com.twelvet.system.server.mapper.*;
 import com.twelvet.system.server.service.ISysUserService;
+import org.apache.commons.lang3.StringUtils;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,6 +21,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author twelvet
@@ -75,8 +78,8 @@ public class SysUserServiceImpl implements ISysUserService {
 			String phoneNumber = sysUser.getPhonenumber();
 			String email = sysUser.getEmail();
 
-			String phoneNumberHide = StringUtils.hidePhone(phoneNumber);
-			String emailHide = StringUtils.hideEmail(email);
+			String phoneNumberHide = StrUtils.hidePhone(phoneNumber);
+			String emailHide = StrUtils.hideEmail(email);
 
 			sysUser.setPhonenumber(phoneNumberHide);
 			sysUser.setEmail(emailHide);
@@ -112,7 +115,7 @@ public class SysUserServiceImpl implements ISysUserService {
 		for (SysRole role : list) {
 			idsStr.append(role.getRoleName()).append(",");
 		}
-		if (TUtils.isNotEmpty(idsStr.toString())) {
+		if (StringUtils.isNotEmpty(idsStr.toString())) {
 			return idsStr.substring(0, idsStr.length() - 1);
 		}
 		return idsStr.toString();
@@ -130,7 +133,7 @@ public class SysUserServiceImpl implements ISysUserService {
 		for (SysPost post : list) {
 			idsStr.append(post.getPostName()).append(",");
 		}
-		if (TUtils.isNotEmpty(idsStr.toString())) {
+		if (StringUtils.isNotEmpty(idsStr.toString())) {
 			return idsStr.substring(0, idsStr.length() - 1);
 		}
 		return idsStr.toString();
@@ -157,9 +160,9 @@ public class SysUserServiceImpl implements ISysUserService {
 	 */
 	@Override
 	public String checkPhoneUnique(SysUser user) {
-		Long userId = TUtils.isEmpty(user.getUserId()) ? -1L : user.getUserId();
+		Long userId = Objects.isNull(user.getUserId()) ? -1L : user.getUserId();
 		SysUser info = sysUserMapper.checkPhoneUnique(user.getPhonenumber());
-		if (TUtils.isNotEmpty(info) && info.getUserId().longValue() != userId.longValue()) {
+		if (Objects.nonNull(info) && info.getUserId().longValue() != userId.longValue()) {
 			return UserConstants.NOT_UNIQUE;
 		}
 		return UserConstants.UNIQUE;
@@ -172,9 +175,9 @@ public class SysUserServiceImpl implements ISysUserService {
 	 */
 	@Override
 	public String checkEmailUnique(SysUser user) {
-		Long userId = TUtils.isEmpty(user.getUserId()) ? -1L : user.getUserId();
+		Long userId = Objects.isNull(user.getUserId()) ? -1L : user.getUserId();
 		SysUser info = sysUserMapper.checkEmailUnique(user.getEmail());
-		if (TUtils.isNotEmpty(info) && info.getUserId().longValue() != userId.longValue()) {
+		if (Objects.nonNull(info) && info.getUserId().longValue() != userId.longValue()) {
 			return UserConstants.NOT_UNIQUE;
 		}
 		return UserConstants.UNIQUE;
@@ -186,7 +189,7 @@ public class SysUserServiceImpl implements ISysUserService {
 	 */
 	@Override
 	public void checkUserAllowed(SysUser user) {
-		if (TUtils.isNotEmpty(user.getUserId()) && user.isAdmin()) {
+		if (Objects.nonNull(user.getUserId()) && user.isAdmin()) {
 			throw new TWTException("不允许操作超级管理员用户");
 		}
 	}
@@ -201,7 +204,7 @@ public class SysUserServiceImpl implements ISysUserService {
 			SysUser user = new SysUser();
 			user.setUserId(userId);
 			List<SysUser> users = SpringContextHolder.getAopProxy(this).selectUserList(user);
-			if (StringUtils.isEmpty(users)) {
+			if (StrUtils.isEmpty(users)) {
 				throw new TWTException("没有权限访问用户数据！");
 			}
 		}
@@ -302,7 +305,7 @@ public class SysUserServiceImpl implements ISysUserService {
 	 */
 	public void insertUserRole(SysUser user) {
 		Long[] roles = user.getRoleIds();
-		if (TUtils.isNotEmpty(roles)) {
+		if (Objects.nonNull(roles)) {
 			// 新增用户与角色管理
 			List<SysUserRole> list = new ArrayList<>();
 			for (Long roleId : roles) {
@@ -323,7 +326,7 @@ public class SysUserServiceImpl implements ISysUserService {
 	 */
 	public void insertUserPost(SysUser user) {
 		Long[] posts = user.getPostIds();
-		if (TUtils.isNotEmpty(posts)) {
+		if (Objects.nonNull(posts)) {
 			// 新增用户与岗位管理
 			List<SysUserPost> list = new ArrayList<SysUserPost>();
 			for (Long postId : posts) {
@@ -375,7 +378,7 @@ public class SysUserServiceImpl implements ISysUserService {
 	 */
 	@Override
 	public String importUser(List<SysUser> userList, Boolean cover, String operName) {
-		if (TUtils.isEmpty(userList) || userList.size() == 0) {
+		if (CollectionUtil.isEmpty(userList)) {
 			throw new TWTException("导入用户数据不能为空！");
 		}
 		int successNum = 0;
@@ -386,7 +389,7 @@ public class SysUserServiceImpl implements ISysUserService {
 			try {
 				// 验证是否存在这个用户
 				SysUser u = sysUserMapper.selectUserByUserName(user.getUsername());
-				if (TUtils.isEmpty(u)) {
+				if (Objects.isNull(u)) {
 					// 初始化密码为123456
 					user.setPassword(BCrypt.hashpw("123456"));
 					user.setCreateBy(operName);

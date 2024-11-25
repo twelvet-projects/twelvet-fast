@@ -5,10 +5,10 @@ import com.github.pagehelper.PageInfo;
 import com.twelvet.framework.jdbc.web.page.PageDomain;
 import com.twelvet.framework.jdbc.web.page.TableDataInfo;
 import com.twelvet.framework.jdbc.web.page.TableSupport;
-import com.twelvet.framework.utils.TUtils;
 import com.twelvet.framework.utils.sql.SqlUtils;
 
 import java.util.List;
+import java.util.Objects;
 
 /**
  * @author twelvet
@@ -26,7 +26,7 @@ public class PageUtils {
 		PageDomain pageDomain = TableSupport.buildPageRequest();
 		Integer page = pageDomain.getCurrent();
 		Integer pageSize = pageDomain.getPageSize();
-		if (TUtils.isNotEmpty(page) && TUtils.isNotEmpty(pageSize)) {
+		if (Objects.nonNull(page) && Objects.nonNull(pageSize)) {
 			String orderBy = SqlUtils.escapeOrderBySql(pageDomain.getOrderBy());
 			PageHelper.startPage(page, pageSize, orderBy);
 		}

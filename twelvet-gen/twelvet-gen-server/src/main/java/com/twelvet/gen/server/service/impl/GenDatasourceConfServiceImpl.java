@@ -10,7 +10,7 @@ import com.twelvet.gen.api.domain.GenDatasourceConf;
 import com.twelvet.framework.security.utils.SecurityUtils;
 import com.twelvet.framework.utils.DateUtils;
 import com.twelvet.framework.utils.SpringContextHolder;
-import com.twelvet.framework.utils.StringUtils;
+import com.twelvet.framework.utils.StrUtils;
 import com.twelvet.gen.server.mapper.GenDatasourceConfMapper;
 import com.twelvet.gen.server.service.IGenDatasourceConfService;
 import org.jasypt.encryption.StringEncryptor;
@@ -98,7 +98,7 @@ public class GenDatasourceConfServiceImpl implements IGenDatasourceConfService {
 	public int updateGenDatasourceConf(GenDatasourceConf genDatasourceConf) {
 		GenDatasourceConf genDatasourceConfDb = genDatasourceConfMapper
 			.selectGenDatasourceConfById(genDatasourceConf.getId());
-		if (StringUtils.isEmpty(genDatasourceConf.getPassword())) {
+		if (StrUtils.isEmpty(genDatasourceConf.getPassword())) {
 			genDatasourceConf.setPassword(stringEncryptor.decrypt(genDatasourceConfDb.getPassword()));
 		}
 		if (!checkDataSource(genDatasourceConf)) {

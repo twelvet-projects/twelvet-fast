@@ -2,10 +2,11 @@ package com.twelvet.quartz.server.util;
 
 import com.twelvet.framework.core.constants.Constants;
 import com.twelvet.framework.utils.SpringContextHolder;
-import com.twelvet.framework.utils.StringUtils;
+import com.twelvet.framework.utils.StrUtils;
 import com.twelvet.quartz.api.constant.ScheduleConstants;
 import com.twelvet.quartz.api.domain.SysJob;
 import com.twelvet.quartz.server.exception.TaskException;
+import org.apache.commons.lang3.StringUtils;
 import org.quartz.*;
 
 /**
