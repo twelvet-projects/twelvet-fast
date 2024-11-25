@@ -21,8 +21,8 @@ public class IndexController {
 	@SaIgnore
 	@GetMapping("/")
 	public String index() {
-		return StrUtils.format("<h1 style=\"text-align: center\">欢迎使用 {} 后台管理框架，当前版本：v{}。</h1>",
-				twProperties.getName(), twProperties.getVersion());
+		return StrUtils.format("<h1 style=\"text-align: center\">欢迎使用 {} 后台管理框架，当前版本：v{}。</h1>", twProperties.getName(),
+				twProperties.getVersion());
 	}
 
 }
