@@ -6,11 +6,11 @@ import com.baomidou.dynamic.datasource.creator.DefaultDataSourceCreator;
 import com.baomidou.dynamic.datasource.creator.druid.DruidConfig;
 import com.twelvet.framework.datasource.enums.DsConfTypeEnum;
 import com.twelvet.framework.datasource.enums.DsJdbcUrlEnum;
-import com.twelvet.gen.api.domain.GenDatasourceConf;
 import com.twelvet.framework.security.utils.SecurityUtils;
 import com.twelvet.framework.utils.DateUtils;
 import com.twelvet.framework.utils.SpringContextHolder;
 import com.twelvet.framework.utils.StrUtils;
+import com.twelvet.gen.api.domain.GenDatasourceConf;
 import com.twelvet.gen.server.mapper.GenDatasourceConfMapper;
 import com.twelvet.gen.server.service.IGenDatasourceConfService;
 import org.jasypt.encryption.StringEncryptor;
@@ -23,6 +23,7 @@ import javax.sql.DataSource;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -82,7 +83,7 @@ public class GenDatasourceConfServiceImpl implements IGenDatasourceConfService {
 
 		// 更新数据库配置
 		genDatasourceConf.setPassword(stringEncryptor.encrypt(genDatasourceConf.getPassword()));
-		genDatasourceConf.setCreateTime(DateUtils.getNowDate());
+		genDatasourceConf.setCreateTime(LocalDateTime.now());
 		String loginUsername = SecurityUtils.getUsername();
 		genDatasourceConf.setCreateBy(loginUsername);
 		genDatasourceConf.setUpdateBy(loginUsername);
@@ -113,7 +114,7 @@ public class GenDatasourceConfServiceImpl implements IGenDatasourceConfService {
 
 		// 更新数据库配置
 		genDatasourceConf.setPassword(stringEncryptor.encrypt(genDatasourceConf.getPassword()));
-		genDatasourceConf.setUpdateTime(DateUtils.getNowDate());
+		genDatasourceConf.setUpdateTime(LocalDateTime.now());
 		String loginUsername = SecurityUtils.getUsername();
 		genDatasourceConf.setCreateBy(loginUsername);
 		genDatasourceConf.setUpdateBy(loginUsername);

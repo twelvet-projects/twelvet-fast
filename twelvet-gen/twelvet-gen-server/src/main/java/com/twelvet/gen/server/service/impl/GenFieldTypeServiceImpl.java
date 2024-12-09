@@ -8,6 +8,7 @@ import com.twelvet.gen.server.service.IGenFieldTypeService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 /**
@@ -49,7 +50,7 @@ public class GenFieldTypeServiceImpl implements IGenFieldTypeService {
 	 */
 	@Override
 	public int insertGenFieldType(GenFieldType genFieldType) {
-		genFieldType.setCreateTime(DateUtils.getNowDate());
+		genFieldType.setCreateTime(LocalDateTime.now());
 		String loginUsername = SecurityUtils.getUsername();
 		genFieldType.setCreateBy(loginUsername);
 		genFieldType.setUpdateBy(loginUsername);
@@ -63,7 +64,7 @@ public class GenFieldTypeServiceImpl implements IGenFieldTypeService {
 	 */
 	@Override
 	public int updateGenFieldType(GenFieldType genFieldType) {
-		genFieldType.setUpdateTime(DateUtils.getNowDate());
+		genFieldType.setUpdateTime(LocalDateTime.now());
 		String loginUsername = SecurityUtils.getUsername();
 		genFieldType.setCreateBy(loginUsername);
 		genFieldType.setUpdateBy(loginUsername);

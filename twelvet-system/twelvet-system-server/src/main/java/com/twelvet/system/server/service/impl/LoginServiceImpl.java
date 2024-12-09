@@ -22,6 +22,7 @@ import com.twelvet.system.server.service.LoginService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.time.LocalDateTime;
 import java.util.Objects;
 import java.util.Set;
 
@@ -76,7 +77,7 @@ public class LoginServiceImpl implements LoginService {
 		sysLoginInfo.setIpaddr(IpUtils.getIpAddr());
 		sysLoginInfo.setMsg("退出登录");
 		// 发送异步日志事件
-		sysLoginInfo.setCreateTime(DateUtils.getNowDate());
+		sysLoginInfo.setCreateTime(LocalDateTime.now());
 		sysLoginInfo.setCreateBy(username);
 		sysLoginInfo.setUpdateBy(username);
 		SpringContextHolder.publishEvent(new SysLoginLogEvent(sysLoginInfo));
@@ -105,7 +106,7 @@ public class LoginServiceImpl implements LoginService {
 		sysLoginInfo.setDeptId(deptId);
 		sysLoginInfo.setIpaddr(IpUtils.getIpAddr());
 		sysLoginInfo.setMsg("登录成功");
-		sysLoginInfo.setCreateTime(DateUtils.getNowDate());
+		sysLoginInfo.setCreateTime(LocalDateTime.now());
 		sysLoginInfo.setCreateBy(username);
 		sysLoginInfo.setUpdateBy(username);
 
