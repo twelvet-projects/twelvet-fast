@@ -123,7 +123,7 @@ public class DateUtils extends org.apache.commons.lang3.time.DateUtils {
 	 */
 	public static Date toDate(LocalDate temporalAccessor) {
 		LocalDateTime localDateTime = LocalDateTime.of(temporalAccessor, LocalTime.of(0, 0, 0));
-        return toDate(localDateTime);
+		return toDate(localDateTime);
 	}
 
 	/**
