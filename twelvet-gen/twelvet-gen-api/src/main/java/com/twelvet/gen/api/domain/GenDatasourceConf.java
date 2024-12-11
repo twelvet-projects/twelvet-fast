@@ -1,6 +1,6 @@
 package com.twelvet.gen.api.domain;
 
-import com.alibaba.excel.annotation.ExcelProperty;
+import cn.idev.excel.annotation.ExcelProperty;
 import com.twelvet.framework.core.application.domain.BaseEntity;
 import io.swagger.v3.oas.annotations.media.Schema;
 import org.apache.commons.lang3.builder.ToStringBuilder;

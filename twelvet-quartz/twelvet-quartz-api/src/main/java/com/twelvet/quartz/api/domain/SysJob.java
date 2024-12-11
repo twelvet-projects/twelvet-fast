@@ -1,6 +1,6 @@
 package com.twelvet.quartz.api.domain;
 
-import com.alibaba.excel.annotation.ExcelProperty;
+import cn.idev.excel.annotation.ExcelProperty;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.twelvet.framework.core.application.domain.BaseEntity;
 import com.twelvet.framework.utils.CronUtils;
