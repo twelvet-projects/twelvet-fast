@@ -1,5 +1,5 @@
 # TwelveT Fast
-基于 Spring Boot 3 实现的twelvet单体服务，抢先体验 Spring 6 版本。
+基于 Spring Boot 3.x 实现的twelvet单体服务。
 
 ### 要求
 - jdk >= 17
@@ -7,20 +7,29 @@
 
 前端源码：https://github.com/twelvet-s/twelvet-ui
 
+新特性服务请前往 [twelvet](https://github.com/twelvet-projects/twelvet)按需迁移
+# 新服务
+
+### [1.RAG 知识库](https://github.com/twelvet-projects/twelvet/tree/master/twelvet-server/twelvet-server-ai)
+
 ## 演示图
 
 <table>
     <tr>
-        <td><img src="https://twelvet.cn/assets/images/twelvet/1.png"/></td>
-        <td><img src="https://twelvet.cn/assets/images/twelvet/2.png"/></td>
+        <td><img src="https://static.twelvet.cn/twelvet/1.jpg"/></td>
+        <td><img src="https://static.twelvet.cn/twelvet/2.jpg"/></td>
     </tr>
     <tr>
-        <td><img src="https://twelvet.cn/assets/images/twelvet/3.png"/></td>
-        <td><img src="https://twelvet.cn/assets/images/twelvet/4.png"/></td>
+        <td><img src="https://static.twelvet.cn/twelvet/3.jpg"/></td>
+        <td><img src="https://static.twelvet.cn/twelvet/4.jpg"/></td>
     </tr>
     <tr>
-        <td><img src="https://twelvet.cn/assets/images/twelvet/5.png"/></td>
-        <td><img src="https://twelvet.cn/assets/images/twelvet/6.png"/></td>
+        <td><img src="https://static.twelvet.cn/twelvet/5.jpg"/></td>
+        <td><img src="https://static.twelvet.cn/twelvet/6.jpg"/></td>
+    </tr>
+    <tr>
+        <td><img src="https://static.twelvet.cn/twelvet/7.jpg"/></td>
+        <td><img src="https://static.twelvet.cn/twelvet/8.jpg"/></td>
     </tr>
 </table>
 
