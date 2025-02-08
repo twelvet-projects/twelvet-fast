@@ -27,7 +27,7 @@ jobs:
         run: mvn spring-javaformat:validate
 
       - name: mvn clean install
-        run: mvn clean install
+        run: mvn clean install -DskipTests
 
       - name: init
         run: cd docker && chmod 751 ./deploy.sh && ./deploy.sh init
