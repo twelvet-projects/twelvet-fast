@@ -159,7 +159,9 @@ public class SysMenuController extends TWTController {
 	 * 获取路由信息
 	 * @return 路由信息
 	 */
-	@GetMapping("getRouters")
+	@Operation(summary = "获取当前用户路由信息")
+	@GetMapping("/getRouters")
+	@SaCheckPermission("system:menu:list")
 	public JsonResult<List<RouterVo>> getRouters() {
 		Long userId = SecurityUtils.getLoginUser().getUserId();
 		// 路由菜单
