@@ -45,7 +45,7 @@
 需要自行安装maven、docker、docker-compose、node、yarn
 ```shell
 # mvn
-mvn clean && mvn install
+mvn clean && mvn install -DskipTests
 # 进入脚本目录
 cd ./docker
 # 可执行权限
