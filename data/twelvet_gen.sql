@@ -231,7 +231,7 @@ CREATE TABLE `gen_table`
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 1
   CHARACTER SET = utf8mb4
-  COLLATE = utf8_general_ci COMMENT = '代码生成业务表'
+  COLLATE = utf8mb4_general_ci COMMENT = '代码生成业务表'
   ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
@@ -270,7 +270,7 @@ CREATE TABLE `gen_table_column`
 ) ENGINE = InnoDB
   AUTO_INCREMENT = 1
   CHARACTER SET = utf8mb4
-  COLLATE = utf8_general_ci COMMENT = '代码生成业务表字段'
+  COLLATE = utf8mb4_general_ci COMMENT = '代码生成业务表字段'
   ROW_FORMAT = DYNAMIC;
 
 -- ----------------------------
