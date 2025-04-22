@@ -36,6 +36,17 @@ public class I18nController extends TWTController {
 	private II18nService i18nService;
 
 	/**
+	 * 初始化国际化数据
+	 */
+	@Operation(summary = "初始化国际化数据")
+	@SaCheckPermission("@role.hasPermi('system:i18n:list')")
+	@PostMapping("/init")
+	public JsonResult<String> initI18n() {
+		i18nService.initI18n(Boolean.TRUE);
+		return JsonResult.success();
+	}
+
+	/**
 	 * 查询国际化分页
 	 */
 	@Operation(summary = "查询国际化分页")
