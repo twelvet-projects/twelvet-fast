@@ -39,7 +39,7 @@ public class I18nController extends TWTController {
 	 * 初始化国际化数据
 	 */
 	@Operation(summary = "初始化国际化数据")
-	@SaCheckPermission("@role.hasPermi('system:i18n:list')")
+	@SaCheckPermission("system:i18n:init")
 	@PostMapping("/init")
 	public JsonResult<String> initI18n() {
 		i18nService.initI18n(Boolean.TRUE);
