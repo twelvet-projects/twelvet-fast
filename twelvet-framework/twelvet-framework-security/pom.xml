@@ -25,7 +25,7 @@
         <!--sa-token支持Redis-->
         <dependency>
             <groupId>cn.dev33</groupId>
-            <artifactId>sa-token-redis</artifactId>
+            <artifactId>sa-token-redisson-spring-boot-starter</artifactId>
         </dependency>
 
         <!--twelvet utils-->
