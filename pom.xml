@@ -43,8 +43,7 @@
 
         <spring-boot-dependencies.version>3.4.5</spring-boot-dependencies.version>
 
-        <sa-token.version>1.42.0</sa-token.version>
-        <sa-token-redis.version>1.40.0</sa-token-redis.version>
+        <sa-token.version>1.43.0</sa-token.version>
 
         <knife4j-openapi3.version>4.5.0</knife4j-openapi3.version>
 
