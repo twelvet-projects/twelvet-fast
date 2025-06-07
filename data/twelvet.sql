@@ -1751,19 +1751,6 @@ VALUES (208, 'system.menu.system.i18n.export', 'en_US', 'Internationalization Ex
         '2024-03-31 11:32:29', '国际化导出');
 
 -- ----------------------------
--- Records of i18n
--- ----------------------------
-INSERT INTO `i18n`
-VALUES (1, 'system.error', 'zh_CN', '系统错误', '2024-03-28 15:39:56', 'admin', '2024-03-30 09:34:21', '系统错误');
-INSERT INTO `i18n`
-VALUES (2, 'system.error', 'en_US', 'System Error', '2024-03-28 15:41:00', 'admin', '2024-03-30 10:51:04',
-        'System Error');
-INSERT INTO `i18n`
-VALUES (3, 'system.success', 'zh_CN', '操作成功', '2024-03-28 16:25:18', 'admin', '2024-03-30 09:34:26', '操作成功');
-INSERT INTO `i18n`
-VALUES (4, 'system.success', 'en_US', 'Success', '2024-03-28 16:25:39', 'admin', '2024-03-30 10:51:08', 'Success');
-
--- ----------------------------
 -- Records of undo_log
 -- ----------------------------
 
