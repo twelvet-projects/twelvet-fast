@@ -700,9 +700,6 @@ VALUES (1123, 'system.menu.system.i18n.remove', 1119, 4, '#', '', '1', 'F', '0',
 INSERT INTO `sys_menu`
 VALUES (1124, 'system.menu.system.i18n.export', 1119, 5, '#', '', '1', 'F', '0', '0', 'system:i18n:export', '#',
         'admin', '2018-03-01 00:00:00', 'admin', '2024-03-31 11:17:22', '');
-INSERT INTO `sys_menu`
-VALUES (1160, '初始化国际化数据', 1119, 6, '', NULL, '1', 'F', '0', '0', 'system:i18n:init', '#', 'admin',
-        '2025-04-24 22:10:53', '', NULL, '');
 
 
 -- ----------------------------
@@ -1753,15 +1750,15 @@ VALUES (208, 'system.menu.system.i18n.export', 'en_US', 'Internationalization Ex
 -- ----------------------------
 -- Records of i18n
 -- ----------------------------
-INSERT INTO `i18n`
-VALUES (1, 'system.error', 'zh_CN', '系统错误', '2024-03-28 15:39:56', 'admin', '2024-03-30 09:34:21', '系统错误');
-INSERT INTO `i18n`
-VALUES (2, 'system.error', 'en_US', 'System Error', '2024-03-28 15:41:00', 'admin', '2024-03-30 10:51:04',
-        'System Error');
-INSERT INTO `i18n`
-VALUES (3, 'system.success', 'zh_CN', '操作成功', '2024-03-28 16:25:18', 'admin', '2024-03-30 09:34:26', '操作成功');
-INSERT INTO `i18n`
-VALUES (4, 'system.success', 'en_US', 'Success', '2024-03-28 16:25:39', 'admin', '2024-03-30 10:51:08', 'Success');
+# INSERT INTO `i18n`
+# VALUES (1, 'system.error', 'zh_CN', '系统错误', '2024-03-28 15:39:56', 'admin', '2024-03-30 09:34:21', '系统错误');
+# INSERT INTO `i18n`
+# VALUES (2, 'system.error', 'en_US', 'System Error', '2024-03-28 15:41:00', 'admin', '2024-03-30 10:51:04',
+#         'System Error');
+# INSERT INTO `i18n`
+# VALUES (3, 'system.success', 'zh_CN', '操作成功', '2024-03-28 16:25:18', 'admin', '2024-03-30 09:34:26', '操作成功');
+# INSERT INTO `i18n`
+# VALUES (4, 'system.success', 'en_US', 'Success', '2024-03-28 16:25:39', 'admin', '2024-03-30 10:51:08', 'Success');
 
 -- ----------------------------
 -- Records of undo_log
