@@ -41,7 +41,7 @@
         <maven.compiler.source>17</maven.compiler.source>
         <maven.compiler.target>17</maven.compiler.target>
 
-        <spring-boot-dependencies.version>3.5.0</spring-boot-dependencies.version>
+        <spring-boot-dependencies.version>3.5.2</spring-boot-dependencies.version>
 
         <sa-token.version>1.44.0</sa-token.version>
 
