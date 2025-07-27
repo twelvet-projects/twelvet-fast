@@ -6,7 +6,7 @@
     <groupId>com.twelvet</groupId>
     <artifactId>twelvet-fast</artifactId>
     <packaging>pom</packaging>
-    <version>3.5.3</version>
+    <version>3.5.4</version>
 
     <name>twelvet</name>
     <url>https://twelvet.cn</url>
